@@ -2,12 +2,28 @@
 
 
 import math
-import sys
-from turtle import distance
 
 ############################################################
 #######################Core Functions#######################
 ############################################################
+
+def PDB_file_read():
+    '''
+        This function will read into a PDB file format using the readlines function
+
+        **Parameters**
+
+        PDBlist: *list*
+            A list of strings in PDB file format
+        **Returns**
+
+            Sorted list by acsending resiue number position
+        '''
+    PDBfile=input("Enter a PDB file\n")
+    rawfile=open(PDBfile,"r")
+    pdblist=rawfile.readlines()
+    rawfile.close()
+    return None
 
 def remove(string):
     '''
@@ -84,6 +100,22 @@ def atom_finder(base, atom, mylist):
                 if (line[13:16]==atom):
                     mylist.append(line)
 
+def residue_finder(pdblist,resn="CYS", atom="S", mylist="CYSlistUnsorted"):
+    '''
+    This function will read PDB file and search for a given amino acid resiue, and the atomic element specified. This atom will be appended to a list given
+
+    **Parameters**
+
+    PDBfile: *list*
+        A list of strings in PDB file format
+    **Returns**
+
+        Sorted list by acsending resiue number position
+    '''
+    for line in pdblist:
+        if (line[0:4]=="ATOM") and (line[17:20]==resn) and (line[77:78]==atom):
+            mylist.append(line)
+
 def sorted_pdb(pdblist):
     '''
     This function will read a given list in PDB list, and sort to return a list in acsening residue position order
@@ -99,21 +131,29 @@ def sorted_pdb(pdblist):
     return(sorted(pdblist, key=lambda s: s[22:29]))
 
 ############################################################
-###############Detect Sulfide Bonds#########################
+#####################Detect Sulfide Bonds###################
 ############################################################
-def calc_disulfide():
 
-    x=input("Enter a PDB file\n")
-    rawfile=open(x,"r")
+def calc_disulfide():
+    '''
+        This function will calculate any disulfide bonds in a PDB file and display the 
+
+        **Parameters**
+
+        PDBlist: *list*
+            A list of strings in PDB file format
+        **Returns**
+
+            Sorted list by acsending resiue number position
+        '''
+    PDBfile=input("Enter a PDB file\n")
+    rawfile=open(PDBfile,"r")
     pdblist=rawfile.readlines()
     rawfile.close()
     ##function to find CYS
     CYSlistUnsorted=[]
-    def CYS_finder(x,resn="CYS"):
-        for line in pdblist:
-            if (line[0:4]=="ATOM") and (line[17:20]==resn) and (line[77:78]=="S"):
-                CYSlistUnsorted.append(line)
-    CYS_finder(x,"CYS")
+    
+    residue_finder(pdblist,"CYS", CYSlistUnsorted)
 
     CYSlist=sorted_pdb(CYSlistUnsorted)
     #To print the number of CYS residues
@@ -205,14 +245,6 @@ def calc_disulfide():
         print(i[17:27], "---", i[97:107],)
     print()
     print("Thanks for using me!")
-
-
-
-
-
-
-
-
 
 ############################################################
 ###############WC and Non-WC Nucleic Acid Interactions######
