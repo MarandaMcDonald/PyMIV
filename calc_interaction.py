@@ -1,34 +1,241 @@
 #This is a series of functions for mathematical calculations to read into PDB files and output a .pml text to import into the PyMOL
 
 
-
-#run "get_bonds.pml" in pymol with the 1z43.pdb structure
 import math
+import sys
+from turtle import distance
 
-#to remove empty spaces in strings
+############################################################
+#######################Core Functions#######################
+############################################################
+
 def remove(string):
+    '''
+    This function will remove space characters from a string
+
+    **Parameters**
+
+    string: *str*
+        The given string to have removed spaces
+
+    **Returns**
+
+        String containing no space characters
+    '''
     return string.replace(" ", "")
     
 def extractxyz(PDBline):
-  ### from expected PDB line, return x y z as a list of floats
-  return([float(PDBline[29:38]),float(PDBline[38:46]),float(PDBline[46:54])])
+    '''
+    This function will extract the x, y and z coordinates of an atom from the line of a PDB file
+
+    **Parameters**
+
+    PDBline: *str*
+        
+
+    **Returns**
+
+        x, y and z coordinates as a list of floats
+    '''
+    return([float(PDBline[29:38]),float(PDBline[38:46]),float(PDBline[46:54])])
 
 def calcdistance(list1,list2):
-  #expects two lists of floats, x1, y1, z1 and x2, y2, z2
-  return(math.sqrt((list1[0]-list2[0])**2 + (list1[1]-list2[1])**2 + (list1[2]-list2[2])**2))
-list1=[]
+    '''
+    This function will calculate the distance in angstroms between two atoms
+
+    **Parameters**
+
+    list1: *list*
+        First list of floats of xyz coordniates for atoms in a PDB file
+    
+    list1: *list*
+        Second list of floats of xyz coordniates as floats for atoms
+        
+
+    **Returns**
+
+        Distance in angstroms between two atoms in a PDB file
+    '''
+    return(math.sqrt((list1[0]-list2[0])**2 + (list1[1]-list2[1])**2 + (list1[2]-list2[2])**2))
+
 def atom_finder(base, atom, mylist):
+    '''
+    This function will find a given a given atom in a nucleotide base and append the whole PDB line to a given list
+
+    **Parameters**
+
+    base: *str*
+        The nucleotide base that is to be parsed (e.g. A = adenine, G = guanine, C = cytosine, T = thymine)
+    
+    atom: *str*
+        The atom position in the nucleotide base, where the first characte is a letter for the elements (e.g. C=carbon, N=nitrogen, O=oxygen),
+        and the second charcter is the carbon atom position in the base (e.g. N7 =  the nitrogen atom on carbon 7)
+    
+    mylist: *list*
+        Any given list to be appended with the PDBline of the atom found
+
+    **Returns**
+
+        Appending the atom to a given a list
+    '''
     for line in pdblist:
         if (line[0:4]=="ATOM"):
             if (line[19:20]==base):
                 if (line[13:16]==atom):
                     mylist.append(line)
 
+def sorted_pdb(pdblist):
+    '''
+    This function will read a given list in PDB list, and sort to return a list in acsening residue position order
+
+    **Parameters**
+
+    PDBlist: *list*
+        A list of strings in PDB file format
+    **Returns**
+
+        Sorted list by acsending resiue number position
+    '''
+    return(sorted(pdblist, key=lambda s: s[22:29]))
+
+############################################################
+###############Detect Sulfide Bonds#########################
+############################################################
+def calc_disulfide():
+
+    x=input("Enter a PDB file\n")
+    rawfile=open(x,"r")
+    pdblist=rawfile.readlines()
+    rawfile.close()
+    ##function to find CYS
+    CYSlistUnsorted=[]
+    def CYS_finder(x,resn="CYS"):
+        for line in pdblist:
+            if (line[0:4]=="ATOM") and (line[17:20]==resn) and (line[77:78]=="S"):
+                CYSlistUnsorted.append(line)
+    CYS_finder(x,"CYS")
+
+    CYSlist=sorted_pdb(CYSlistUnsorted)
+    #To print the number of CYS residues
+
+    print()
+    print("There are",len(CYSlist), "CYS residues")
+    #test extractxyz works and print the xyz coordinates for each CYS atoms
+    #for line in CYSlist:
+    #    temp=extractxyz(line)
+    #    print("CYS Res{}, x={}, y={}, z={}".format(line[22:29],temp[0],temp[1],temp[2]))
+
+
+    CYSdistanceslist=[]
+
+    cyskeys= []
+    #values are the bond distance
+    cysvalues = []
+    cysdict={}
+    ### here loop through the PDB file, and if residues are sequential, then calc distances and
+    # store in a new list
+    for i in range(len(CYSlist)):
+        for z in range(i):
+            CYSdistanceslist.append(calcdistance(extractxyz(CYSlist[i]), extractxyz(CYSlist[z])))
+
+    #to detect if a potential disulfide bond is within the accpetable 2.00 angstroms plus or minus 0.05
+    def find_s_bond(mylist):
+        for i in mylist:
+            if 2.05 >i > 1.95:
+                print("{}, {}".format(i[17:29],i))
+
+    #for i in CYSdistanceslist:
+    #    print(i)
+
+
+
+    StoSlist=[]
+    def s_to_s(mylist):
+        for i in range(len(mylist)):
+            for z in range(i):
+                StoSlist.append((mylist[i]) + (mylist[z]))
+    #print("Here are the potential S-S bond interactions")
+    s_to_s(CYSlist)
+    #keys are the Cys to Cys residue numbers
+
+    #for line in StoSlist:
+    #            print(line[17:27], "to", line[97:110], "S-S Distance:")
+
+    #make list of cys distances
+    for i in CYSdistanceslist:
+        cysvalues.append(i)
+
+    #make list of cys to cys combinations
+    for i in StoSlist:
+        cyskeys.append(i)
+    #to make a dictionary matching the residue combination to the bond distance
+    for i in range(len(cyskeys)):
+        cysdict[cyskeys[i]] = cysvalues[i]
+
+
+    #to print out the CYS RESN to CYS RESN combination
+    #for i in cysdict.keys():
+    #    print(i[17:27], "to", i[97:110], "S-S Distance:")
+
+    cysValueToKey = {i for i in cysdict if 2.05 >cysdict[i] > 1.95}
+    trueCysBondlist = list(cysValueToKey)
+    trueDistancelist = list()
+    for i in cysdict.values():
+            if 2.05 > i> 1.95:
+            trueDistancelist.append(i)
+
+    def true_cys(trueCysBondList):
+        for i in trueCysBondlist:
+            print(i[17:27], "to", i[97:110], "S-S Distance:",)
+    def true_distance(trueDistancelist):
+        for i in trueDistancelist:
+            print(i)
+
+    #print(("{}, {}".format(true_cys(trueCysBondlist), true_distance(trueDistancelist))))
+
+    joinedList = "\n".join("{} {}".format(x, y) for x, y in zip(trueCysBondlist, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"))
+
+    print("There are", len(trueDistancelist), "disulfide bonds")
+    print()
+    print("DISULFDE BONDS ( 2 ± 0.05 Å )")
+
+    #print(joinedList)
+
+    for i in trueCysBondlist:
+        print(i[17:27], "---", i[97:107],)
+    print()
+    print("Thanks for using me!")
+
+
+
+
+
+
+
 
 
 ############################################################
 ###############WC and Non-WC Nucleic Acid Interactions######
 ############################################################
+def 
+'''
+    This function will encrypt a message that is passed to it
+
+    **Parameters**
+
+    message: *str*
+        The given plain text message that will be encrypted
+
+    N: *int*
+        The value for N
+
+    E: *int*
+        The value for E
+
+    **Returns**
+    
+        None
+    '''
 #to write a pml file
 bondfile=open("get_bonds.pml", "w")
 bondfile.write("load 1z43.pdb\n")
@@ -42,30 +249,38 @@ pdblist=rawfile.readlines()
 rawfile.close()
 
 #lists of WC bonding atoms
+
+#Guanine
 GO6=[]
 GN1=[]
 GN2=[]
 
+#Cytosine
 CN4=[]
 CN3=[]
 CO2=[]
 
+#Adenine
 AN6=[]
 AN1=[]
 
+#Uracil
 UO4=[]
 UN3=[]
 
 #lists of Non-WC bonding atoms
+
+#Guanine
 GN3=[]
 GN9=[]
 GN7=[]
 
-
+#Adenine
 AN7=[]
 AN9=[]
 AN3=[]
 
+#Uracil
 UO2=[]
 
 dist1=[]
