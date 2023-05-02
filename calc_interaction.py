@@ -74,7 +74,7 @@ def calcdistance(list1,list2):
     '''
     return(math.sqrt((list1[0]-list2[0])**2 + (list1[1]-list2[1])**2 + (list1[2]-list2[2])**2))
 
-def atom_finder(base, atom, mylist):
+def atom_finder(pdblist,base, atom, mylist):
     '''
     This function will find a given a given atom in a nucleotide base and append the whole PDB line to a given list
 
@@ -100,7 +100,7 @@ def atom_finder(base, atom, mylist):
                 if (line[13:16]==atom):
                     mylist.append(line)
 
-def residue_finder(pdblist,resn="CYS", atom="S", mylist="CYSlistUnsorted"):
+def residue_finder(pdblist, resn="CYS", mylist="CYSlistUnsorted"):
     '''
     This function will read PDB file and search for a given amino acid resiue, and the atomic element specified. This atom will be appended to a list given
 
@@ -113,7 +113,7 @@ def residue_finder(pdblist,resn="CYS", atom="S", mylist="CYSlistUnsorted"):
         Sorted list by acsending resiue number position
     '''
     for line in pdblist:
-        if (line[0:4]=="ATOM") and (line[17:20]==resn) and (line[77:78]==atom):
+        if (line[0:4]=="ATOM") and (line[17:20]==resn) and (line[77:78]=="S"):
             mylist.append(line)
 
 def sorted_pdb(pdblist):
@@ -172,6 +172,7 @@ def atom_to_atom(mylist, newList):
     for i in range(len(mylist)):
         for z in range(i):
             newList.append((mylist[i]) + (mylist[z]))
+
 ############################################################
 #####################Detect Sulfide Bonds###################
 ############################################################
@@ -252,28 +253,11 @@ def calc_disulfide():
     print()
     print("Thanks for using me!")
 
+'''
 ############################################################
 ###############WC and Non-WC Nucleic Acid Interactions######
 ############################################################
-def 
-'''
-    This function will encrypt a message that is passed to it
 
-    **Parameters**
-
-    message: *str*
-        The given plain text message that will be encrypted
-
-    N: *int*
-        The value for N
-
-    E: *int*
-        The value for E
-
-    **Returns**
-    
-        None
-    '''
 #to write a pml file
 bondfile=open("get_bonds.pml", "w")
 bondfile.write("load 1z43.pdb\n")
@@ -323,31 +307,31 @@ UO2=[]
 
 dist1=[]
 #WC atoms
-(atom_finder("G","O6 ",GO6))
-(atom_finder("G","N1 ",GN1))
-(atom_finder("G","N2 ",GN2))
+(atom_finder(pdblist,"G","O6 ",GO6))
+(atom_finder(pdblist,"G","N1 ",GN1))
+(atom_finder(pdblist,"G","N2 ",GN2))
 
-(atom_finder("C","N4 ",CN4))
-(atom_finder("C","N3 ",CN3))
-(atom_finder("C","O2 ",CO2))
+(atom_finder(pdblist,"C","N4 ",CN4))
+(atom_finder(pdblist,"C","N3 ",CN3))
+(atom_finder(pdblist,"C","O2 ",CO2))
 
-(atom_finder("A","N6 ",AN6))
-(atom_finder("A","N1 ",AN1))
+(atom_finder(pdblist,"A","N6 ",AN6))
+(atom_finder(pdblist,"A","N1 ",AN1))
 
-(atom_finder("U","O4 ",UO4))
-(atom_finder("U","N3 ",UN3))   
+(atom_finder(pdblist,"U","O4 ",UO4))
+(atom_finder(pdblist,"U","N3 ",UN3))   
 
 #Non-WC atoms
-(atom_finder("G","N3 ",GN3))
-(atom_finder("G","N9 ",GN9))
-(atom_finder("G","N7 ",GN7))
+(atom_finder(pdblist,"G","N3 ",GN3))
+(atom_finder(pdblist,"G","N9 ",GN9))
+(atom_finder(pdblist,"G","N7 ",GN7))
 
 
-(atom_finder("A","N7 ",AN7))
-(atom_finder("A","N9 ",AN9))
-(atom_finder("A","N3 ",AN3))
+(atom_finder(pdblist,"A","N7 ",AN7))
+(atom_finder(pdblist,"A","N9 ",AN9))
+(atom_finder(pdblist,"A","N3 ",AN3))
 
-(atom_finder("U","O2 ",UO2))
+(atom_finder(pdblist,"U","O2 ",UO2))
 
 
 #function to write to a pml file to draw the WC hydrogen bond distance for each WC hydrogen bonding atom pair
@@ -397,57 +381,7 @@ Uwc=[UO4,UN3]
 Ghoog=[GN3,GN9,GN7]
 Ahoog=[AN7,AN3,AN9]
 '''
-def bond_maker(list1, list2):
-    for i in range(len(list1)):
-        for z in range(len(list2)):
-            if list1==GO6 and list2==CN4:
-                print("done")
-            else:
-                Non_WC_distance_pymol(list1[i], list2[z])'''
-
-
-def non_wc(list1, list2):
-    for i in range(len(atomList)):
-        for z in range(len(atomList)):
-            if atomList[i]==GO6 and atomList[z]==CN4:
-                print("skip")
-            else:
-                Non_WC_distance_pymol(atomList[i], atomList[z])
-
 '''
-bond_maker(Ghoog,Ghoog)
-bond_maker(Ghoog,Ahoog)
-bond_maker(Ghoog,Choog)
-bond_maker(Ghoog,Uhoog)
-
-bond_maker(Gwc,Uwc)
-bond_maker(Gwc,Awc)
-
-bond_maker(Cwc,Uwc)
-bond_maker(Cwc,Uwc)'''
-
-'''
-Non_WC_distance_pymol(,GO6)
-Non_WC_distance_pymol(,GN1)
-Non_WC_distance_pymol(,GN2)
-Non_WC_distance_pymol(,GN3)
-Non_WC_distance_pymol(,GN9)
-Non_WC_distance_pymol(,GN7)
-
-Non_WC_distance_pymol(,CN3)
-Non_WC_distance_pymol(,CO2)
-
-
-Non_WC_distance_pymol(,AN6)
-Non_WC_distance_pymol(,AN1)
-Non_WC_distance_pymol(,AN3)
-Non_WC_distance_pymol(,AN7)
-Non_WC_distance_pymol(,AN9)
-
-Non_WC_distance_pymol(,UO4)
-Non_WC_distance_pymol(,UN3)
-'''
-
 #Series of all the atoms tested for hydrogen bond (these are all non-WC)
 #Manually exmained the pymol structure to elimate which distances are not true hydrogen bonds
 #Hoogsteen
@@ -673,3 +607,5 @@ bondfile.write("set dash_radius, .15")
 
 
 #Done
+
+'''

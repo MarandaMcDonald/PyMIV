@@ -1,7 +1,6 @@
 #Driver code for running and testing python functions
 
 
-import calc_interaction
+from calc_interaction import *
 
-if __name__ =="main":
-    
+calc_disulfide()
