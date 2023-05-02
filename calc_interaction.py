@@ -7,9 +7,9 @@ import math
 #######################Core Functions#######################
 ############################################################
 
-def PDB_file_read():
+def PDB_read(PDBfile):
     '''
-        This function will read into a PDB file format using the readlines function
+        This function will read into a PDB file format using the readlines command
 
         **Parameters**
 
@@ -130,6 +130,48 @@ def sorted_pdb(pdblist):
     '''
     return(sorted(pdblist, key=lambda s: s[22:29]))
 
+def bond_distance(mylist, lower=1.95, upper=2.00):
+    '''
+    This function will calculate if a bond distance is in a given range, then print out values
+
+    **Parameters**
+
+    mylist: *list*
+        A list of distances that correspond to potential residue-residue pairs
+
+    lower: *float*
+        The lower potential bond distance in angstroms
+
+    uper: *float*
+    The upper potential bond distance in angstroms
+
+    **Returns*
+    
+        Sorted list by acsending resiue number position
+    '''
+    for i in mylist:
+        if upper >i > lower:
+            print("{}, {}".format(i[17:29],i))
+
+def atom_to_atom(mylist, newList):
+    '''
+    This function will go through a PDB lists of lines and calculatr all the potential Cysteine residue pairs
+
+    **Parameters**
+
+    mylist: *list*
+        A list of of any amount of PDB lines. Can be specific for just one amino acid residue type, or all amino acids.
+
+    newList: *list*
+        The provided new list that PDB lines will be appended to upon the fucntion
+
+    **Returns*
+    
+        Sorted list by acsending resiue number position
+    '''
+    for i in range(len(mylist)):
+        for z in range(i):
+            newList.append((mylist[i]) + (mylist[z]))
 ############################################################
 #####################Detect Sulfide Bonds###################
 ############################################################
@@ -146,101 +188,65 @@ def calc_disulfide():
 
             Sorted list by acsending resiue number position
         '''
+    # Initialize reading into PDB file and converting into a list of lines as strings
     PDBfile=input("Enter a PDB file\n")
     rawfile=open(PDBfile,"r")
     pdblist=rawfile.readlines()
     rawfile.close()
-    ##function to find CYS
     CYSlistUnsorted=[]
     
+    # To find all the Cysteine residues in the PDB structure
     residue_finder(pdblist,"CYS", CYSlistUnsorted)
 
+    # To sort all the Cysteine residues in acsending order
     CYSlist=sorted_pdb(CYSlistUnsorted)
-    #To print the number of CYS residues
 
-    print()
-    print("There are",len(CYSlist), "CYS residues")
-    #test extractxyz works and print the xyz coordinates for each CYS atoms
-    #for line in CYSlist:
-    #    temp=extractxyz(line)
-    #    print("CYS Res{}, x={}, y={}, z={}".format(line[22:29],temp[0],temp[1],temp[2]))
+    # To print out the total number of Cysteine residues in the PDB structure
+    print("\nThere are",len(CYSlist), "CYS residues")
 
-
+    # A dictionary where the keys are the Cys to Cys residue pairs and the values are the bond distances
     CYSdistanceslist=[]
-
     cyskeys= []
-    #values are the bond distance
     cysvalues = []
     cysdict={}
-    ### here loop through the PDB file, and if residues are sequential, then calc distances and
-    # store in a new list
+
+    # To loop through the sorted Cysteine list of residues, and if residues are sequential, then calculate the potential bond distances and
+    # store in a new list, CYSdistanceslist
     for i in range(len(CYSlist)):
         for z in range(i):
             CYSdistanceslist.append(calcdistance(extractxyz(CYSlist[i]), extractxyz(CYSlist[z])))
 
-    #to detect if a potential disulfide bond is within the accpetable 2.00 angstroms plus or minus 0.05
-    def find_s_bond(mylist):
-        for i in mylist:
-            if 2.05 >i > 1.95:
-                print("{}, {}".format(i[17:29],i))
-
-    #for i in CYSdistanceslist:
-    #    print(i)
-
-
-
+    # To provide the the potential S-S bond interactions")
     StoSlist=[]
-    def s_to_s(mylist):
-        for i in range(len(mylist)):
-            for z in range(i):
-                StoSlist.append((mylist[i]) + (mylist[z]))
-    #print("Here are the potential S-S bond interactions")
-    s_to_s(CYSlist)
-    #keys are the Cys to Cys residue numbers
+    atom_to_atom(CYSlist, StoSlist)
 
-    #for line in StoSlist:
-    #            print(line[17:27], "to", line[97:110], "S-S Distance:")
-
-    #make list of cys distances
+    # To make list of Cysteine-Cysteine distances
     for i in CYSdistanceslist:
         cysvalues.append(i)
 
-    #make list of cys to cys combinations
+    # To make list of Cysteine-Cysteine combinations
     for i in StoSlist:
         cyskeys.append(i)
-    #to make a dictionary matching the residue combination to the bond distance
+
+    # To make a dictionary matching the residue combination to the bond distance
     for i in range(len(cyskeys)):
         cysdict[cyskeys[i]] = cysvalues[i]
 
-
-    #to print out the CYS RESN to CYS RESN combination
-    #for i in cysdict.keys():
-    #    print(i[17:27], "to", i[97:110], "S-S Distance:")
-
+    # To detect if a potential disulfide bond is within the accpetable 2.00 angstroms plus or minus 0.05
     cysValueToKey = {i for i in cysdict if 2.05 >cysdict[i] > 1.95}
     trueCysBondlist = list(cysValueToKey)
     trueDistancelist = list()
     for i in cysdict.values():
             if 2.05 > i> 1.95:
-            trueDistancelist.append(i)
+                trueDistancelist.append(i)
 
-    def true_cys(trueCysBondList):
-        for i in trueCysBondlist:
-            print(i[17:27], "to", i[97:110], "S-S Distance:",)
-    def true_distance(trueDistancelist):
-        for i in trueDistancelist:
-            print(i)
-
-    #print(("{}, {}".format(true_cys(trueCysBondlist), true_distance(trueDistancelist))))
-
+    # To print out the Cysteine RESN to Cysteine RESN combinations
     joinedList = "\n".join("{} {}".format(x, y) for x, y in zip(trueCysBondlist, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"))
-
     print("There are", len(trueDistancelist), "disulfide bonds")
     print()
     print("DISULFDE BONDS ( 2 ± 0.05 Å )")
 
-    #print(joinedList)
-
+    # To print the joinedList
     for i in trueCysBondlist:
         print(i[17:27], "---", i[97:107],)
     print()
