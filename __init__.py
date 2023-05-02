@@ -1,5 +1,4 @@
 # This initializes the plugin to be installed by PyMOL
-
 from __future__ import absolute_import
 from __future__ import print_function
 
