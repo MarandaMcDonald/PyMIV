@@ -51,7 +51,7 @@ def make_dialog():
 
     def run():
         # retreive PDB file data
-        pdb_file = form.lineEdit.value()
+        pdb_file = form.lineEdit.text()
 
         print('User Entered Filename', pdb_file)
 
