@@ -56,5 +56,5 @@ def make_dialog():
         print('User Entered Filename', pdb_file)
 
     #test the application
-    form.disulfideFinder.connect(run)
+    form.disulfideFinder.clicked.connect(run)
     return dialog
