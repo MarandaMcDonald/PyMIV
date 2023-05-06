@@ -27,6 +27,12 @@ def run_plugin_gui():
 
     dialog.show()
 
+# filename of our UI file
+uifile = os.path.join(os.path.dirname(__file__), 'input.ui')
+
+# load the UI file into our dialog
+from pymol.Qt.utils import loadUi
+form = loadUi(uifile, dialog)
 
 def make_dialog():
     # entry point to PyMOL's API
@@ -42,8 +48,19 @@ def make_dialog():
     dialog = QtWidgets.QDialog()
 
     # populate the Window from our *.ui file which was created with the Qt Designer
-    uifile = os.path.join(os.path.dirname(__file__), 'demowidget.ui')
+    uifile = os.path.join(os.path.dirname(__file__), 'input.ui')
     form = loadUi(uifile, dialog)
 
     
     return dialog
+
+def run():
+        # get form data
+        pdb_file = form.input_pdb.value()
+
+        # some debugging feedback
+        print('User entered height', pdb_file)
+
+        # TODO: DO SOMETHING WITH FORM DATA
+
+    form.button_ray.clicked.connect(run)
