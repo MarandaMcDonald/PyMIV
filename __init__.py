@@ -10,7 +10,7 @@ def __init_plugin__(app=None):
     Add an entry to the PyMOL "Plugin" menu
     '''
     from pymol.plugins import addmenuitemqt
-    addmenuitemqt('Demo "Render" Plugin', run_plugin_gui)
+    addmenuitemqt('Molecular Interactions Viewer', run_plugin_gui)
 
 # global reference to avoid garbage collection of our dialog
 dialog = None
@@ -18,7 +18,7 @@ dialog = None
 
 def run_plugin_gui():
     '''
-    Open our custom dialog
+    Open the custom dialog
     '''
     global dialog
 
@@ -28,7 +28,7 @@ def run_plugin_gui():
     dialog.show()
 
 # filename of the UI file
-uifile = os.path.join(os.path.dirname(__file__), 'input.ui')
+uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
 
 # load the UI file into our dialog
 from pymol.Qt.utils import loadUi
