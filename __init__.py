@@ -673,7 +673,7 @@ def make_dialog():
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
-        #calc_disulfide(pdb_file)
+        calc_disulfide(pdb_file)
 
         # To debug code
         print('User Entered Filename:', pdb_file)
