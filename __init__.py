@@ -48,7 +48,7 @@ def make_dialog():
     dialog = QtWidgets.QDialog()
 
     # populate the Window from our *.ui file which was created with the Qt Designer
-    uifile = os.path.join(os.path.dirname(__file__), 'input.ui')
+    uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
     form = loadUi(uifile, dialog)
 
     
