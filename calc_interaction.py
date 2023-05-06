@@ -177,21 +177,23 @@ def atom_to_atom(mylist, newList):
 #####################Detect Sulfide Bonds###################
 ############################################################
 
-def calc_disulfide():
+def calc_disulfide(filename):
     '''
-        This function will calculate any disulfide bonds in a PDB file and display the 
+        This function will calculate any disulfide bonds in a PDB file and display in PyMOL 
 
         **Parameters**
 
-        PDBlist: *list*
-            A list of strings in PDB file format
+        filename: *string*
+            A string with the PDB file name (e.g. 1fdl.pdb)
         **Returns**
 
-            Sorted list by acsending resiue number position
+            Text of residues with connecting disulfiude bonds
+            PyMOL Viewer Structure with disulfiees highlighted and bonds drawn
         '''
     # Initialize reading into PDB file and converting into a list of lines as strings
-    PDBfile=input("Enter a PDB file\n")
-    rawfile=open(PDBfile,"r")
+    
+    #PDBfile=input("Enter a PDB file\n")
+    rawfile=open(filename,"r")
     pdblist=rawfile.readlines()
     rawfile.close()
     CYSlistUnsorted=[]

@@ -1,9 +1,18 @@
-# This initializes the plugin to be installed by PyMOL
+# To initialize the plugin to be installed by PyMOL
 from __future__ import absolute_import
 from __future__ import print_function
 
-import os
+# To provide an entry point to PyMOL's API
+from pymol import cmd
+from pymol.Qt import QtWidgets
+from pymol.Qt.utils import loadUi
+from pymol.Qt.utils import getSaveFileNameWithExt
 
+# To load the UI file into our dialog
+from pymol.Qt.utils import loadUi
+
+from calc_interaction import *
+import os
 
 def __init_plugin__(app=None):
     '''
@@ -12,8 +21,13 @@ def __init_plugin__(app=None):
     from pymol.plugins import addmenuitemqt
     addmenuitemqt('Molecular Interactions Viewer', run_plugin_gui)
 
-# global reference to avoid garbage collection of our dialog
+# To create global reference of the dialog variables
 dialog = None
+# to give filename of the UI file
+uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
+
+# To load the UI dialog
+form = loadUi(uifile, dialog)
 
 
 def run_plugin_gui():
@@ -27,34 +41,34 @@ def run_plugin_gui():
 
     dialog.show()
 
-# filename of the UI file
-uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
-
-# load the UI file into our dialog
-from pymol.Qt.utils import loadUi
-form = loadUi(uifile, dialog)
 
 def make_dialog():
-    # entry point to PyMOL's API
-    from pymol import cmd
-    from pymol.Qt import QtWidgets
-    from pymol.Qt.utils import loadUi
-    from pymol.Qt.utils import getSaveFileNameWithExt
-
-    # create a new Window
+    '''
+    Make the dialog window
+    '''
+    # To create a new UI window
     dialog = QtWidgets.QDialog()
 
-    # populate the Window from our *.ui file which was created with the Qt Designer
+    # To populate the Window from our .ui file
     uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
     form = loadUi(uifile, dialog)
    
 
     def run():
+        '''
+        Run the actions in the dialog window
+        '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
+        calc_disulfide(pdb_file)
 
-        print('User Entered Filename', pdb_file)
+        # To debug code
+        print('User Entered Filename:', pdb_file)
 
-    #test the application
+    # To connect clicking buttons to a value, text or command
     form.disulfideFinder.clicked.connect(run)
+    form.calculateMW.clicked.connect(run)
+    form.wcAndNonWC.clicked.connect(run)
+    form.hydrogenBond.clicked.connect(run)
+
     return dialog
