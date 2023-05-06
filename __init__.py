@@ -11,7 +11,7 @@ from pymol.Qt.utils import getSaveFileNameWithExt
 # To load the UI file into our dialog
 from pymol.Qt.utils import loadUi
 
-from calc_interaction. import calc_disulfide
+from calc_interaction import *
 import os
 
 def __init_plugin__(app=None):
@@ -60,7 +60,7 @@ def make_dialog():
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
-        calc_disulfide(pdb_file)
+        #calc_disulfide(pdb_file)
 
         # To debug code
         print('User Entered Filename:', pdb_file)
