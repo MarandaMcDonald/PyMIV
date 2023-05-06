@@ -1,6 +1,6 @@
 
 # PyMIV
-PyMIV: A Pymol Plugin for easily viewing molecular interactions like disulfide bonds, WC/Non-WC bonds etc.
+PyMIV: A Pymol Plugin as a Molecular Interactions Viewer (MIV) of disulfide bonds, WC/Non-WC bonds, protein secondary structure etc.
 
 ## Prerequisite
 * [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/)
@@ -10,6 +10,9 @@ OR
 * [PyMOL-open-source-vewier] (git@github.com:schrodinger/pymol-open-source.git)
 
 * [PyMOL-open-source-vewier] (https://anaconda.org/conda-forge/pymol-open-source)
+
+* [wxPython] (https://formulae.brew.sh/formula/wxpython)
+
 
 ### Adding PyMIV to PyMOL
 
@@ -24,6 +27,8 @@ In PyMOL window, go to `Plugin` -> `Plugin manager` -> `Install new plugin`, cho
 
 #### Load Object
 Load the object to be analyzed in PyMOL, e.g. `1fdl.pdb` provided in `PDB_Files/` folder, by typing `load PDB_Files/1fdl.pdb` in pymol command line or dragging the file into PyMOL window.
+
+Be sure to use PyMOL Command Terminal to cd into the directory containing the PDB files of interest
 
 
 #### Run PyMIV
