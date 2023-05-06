@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from __future__ import print_function
 
 # To provide an entry point to PyMOL's API
+import os
 from pymol import cmd
 from pymol.Qt import QtWidgets
 from pymol.Qt.utils import loadUi
@@ -12,7 +13,6 @@ from pymol.Qt.utils import getSaveFileNameWithExt
 from pymol.Qt.utils import loadUi
 
 from calc_interaction import *
-import os
 
 def __init_plugin__(app=None):
     '''
