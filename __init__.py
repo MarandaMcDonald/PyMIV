@@ -47,13 +47,14 @@ def make_dialog():
     # populate the Window from our *.ui file which was created with the Qt Designer
     uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
     form = loadUi(uifile, dialog)
+   
+
+    def run():
+        # retreive PDB file data
+        pdb_file = form.lineEdit.value()
+
+        print('User Entered Filename', pdb_file)
+
+    #test the application
+    form.disulfideFinder.connect(run)
     return dialog
-
-def run():
-    # retreive PDB file data
-    pdb_file = form.lineEdit.value()
-
-    print('User Entered Filename', pdb_file)
-
-#test the application
-form.disulfideFinder.connect(run)
