@@ -53,3 +53,11 @@ def make_dialog():
 
     
     return dialog
+
+def run():
+    # get the data
+    pdb_file = form.lineEdit.value()
+
+    print('User Entered Filename', pdb_file)
+
+    form.disulfideFinder.connect(run)

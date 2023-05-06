@@ -48,7 +48,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Input PDB File&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="disulfideFinder">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -61,7 +61,7 @@ p, li { white-space: pre-wrap; }
     <string>Disulfide Finder</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="calculateMW">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -74,7 +74,7 @@ p, li { white-space: pre-wrap; }
     <string>Calculate MW</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="wcAndNonWC">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -87,7 +87,7 @@ p, li { white-space: pre-wrap; }
     <string>WC/Non-WC</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="hydrogenBond">
    <property name="geometry">
     <rect>
      <x>230</x>
