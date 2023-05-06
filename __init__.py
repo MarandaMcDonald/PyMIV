@@ -27,7 +27,7 @@ def run_plugin_gui():
 
     dialog.show()
 
-# filename of our UI file
+# filename of the UI file
 uifile = os.path.join(os.path.dirname(__file__), 'input.ui')
 
 # load the UI file into our dialog
@@ -53,14 +53,3 @@ def make_dialog():
 
     
     return dialog
-
-def run():
-        # get form data
-        pdb_file = form.input_pdb.value()
-
-        # some debugging feedback
-        print('User entered height', pdb_file)
-
-        # TODO: DO SOMETHING WITH FORM DATA
-
-    form.button_ray.clicked.connect(run)
