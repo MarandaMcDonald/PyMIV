@@ -11,7 +11,7 @@ from pymol.Qt.utils import getSaveFileNameWithExt
 # To load the UI file into our dialog
 from pymol.Qt.utils import loadUi
 
-from calc_interaction import *
+from calc_interaction. import calc_disulfide
 import os
 
 def __init_plugin__(app=None):
