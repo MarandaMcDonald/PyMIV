@@ -631,7 +631,7 @@ def __init_plugin__(app=None):
     Add an entry to the PyMOL "Plugin" menu
     '''
     from pymol.plugins import addmenuitemqt
-    addmenuitemqt('Molecular Interactions Viewer', run_plugin_gui)
+    addmenuitemqt('PyMIV', run_plugin_gui)
 
 # To create global reference of the dialog variables
 dialog = None
