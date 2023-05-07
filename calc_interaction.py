@@ -40,9 +40,9 @@ def remove(string=str):
     '''
     return string.replace(" ", "")
 
-def only_PDB(string=str):
+def only_PDB1(string=str):
     '''
-    This function will remove PDB_Files from the 'filename' variable
+    This function will remove 'PDB_Files' from the 'filename' variable
 
     **Parameters**
 
@@ -51,9 +51,25 @@ def only_PDB(string=str):
 
     **Returns**
 
-        String containing no space characters
+        String containing no 'PDB_Files'
     '''
     return string.replace("PDB_Files/", "")
+
+def only_PDB2(string=str):
+    '''
+    This function will remove '.pdb' from the 'filename' variable
+
+    **Parameters**
+
+    string: *str*
+        The given string to have removed characters
+
+    **Returns**
+
+        String containing no '.pdb'
+    '''
+    return string.replace(".pdb", "")
+    
     
 def extractxyz(PDBline=str):
     '''
@@ -255,6 +271,12 @@ def calc_disulfide(filename):
         '''
     # Initialize reading into PDB file and converting into a list of lines as strings
     
+    # To write a pml file
+    bondfile=open("disulfide_bonds.pml", "w")
+    bondfile.write("load {:}\n".format((filename)))
+    bondfile.write("remove resn hoh\n")
+    #bondfile.write("color green")
+
     #PDBfile=input("Enter a PDB file\n")
     rawfile=open(filename,"r")
     pdblist=rawfile.readlines()
@@ -306,17 +328,30 @@ def calc_disulfide(filename):
             if 2.05 > i> 1.95:
                 trueDistancelist.append(i)
 
+    
     # To print out the Cysteine RESN to Cysteine RESN combinations
     joinedList = "\n".join("{} {}".format(x, y) for x, y in zip(trueCysBondlist, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"))
-    print("There are", len(trueDistancelist), "disulfide bonds")
-    print()
+    print("There are", len(trueDistancelist), "disulfide bonds\n")
     print("DISULFDE BONDS ( 2 ± 0.05 Å )")
 
     # To print the joinedList
     for i in trueCysBondlist:
         print(i[17:27], "---", i[97:107],)
-    print()
-    print("Thanks for using me!")
+    print("\nThanks for using me!")
+    
+    for line in trueCysBondlist:
+        #print("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
+        bondfile.write("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
+        bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16]))
+        bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
+        bondfile.write("color atomic, /{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16]))
+        bondfile.write("color atomic, /{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
+ 
+#Additional changes to alter pymol image
+    bondfile.write("\nhide labels, disulfide_bond\n")
+    bondfile.write("set dash_length, 0.2500\n")
+    bondfile.write("set dash_gap, 0.4\n")
+    bondfile.write("set dash_radius, .15\n")                  
 
 
 ############################################################
@@ -356,7 +391,7 @@ def calc_WC_and_NonWC(filename):
                 dist2=extractxyz(i)
                 distance = (calcdistance(dist1, dist2))
                 if distance < 3.2:
-                            bondfile.write("dist WC_hbond, /1Z43//{}/{}`{}/{},/1Z43//{}/{}`{}/{}\n".format(line[21:22],line[19:20],remove(line[23:26]),line[13:16],i[21:22],i[19:20],i[23:26],i[13:15]))
+                            bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[19:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),i[21:22],i[19:20],i[23:26],i[13:15]))
                             # OPTIONAL 'show sticks' in PyMOL structure
                             #bondfile.write("show sticks, /1Z43//{}/{}`{}\n".format(line[21:22],line[19:20],remove(line[23:26]),line[13:16]))
                             #bondfile.write("show sticks, /1Z43//{}/{}`{}\n".format(i[21:22],i[19:20],i[23:26],i[13:15]))
@@ -368,7 +403,8 @@ def calc_WC_and_NonWC(filename):
                 dist2=extractxyz(i)
                 distance = (calcdistance(dist1, dist2))
                 if 2.5 < distance < 3.2:
-                            bondfile.write("dist Non_WC_hbond, /1Z43//{}/{}`{}/{},/1Z43//{}/{}`{}/{}\n".format(line[21:22],line[19:20],remove(line[23:26]),line[13:16],i[21:22],i[19:20],i[23:26],i[13:15]))
+                            bondfile.write("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)),line[21:22],line[19:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),i[21:22],i[19:20],i[23:26],i[13:15]))
+                            #print(("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)),line[21:22],line[19:20],remove(line[23:26]),line[13:16],only_PDB1(only_PDB2(filename)),i[21:22],i[19:20],i[23:26],i[13:15])))
                             # OPTIONAL 'show sticks' in PyMOL structure
                             #bondfile.write("show sticks, /1Z43//{}/{}`{}\n".format(line[21:22],line[19:20],remove(line[23:26]),line[13:16]))
                             #bondfile.write("show sticks, /1Z43//{}/{}`{}\n".format(i[21:22],i[19:20],i[23:26],i[13:15]))
