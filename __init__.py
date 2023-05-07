@@ -1418,20 +1418,28 @@ def make_dialog():
         '''
         Run the actions in the end to end distance button
         '''
-        # global reference to avoid garbage collection of our dialog_render
-        dialog_render = None
+        def __init_plugin__(app=None):
+            '''
+            Add an entry to the PyMOL "Plugin" menu
+            '''
+            from pymol.plugins import addmenuitemqt
+            addmenuitemqt('Demo "Render" Plugin', run_plugin_gui)
+
+
+        # global reference to avoid garbage collection of our dialog
+        dialog = None
 
 
         def run_plugin_gui():
             '''
-            Open our custom dialog_render
+            Open our custom dialog
             '''
-            global dialog_render
+            global dialog
 
-            if dialog_render is None:
-                dialog_render = make_dialog()
+            if dialog is None:
+                dialog = make_dialog()
 
-            dialog_render.show()
+            dialog.show()
 
 
         def make_dialog():
@@ -1445,11 +1453,11 @@ def make_dialog():
             from pymol.Qt.utils import getSaveFileNameWithExt
 
             # create a new Window
-            dialog_render = QtWidgets.Qdialog()
+            dialog = QtWidgets.QDialog()
 
             # populate the Window from our *.ui file which was created with the Qt Designer
-            uifile = os.path.join(os.path.dirname(__file__), 'render.ui')
-            form = loadUi(uifile, dialog_render)
+            uifile = os.path.join(os.path.dirname(__file__), 'demowidget.ui')
+            form = loadUi(uifile, dialog)
 
             # callback for the "Ray" button
             def run():
@@ -1480,17 +1488,16 @@ def make_dialog():
             # callback for the "Browse" button
             def browse_filename():
                 filename = getSaveFileNameWithExt(
-                    dialog_render, 'Save As...', filter='PNG File (*.png)')
+                    dialog, 'Save As...', filter='PNG File (*.png)')
                 if filename:
                     form.input_filename.setText(filename)
 
             # hook up button callbacks
             form.button_ray.clicked.connect(run)
             form.button_browse.clicked.connect(browse_filename)
-            form.button_close.clicked.connect(dialog_render.close)
+            form.button_close.clicked.connect(dialog.close)
 
-            return dialog_render
-
+            return dialog
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
     form.done.clicked.connect(dialog.close)
