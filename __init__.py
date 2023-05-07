@@ -25,6 +25,7 @@ getOpenFileNames = QFileDialog.getOpenFileNames
 
 # To load the UI file into our dialog
 from pymol.Qt.utils import loadUi
+
 ############################################################
 #####################  Core Functions  #####################
 ############################################################
@@ -128,9 +129,39 @@ def calcdistance(list1=list,list2=list):
     '''
     return(math.sqrt((list1[0]-list2[0])**2 + (list1[1]-list2[1])**2 + (list1[2]-list2[2])**2))
 
-def atom_finder(pdblist=list,base=str, atom=str, mylist=list):
+def rna_atom_finder(pdblist=list,base=str, atom=str, mylist=list):
     '''
-    This function will find a given a given atom in a nucleotide 
+    This function will find a given atom in an RNA nucleotide 
+    base and append the whole PDB line to a given list
+
+    **Parameters**
+
+    base: *str*
+        The nucleotide base that is to be parsed 
+        (e.g. A = adenine, G = guanine, C = cytosine, U = Uracil)
+    
+    atom: *str*
+        The atom position in the nucleotide base, where the first character 
+        is a letter for the elements (e.g. C=carbon, N=nitrogen, O=oxygen),
+        and the second charcter is the carbon atom position in the base 
+        (e.g. N7 =  the nitrogen atom on carbon 7)
+    
+    mylist: *list*
+        Any given list to be appended with the pdbline of the atom found
+
+    **Returns**
+
+        Appending the atom to a given a list
+    '''
+    for line in pdblist:
+        if line[0:4]=="ATOM":
+            if line[19:20]==base:
+                if line[13:16]==atom:
+                    mylist.append(line)
+
+def dna_atom_finder(pdblist=list,base=str, atom=str, mylist=list):
+    '''
+    This function will find a given atom in an DNA nucleotide 
     base and append the whole PDB line to a given list
 
     **Parameters**
@@ -593,7 +624,7 @@ def calc_wc_nwc(filename=str):
                 distance = calcdistance(dist1, dist2)
                 if 2.5 < distance < 3.2:
                     # pylint: disable=line-too-long
-                    bondfile.write("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename),line[21:22],line[19:20],remove(line[23:26]),line[13:16], extract_pdb_path(filename),i[21:22],i[19:20],i[23:26],i[13:15]))
+                    bondfile.write("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{} , 3.2\n".format(extract_pdb_path(filename),line[21:22],line[19:20],remove(line[23:26]),line[13:16], extract_pdb_path(filename),i[21:22],i[19:20],i[23:26],i[13:15]))
     #lists of WC RNA bonding atoms
 
     #Guanine
@@ -652,48 +683,48 @@ def calc_wc_nwc(filename=str):
     UO2=[]
 
     #WC RNA atoms
-    (atom_finder(pdblist,"G","O6 ",GO6))
-    (atom_finder(pdblist,"G","N1 ",GN1))
-    (atom_finder(pdblist,"G","N2 ",GN2))
+    (rna_atom_finder(pdblist,"G","O6 ",GO6))
+    (rna_atom_finder(pdblist,"G","N1 ",GN1))
+    (rna_atom_finder(pdblist,"G","N2 ",GN2))
 
-    (atom_finder(pdblist,"C","N4 ",CN4))
-    (atom_finder(pdblist,"C","N3 ",CN3))
-    (atom_finder(pdblist,"C","O2 ",CO2))
+    (rna_atom_finder(pdblist,"C","N4 ",CN4))
+    (rna_atom_finder(pdblist,"C","N3 ",CN3))
+    (rna_atom_finder(pdblist,"C","O2 ",CO2))
 
-    (atom_finder(pdblist,"A","N6 ",AN6))
-    (atom_finder(pdblist,"A","N1 ",AN1))
+    (rna_atom_finder(pdblist,"A","N6 ",AN6))
+    (rna_atom_finder(pdblist,"A","N1 ",AN1))
 
-    (atom_finder(pdblist,"U","O4 ",UO4))
-    (atom_finder(pdblist,"U","N3 ",UN3))
+    (rna_atom_finder(pdblist,"U","O4 ",UO4))
+    (rna_atom_finder(pdblist,"U","N3 ",UN3))
 
     #WC DNA atoms
-    (atom_finder(pdblist,"DG","O6 ",DGO6))
-    (atom_finder(pdblist,"DG","N1 ",DGN1))
-    (atom_finder(pdblist,"DG","N2 ",DGN2))
+    (dna_atom_finder(pdblist,"DG","O6 ",DGO6))
+    (dna_atom_finder(pdblist,"DG","N1 ",DGN1))
+    (dna_atom_finder(pdblist,"DG","N2 ",DGN2))
 
-    (atom_finder(pdblist,"DC","N4 ",DCN4))
-    (atom_finder(pdblist,"DC","N3 ",DCN3))
-    (atom_finder(pdblist,"DC","O2 ",DCO2))
+    (dna_atom_finder(pdblist,"DC","N4 ",DCN4))
+    (dna_atom_finder(pdblist,"DC","N3 ",DCN3))
+    (dna_atom_finder(pdblist,"DC","O2 ",DCO2))
 
-    (atom_finder(pdblist,"DA","N6 ",DAN6))
-    (atom_finder(pdblist,"DA","N1 ",DAN1))
+    (dna_atom_finder(pdblist,"DA","N6 ",DAN6))
+    (dna_atom_finder(pdblist,"DA","N1 ",DAN1))
 
-    (atom_finder(pdblist,"DT","O4 ",DTO4))
-    (atom_finder(pdblist,"DT","N3 ",DTN3))
+    (dna_atom_finder(pdblist,"DT","O4 ",DTO4))
+    (dna_atom_finder(pdblist,"DT","N3 ",DTN3))
 
 
 
     #Non-WC RNA atoms
-    (atom_finder(pdblist,"G","N3 ",GN3))
-    (atom_finder(pdblist,"G","N9 ",GN9))
-    (atom_finder(pdblist,"G","N7 ",GN7))
+    (rna_atom_finder(pdblist,"G","N3 ",GN3))
+    (rna_atom_finder(pdblist,"G","N9 ",GN9))
+    (rna_atom_finder(pdblist,"G","N7 ",GN7))
 
 
-    (atom_finder(pdblist,"A","N7 ",AN7))
-    (atom_finder(pdblist,"A","N9 ",AN9))
-    (atom_finder(pdblist,"A","N3 ",AN3))
+    (rna_atom_finder(pdblist,"A","N7 ",AN7))
+    (rna_atom_finder(pdblist,"A","N9 ",AN9))
+    (rna_atom_finder(pdblist,"A","N3 ",AN3))
 
-    (atom_finder(pdblist,"U","O2 ",UO2))
+    (rna_atom_finder(pdblist,"U","O2 ",UO2))
 
     # WC RNA write .pml
     wc_dist(GO6, CN4)
@@ -714,152 +745,149 @@ def calc_wc_nwc(filename=str):
 
     #Non-WC distances
     #Series of all the atoms tested for hydrogen bond (these are all non-WC)
-    print(DAN6)
-    print(AN6)
-    if not DAN6:
-        print("Hellow world")
-        #Hoogsteen
-        nwc_dist(AN7,UN3)
-        nwc_dist(AN6,UO4)
-        nwc_dist(GN7,CN3)
-        #GO6
-        nwc_dist(GO6,CO2)
-        nwc_dist(GO6,AN6)
-        nwc_dist(GO6,AN1)
-        nwc_dist(GO6,AN7)
-        nwc_dist(GO6,UN3)
-        #GN1
-        nwc_dist(GN1,GN3)
-        nwc_dist(GN1,GN7)
-        nwc_dist(GN1,AN1)
-        nwc_dist(GN1,AN3)
-        nwc_dist(GN1,AN7)
-        nwc_dist(GN1,UO4)
-        nwc_dist(GN1,UN3)
-        #GN2
-        nwc_dist(GN2,GN7)
-        nwc_dist(GN2,AN6)
-        nwc_dist(GN2,AN1)
-        nwc_dist(GN2,AN3)
-        nwc_dist(GN2,AN7)
-        nwc_dist(GN2,UO4)
-        nwc_dist(GN2,UN3)
-        #GN3
-        nwc_dist(GN3,GO6)
-        nwc_dist(GN3,CN3)
-        nwc_dist(GN3,CO2)
-        nwc_dist(GN3,AN6)
-        nwc_dist(GN3,AN1)
-        nwc_dist(GN3,AN3)
-        nwc_dist(GN3,UO4)
-        nwc_dist(GN3,UN3)
-        #GN7
-        nwc_dist(GN7,GN1)
-        nwc_dist(GN7,GN2)
-        nwc_dist(GN7,GN7)
-        nwc_dist(GN7,CN3)
-        nwc_dist(GN7,CO2)
-        nwc_dist(GN7,AN6)
-        nwc_dist(GN7,AN1)
-        nwc_dist(GN7,AN3)
-        nwc_dist(GN7,AN7)
-        nwc_dist(GN7,UO4)
-        nwc_dist(GN7,UN3)
-        #AN6
-        nwc_dist(AN6,GO6)
-        nwc_dist(AN6,GN2)
-        nwc_dist(AN6,GN3)
-        nwc_dist(AN6,GN7)
-        nwc_dist(AN6,CN3)
-        nwc_dist(AN6,CO2)
-        nwc_dist(AN6,UN3)
-        #AN1
-        nwc_dist(AN1,GO6)
-        nwc_dist(AN1,GN1)
-        nwc_dist(AN1,GN2)
-        nwc_dist(AN1,GN3)
-        nwc_dist(AN1,GN7)
-        nwc_dist(AN1,CN3)
-        nwc_dist(AN1,CO2)
-        nwc_dist(AN1,AN6)
-        nwc_dist(AN1,AN1)
-        nwc_dist(AN1,AN3)
-        nwc_dist(AN1,AN7)
-        nwc_dist(AN1,UO4)
-        #AN7
-        nwc_dist(AN7,GO6)
-        nwc_dist(AN7,GN1)
-        nwc_dist(AN7,GN2)
-        nwc_dist(AN7,GN7)
-        nwc_dist(AN7,CN3)
-        nwc_dist(AN7,CO2)
-        nwc_dist(AN7,AN1)
-        nwc_dist(AN7,AN3)
-        nwc_dist(AN7,UO4)
-        nwc_dist(AN7,UN3)
-        #AN3
-        nwc_dist(AN3,GO6)
-        nwc_dist(AN3,GN1)
-        nwc_dist(AN3,GN2)
-        nwc_dist(AN3,GN3)
-        nwc_dist(AN3,GN7)
-        nwc_dist(AN3,CN3)
-        nwc_dist(AN3,CO2)
-        nwc_dist(AN3,AN6)
-        nwc_dist(AN3,AN7)
-        nwc_dist(AN3,AN9)
-        nwc_dist(AN3,UO4)
-        nwc_dist(AN3,UN3)
-        #UO4
-        nwc_dist(UO4,GN1)
-        nwc_dist(UO4,GN2)
-        nwc_dist(UO4,GN3)
-        nwc_dist(UO4,GN7)
-        nwc_dist(UO4,CN3)
-        nwc_dist(UO4,CO2)
-        nwc_dist(UO4,AN1)
-        nwc_dist(UO4,AN3)
-        nwc_dist(UO4,AN7)
-        #UN3
-        nwc_dist(UN3,GO6)
-        nwc_dist(UN3,GN1)
-        nwc_dist(UN3,GN2)
-        nwc_dist(UN3,GN3)
-        nwc_dist(UN3,GN7)
-        nwc_dist(UN3,CN3)
-        nwc_dist(UN3,CO2)
-        nwc_dist(UN3,AN6)
-        nwc_dist(UN3,AN3)
-        nwc_dist(UN3,AN7)
-        nwc_dist(UN3,UO4)
-        nwc_dist(UO4,UO2)
-        #CN4
-        nwc_dist(CN4,GN3)
-        nwc_dist(CN4,GN7)
-        nwc_dist(CN4,AN1)
-        nwc_dist(CN4,AN3)
-        nwc_dist(CN4,AN7)
-        nwc_dist(CN4,UO4)
-        nwc_dist(CN4,UN3)
-        #CN3
-        nwc_dist(CN3,GN3)
-        nwc_dist(CN3,GN7)
-        nwc_dist(CN3,AN6)
-        nwc_dist(CN3,AN1)
-        nwc_dist(CN3,AN3)
-        nwc_dist(CN3,AN7)
-        nwc_dist(CN3,UO4)
-        nwc_dist(CN3,UN3)
-        #CO2
-        nwc_dist(CO2,GO6)
-        nwc_dist(CO2,GN3)
-        nwc_dist(CO2,GN7)
-        nwc_dist(CO2,AN6)
-        nwc_dist(CO2,AN1)
-        nwc_dist(CO2,AN3)
-        nwc_dist(CO2,AN7)
-        nwc_dist(CO2,UO4)
-        nwc_dist(CO2,UN3)
+
+    #Hoogsteen
+    nwc_dist(AN7,UN3)
+    nwc_dist(AN6,UO4)
+    nwc_dist(GN7,CN3)
+    #GO6
+    nwc_dist(GO6,CO2)
+    nwc_dist(GO6,AN6)
+    nwc_dist(GO6,AN1)
+    nwc_dist(GO6,AN7)
+    nwc_dist(GO6,UN3)
+    #GN1
+    nwc_dist(GN1,GN3)
+    nwc_dist(GN1,GN7)
+    nwc_dist(GN1,AN1)
+    nwc_dist(GN1,AN3)
+    nwc_dist(GN1,AN7)
+    nwc_dist(GN1,UO4)
+    nwc_dist(GN1,UN3)
+    #GN2
+    nwc_dist(GN2,GN7)
+    nwc_dist(GN2,AN6)
+    nwc_dist(GN2,AN1)
+    nwc_dist(GN2,AN3)
+    nwc_dist(GN2,AN7)
+    nwc_dist(GN2,UO4)
+    nwc_dist(GN2,UN3)
+    #GN3
+    nwc_dist(GN3,GO6)
+    nwc_dist(GN3,CN3)
+    nwc_dist(GN3,CO2)
+    nwc_dist(GN3,AN6)
+    nwc_dist(GN3,AN1)
+    nwc_dist(GN3,AN3)
+    nwc_dist(GN3,UO4)
+    nwc_dist(GN3,UN3)
+    #GN7
+    nwc_dist(GN7,GN1)
+    nwc_dist(GN7,GN2)
+    nwc_dist(GN7,GN7)
+    nwc_dist(GN7,CN3)
+    nwc_dist(GN7,CO2)
+    nwc_dist(GN7,AN6)
+    nwc_dist(GN7,AN1)
+    nwc_dist(GN7,AN3)
+    nwc_dist(GN7,AN7)
+    nwc_dist(GN7,UO4)
+    nwc_dist(GN7,UN3)
+    #AN6
+    nwc_dist(AN6,GO6)
+    nwc_dist(AN6,GN2)
+    nwc_dist(AN6,GN3)
+    nwc_dist(AN6,GN7)
+    nwc_dist(AN6,CN3)
+    nwc_dist(AN6,CO2)
+    nwc_dist(AN6,UN3)
+    #AN1
+    nwc_dist(AN1,GO6)
+    nwc_dist(AN1,GN1)
+    nwc_dist(AN1,GN2)
+    nwc_dist(AN1,GN3)
+    nwc_dist(AN1,GN7)
+    nwc_dist(AN1,CN3)
+    nwc_dist(AN1,CO2)
+    nwc_dist(AN1,AN6)
+    nwc_dist(AN1,AN1)
+    nwc_dist(AN1,AN3)
+    nwc_dist(AN1,AN7)
+    nwc_dist(AN1,UO4)
+    #AN7
+    nwc_dist(AN7,GO6)
+    nwc_dist(AN7,GN1)
+    nwc_dist(AN7,GN2)
+    nwc_dist(AN7,GN7)
+    nwc_dist(AN7,CN3)
+    nwc_dist(AN7,CO2)
+    nwc_dist(AN7,AN1)
+    nwc_dist(AN7,AN3)
+    nwc_dist(AN7,UO4)
+    nwc_dist(AN7,UN3)
+    #AN3
+    nwc_dist(AN3,GO6)
+    nwc_dist(AN3,GN1)
+    nwc_dist(AN3,GN2)
+    nwc_dist(AN3,GN3)
+    nwc_dist(AN3,GN7)
+    nwc_dist(AN3,CN3)
+    nwc_dist(AN3,CO2)
+    nwc_dist(AN3,AN6)
+    nwc_dist(AN3,AN7)
+    nwc_dist(AN3,AN9)
+    nwc_dist(AN3,UO4)
+    nwc_dist(AN3,UN3)
+    #UO4
+    nwc_dist(UO4,GN1)
+    nwc_dist(UO4,GN2)
+    nwc_dist(UO4,GN3)
+    nwc_dist(UO4,GN7)
+    nwc_dist(UO4,CN3)
+    nwc_dist(UO4,CO2)
+    nwc_dist(UO4,AN1)
+    nwc_dist(UO4,AN3)
+    nwc_dist(UO4,AN7)
+    #UN3
+    nwc_dist(UN3,GO6)
+    nwc_dist(UN3,GN1)
+    nwc_dist(UN3,GN2)
+    nwc_dist(UN3,GN3)
+    nwc_dist(UN3,GN7)
+    nwc_dist(UN3,CN3)
+    nwc_dist(UN3,CO2)
+    nwc_dist(UN3,AN6)
+    nwc_dist(UN3,AN3)
+    nwc_dist(UN3,AN7)
+    nwc_dist(UN3,UO4)
+    nwc_dist(UO4,UO2)
+    #CN4
+    nwc_dist(CN4,GN3)
+    nwc_dist(CN4,GN7)
+    nwc_dist(CN4,AN1)
+    nwc_dist(CN4,AN3)
+    nwc_dist(CN4,AN7)
+    nwc_dist(CN4,UO4)
+    nwc_dist(CN4,UN3)
+    #CN3
+    nwc_dist(CN3,GN3)
+    nwc_dist(CN3,GN7)
+    nwc_dist(CN3,AN6)
+    nwc_dist(CN3,AN1)
+    nwc_dist(CN3,AN3)
+    nwc_dist(CN3,AN7)
+    nwc_dist(CN3,UO4)
+    nwc_dist(CN3,UN3)
+    #CO2
+    nwc_dist(CO2,GO6)
+    nwc_dist(CO2,GN3)
+    nwc_dist(CO2,GN7)
+    nwc_dist(CO2,AN6)
+    nwc_dist(CO2,AN1)
+    nwc_dist(CO2,AN3)
+    nwc_dist(CO2,AN7)
+    nwc_dist(CO2,UO4)
+    nwc_dist(CO2,UN3)
 
     #Additional changes to alter pymol image
     bondfile.write("\n")
@@ -1286,7 +1314,7 @@ def run_plugin_gui():
     global dialog
 
     if dialog is None:
-        dialog = make_dialog()
+       dialog = make_dialog()
 
     dialog.show()
 
@@ -1314,7 +1342,7 @@ def make_dialog():
         clean_filename=(clean_file_path(str(filename)))
         form.lineEdit.setText(clean_filename)
 
-    
+
     def disulfide_finder_button():
         '''
         Run the actions in the Disulfide Finder button
