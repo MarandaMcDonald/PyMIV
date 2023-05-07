@@ -147,7 +147,7 @@ def residue_finder(pdblist=list, resn="CYS", mylist="CYSlistUnsorted"):
         if (line[0:4]=="ATOM") and (line[17:20]==resn) and (line[77:78]=="S"):
             mylist.append(line)
 
-def sorted_pdb(pdblist=list):
+def sorted_pdb(pdblist):
     '''
     This function will read a given list in PDB list, and sort to return a list in acsening residue position order
 
@@ -159,7 +159,7 @@ def sorted_pdb(pdblist=list):
 
         Sorted list by acsending resiue number position
     '''
-    return(sorted(pdblist=list, key=lambda s: s[22:29]))
+    return(sorted(pdblist, key=lambda s: s[22:29]))
 
 def bond_distance(mylist=list, lower=1.95, upper=2.00):
     '''

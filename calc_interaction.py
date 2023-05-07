@@ -143,7 +143,7 @@ def sorted_pdb(pdblist=list):
 
         Sorted list by acsending resiue number position
     '''
-    return(sorted(pdblist=list, key=lambda s: s[22:29]))
+    return(sorted(pdblist, key=lambda s: s[22:29]))
 
 def bond_distance(mylist=list, lower=1.95, upper=2.00):
     '''
