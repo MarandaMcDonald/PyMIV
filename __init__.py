@@ -25,7 +25,6 @@ getOpenFileNames = QFileDialog.getOpenFileNames
 
 # To load the UI file into our dialog
 from pymol.Qt.utils import loadUi
-
 ############################################################
 #####################  Core Functions  #####################
 ############################################################
@@ -155,7 +154,7 @@ def atom_finder(pdblist=list,base=str, atom=str, mylist=list):
     '''
     for line in pdblist:
         if line[0:4]=="ATOM":
-            if line[19:20]==base:
+            if line[18:20]==base:
                 if line[13:16]==atom:
                     mylist.append(line)
 
@@ -569,7 +568,7 @@ def calc_wc_nwc(filename=str):
                 distance = calcdistance(dist1, dist2)
                 if distance < 3.2:
                     # pylint: disable=line-too-long
-                    bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), line[21:22],remove(line[18:20]),remove(line[23:26]),line[13:16], extract_pdb_path(filename),i[21:22],i[19:20],i[23:26],i[13:15]))
+                    bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{} ,/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), remove(line[21:22]),remove(line[18:20]),remove(line[23:26]),remove(line[13:16]), extract_pdb_path(filename),i[21:22],remove(i[18:20]),remove(i[23:26]),remove(i[13:15])))
 
     def nwc_dist(list1=list, list2=list):
         '''
@@ -620,22 +619,22 @@ def calc_wc_nwc(filename=str):
 
     #Guanine
     #pylint: disable=invalid-name
-    dGO6=[]
-    dGN1=[]
-    dGN2=[]
+    DGO6=[]
+    DGN1=[]
+    DGN2=[]
 
     #Cytosine
-    dCN4=[]
-    dCN3=[]
-    dCO2=[]
+    DCN4=[]
+    DCN3=[]
+    DCO2=[]
 
     #Adenine
-    dAN6=[]
-    dAN1=[]
+    DAN6=[]
+    DAN1=[]
 
     #Uracil
-    dTO4=[]
-    dTN3=[]
+    DTO4=[]
+    DTN3=[]
 
     #lists of Non-WC bonding atoms
 
@@ -668,19 +667,21 @@ def calc_wc_nwc(filename=str):
     (atom_finder(pdblist,"U","N3 ",UN3))
 
     #WC DNA atoms
-    (atom_finder(pdblist,"DG","O6 ",dGO6))
-    (atom_finder(pdblist,"DG","N1 ",dGN1))
-    (atom_finder(pdblist,"DG","N2 ",dGN2))
+    (atom_finder(pdblist,"DG","O6 ",DGO6))
+    (atom_finder(pdblist,"DG","N1 ",DGN1))
+    (atom_finder(pdblist,"DG","N2 ",DGN2))
 
-    (atom_finder(pdblist,"DC","N4 ",dCN4))
-    (atom_finder(pdblist,"DC","N3 ",dCN3))
-    (atom_finder(pdblist,"DC","O2 ",dCO2))
+    (atom_finder(pdblist,"DC","N4 ",DCN4))
+    (atom_finder(pdblist,"DC","N3 ",DCN3))
+    (atom_finder(pdblist,"DC","O2 ",DCO2))
 
-    (atom_finder(pdblist,"DA","N6 ",dAN6))
-    (atom_finder(pdblist,"DA","N1 ",dAN1))
+    (atom_finder(pdblist,"DA","N6 ",DAN6))
+    (atom_finder(pdblist,"DA","N1 ",DAN1))
 
-    (atom_finder(pdblist,"DT","O4 ",dTO4))
-    (atom_finder(pdblist,"DT","N3 ",dTN3))
+    (atom_finder(pdblist,"DT","O4 ",DTO4))
+    (atom_finder(pdblist,"DT","N3 ",DTN3))
+
+
 
     #Non-WC RNA atoms
     (atom_finder(pdblist,"G","N3 ",GN3))
@@ -703,159 +704,162 @@ def calc_wc_nwc(filename=str):
     wc_dist(AN1, UN3)
 
     # WC DNA write .pml
-    wc_dist(dGO6, CN4)
-    wc_dist(dGN1, CN3)
-    wc_dist(dGN2, CO2)
+    wc_dist(DGO6, DCN4)
+    wc_dist(DGN1, DCN3)
+    wc_dist(DGN2, DCO2)
 
-    wc_dist(dAN6, UO4)
-    wc_dist(dAN1, UN3)
+    wc_dist(DAN6, DTO4)
+    wc_dist(DAN1, DTN3)
     bondfile.write("set dash_color, yellow, WC_hbond")
 
     #Non-WC distances
     #Series of all the atoms tested for hydrogen bond (these are all non-WC)
-
-    #Hoogsteen
-    nwc_dist(AN7,UN3)
-    nwc_dist(AN6,UO4)
-    nwc_dist(GN7,CN3)
-    #GO6
-    nwc_dist(GO6,CO2)
-    nwc_dist(GO6,AN6)
-    nwc_dist(GO6,AN1)
-    nwc_dist(GO6,AN7)
-    nwc_dist(GO6,UN3)
-    #GN1
-    nwc_dist(GN1,GN3)
-    nwc_dist(GN1,GN7)
-    nwc_dist(GN1,AN1)
-    nwc_dist(GN1,AN3)
-    nwc_dist(GN1,AN7)
-    nwc_dist(GN1,UO4)
-    nwc_dist(GN1,UN3)
-    #GN2
-    nwc_dist(GN2,GN7)
-    nwc_dist(GN2,AN6)
-    nwc_dist(GN2,AN1)
-    nwc_dist(GN2,AN3)
-    nwc_dist(GN2,AN7)
-    nwc_dist(GN2,UO4)
-    nwc_dist(GN2,UN3)
-    #GN3
-    nwc_dist(GN3,GO6)
-    nwc_dist(GN3,CN3)
-    nwc_dist(GN3,CO2)
-    nwc_dist(GN3,AN6)
-    nwc_dist(GN3,AN1)
-    nwc_dist(GN3,AN3)
-    nwc_dist(GN3,UO4)
-    nwc_dist(GN3,UN3)
-    #GN7
-    nwc_dist(GN7,GN1)
-    nwc_dist(GN7,GN2)
-    nwc_dist(GN7,GN7)
-    nwc_dist(GN7,CN3)
-    nwc_dist(GN7,CO2)
-    nwc_dist(GN7,AN6)
-    nwc_dist(GN7,AN1)
-    nwc_dist(GN7,AN3)
-    nwc_dist(GN7,AN7)
-    nwc_dist(GN7,UO4)
-    nwc_dist(GN7,UN3)
-    #AN6
-    nwc_dist(AN6,GO6)
-    nwc_dist(AN6,GN2)
-    nwc_dist(AN6,GN3)
-    nwc_dist(AN6,GN7)
-    nwc_dist(AN6,CN3)
-    nwc_dist(AN6,CO2)
-    nwc_dist(AN6,UN3)
-    #AN1
-    nwc_dist(AN1,GO6)
-    nwc_dist(AN1,GN1)
-    nwc_dist(AN1,GN2)
-    nwc_dist(AN1,GN3)
-    nwc_dist(AN1,GN7)
-    nwc_dist(AN1,CN3)
-    nwc_dist(AN1,CO2)
-    nwc_dist(AN1,AN6)
-    nwc_dist(AN1,AN1)
-    nwc_dist(AN1,AN3)
-    nwc_dist(AN1,AN7)
-    nwc_dist(AN1,UO4)
-    #AN7
-    nwc_dist(AN7,GO6)
-    nwc_dist(AN7,GN1)
-    nwc_dist(AN7,GN2)
-    nwc_dist(AN7,GN7)
-    nwc_dist(AN7,CN3)
-    nwc_dist(AN7,CO2)
-    nwc_dist(AN7,AN1)
-    nwc_dist(AN7,AN3)
-    nwc_dist(AN7,UO4)
-    nwc_dist(AN7,UN3)
-    #AN3
-    nwc_dist(AN3,GO6)
-    nwc_dist(AN3,GN1)
-    nwc_dist(AN3,GN2)
-    nwc_dist(AN3,GN3)
-    nwc_dist(AN3,GN7)
-    nwc_dist(AN3,CN3)
-    nwc_dist(AN3,CO2)
-    nwc_dist(AN3,AN6)
-    nwc_dist(AN3,AN7)
-    nwc_dist(AN3,AN9)
-    nwc_dist(AN3,UO4)
-    nwc_dist(AN3,UN3)
-    #UO4
-    nwc_dist(UO4,GN1)
-    nwc_dist(UO4,GN2)
-    nwc_dist(UO4,GN3)
-    nwc_dist(UO4,GN7)
-    nwc_dist(UO4,CN3)
-    nwc_dist(UO4,CO2)
-    nwc_dist(UO4,AN1)
-    nwc_dist(UO4,AN3)
-    nwc_dist(UO4,AN7)
-    #UN3
-    nwc_dist(UN3,GO6)
-    nwc_dist(UN3,GN1)
-    nwc_dist(UN3,GN2)
-    nwc_dist(UN3,GN3)
-    nwc_dist(UN3,GN7)
-    nwc_dist(UN3,CN3)
-    nwc_dist(UN3,CO2)
-    nwc_dist(UN3,AN6)
-    nwc_dist(UN3,AN3)
-    nwc_dist(UN3,AN7)
-    nwc_dist(UN3,UO4)
-    nwc_dist(UO4,UO2)
-    #CN4
-    nwc_dist(CN4,GN3)
-    nwc_dist(CN4,GN7)
-    nwc_dist(CN4,AN1)
-    nwc_dist(CN4,AN3)
-    nwc_dist(CN4,AN7)
-    nwc_dist(CN4,UO4)
-    nwc_dist(CN4,UN3)
-    #CN3
-    nwc_dist(CN3,GN3)
-    nwc_dist(CN3,GN7)
-    nwc_dist(CN3,AN6)
-    nwc_dist(CN3,AN1)
-    nwc_dist(CN3,AN3)
-    nwc_dist(CN3,AN7)
-    nwc_dist(CN3,UO4)
-    nwc_dist(CN3,UN3)
-    #CO2
-    nwc_dist(CO2,GO6)
-    nwc_dist(CO2,GN3)
-    nwc_dist(CO2,GN7)
-    nwc_dist(CO2,AN6)
-    nwc_dist(CO2,AN1)
-    nwc_dist(CO2,AN3)
-    nwc_dist(CO2,AN7)
-    nwc_dist(CO2,UO4)
-    nwc_dist(CO2,UN3)
+    print(DAN6)
+    print(AN6)
+    if not DAN6:
+        print("Hellow world")
+        #Hoogsteen
+        nwc_dist(AN7,UN3)
+        nwc_dist(AN6,UO4)
+        nwc_dist(GN7,CN3)
+        #GO6
+        nwc_dist(GO6,CO2)
+        nwc_dist(GO6,AN6)
+        nwc_dist(GO6,AN1)
+        nwc_dist(GO6,AN7)
+        nwc_dist(GO6,UN3)
+        #GN1
+        nwc_dist(GN1,GN3)
+        nwc_dist(GN1,GN7)
+        nwc_dist(GN1,AN1)
+        nwc_dist(GN1,AN3)
+        nwc_dist(GN1,AN7)
+        nwc_dist(GN1,UO4)
+        nwc_dist(GN1,UN3)
+        #GN2
+        nwc_dist(GN2,GN7)
+        nwc_dist(GN2,AN6)
+        nwc_dist(GN2,AN1)
+        nwc_dist(GN2,AN3)
+        nwc_dist(GN2,AN7)
+        nwc_dist(GN2,UO4)
+        nwc_dist(GN2,UN3)
+        #GN3
+        nwc_dist(GN3,GO6)
+        nwc_dist(GN3,CN3)
+        nwc_dist(GN3,CO2)
+        nwc_dist(GN3,AN6)
+        nwc_dist(GN3,AN1)
+        nwc_dist(GN3,AN3)
+        nwc_dist(GN3,UO4)
+        nwc_dist(GN3,UN3)
+        #GN7
+        nwc_dist(GN7,GN1)
+        nwc_dist(GN7,GN2)
+        nwc_dist(GN7,GN7)
+        nwc_dist(GN7,CN3)
+        nwc_dist(GN7,CO2)
+        nwc_dist(GN7,AN6)
+        nwc_dist(GN7,AN1)
+        nwc_dist(GN7,AN3)
+        nwc_dist(GN7,AN7)
+        nwc_dist(GN7,UO4)
+        nwc_dist(GN7,UN3)
+        #AN6
+        nwc_dist(AN6,GO6)
+        nwc_dist(AN6,GN2)
+        nwc_dist(AN6,GN3)
+        nwc_dist(AN6,GN7)
+        nwc_dist(AN6,CN3)
+        nwc_dist(AN6,CO2)
+        nwc_dist(AN6,UN3)
+        #AN1
+        nwc_dist(AN1,GO6)
+        nwc_dist(AN1,GN1)
+        nwc_dist(AN1,GN2)
+        nwc_dist(AN1,GN3)
+        nwc_dist(AN1,GN7)
+        nwc_dist(AN1,CN3)
+        nwc_dist(AN1,CO2)
+        nwc_dist(AN1,AN6)
+        nwc_dist(AN1,AN1)
+        nwc_dist(AN1,AN3)
+        nwc_dist(AN1,AN7)
+        nwc_dist(AN1,UO4)
+        #AN7
+        nwc_dist(AN7,GO6)
+        nwc_dist(AN7,GN1)
+        nwc_dist(AN7,GN2)
+        nwc_dist(AN7,GN7)
+        nwc_dist(AN7,CN3)
+        nwc_dist(AN7,CO2)
+        nwc_dist(AN7,AN1)
+        nwc_dist(AN7,AN3)
+        nwc_dist(AN7,UO4)
+        nwc_dist(AN7,UN3)
+        #AN3
+        nwc_dist(AN3,GO6)
+        nwc_dist(AN3,GN1)
+        nwc_dist(AN3,GN2)
+        nwc_dist(AN3,GN3)
+        nwc_dist(AN3,GN7)
+        nwc_dist(AN3,CN3)
+        nwc_dist(AN3,CO2)
+        nwc_dist(AN3,AN6)
+        nwc_dist(AN3,AN7)
+        nwc_dist(AN3,AN9)
+        nwc_dist(AN3,UO4)
+        nwc_dist(AN3,UN3)
+        #UO4
+        nwc_dist(UO4,GN1)
+        nwc_dist(UO4,GN2)
+        nwc_dist(UO4,GN3)
+        nwc_dist(UO4,GN7)
+        nwc_dist(UO4,CN3)
+        nwc_dist(UO4,CO2)
+        nwc_dist(UO4,AN1)
+        nwc_dist(UO4,AN3)
+        nwc_dist(UO4,AN7)
+        #UN3
+        nwc_dist(UN3,GO6)
+        nwc_dist(UN3,GN1)
+        nwc_dist(UN3,GN2)
+        nwc_dist(UN3,GN3)
+        nwc_dist(UN3,GN7)
+        nwc_dist(UN3,CN3)
+        nwc_dist(UN3,CO2)
+        nwc_dist(UN3,AN6)
+        nwc_dist(UN3,AN3)
+        nwc_dist(UN3,AN7)
+        nwc_dist(UN3,UO4)
+        nwc_dist(UO4,UO2)
+        #CN4
+        nwc_dist(CN4,GN3)
+        nwc_dist(CN4,GN7)
+        nwc_dist(CN4,AN1)
+        nwc_dist(CN4,AN3)
+        nwc_dist(CN4,AN7)
+        nwc_dist(CN4,UO4)
+        nwc_dist(CN4,UN3)
+        #CN3
+        nwc_dist(CN3,GN3)
+        nwc_dist(CN3,GN7)
+        nwc_dist(CN3,AN6)
+        nwc_dist(CN3,AN1)
+        nwc_dist(CN3,AN3)
+        nwc_dist(CN3,AN7)
+        nwc_dist(CN3,UO4)
+        nwc_dist(CN3,UN3)
+        #CO2
+        nwc_dist(CO2,GO6)
+        nwc_dist(CO2,GN3)
+        nwc_dist(CO2,GN7)
+        nwc_dist(CO2,AN6)
+        nwc_dist(CO2,AN1)
+        nwc_dist(CO2,AN3)
+        nwc_dist(CO2,AN7)
+        nwc_dist(CO2,UO4)
+        nwc_dist(CO2,UN3)
 
     #Additional changes to alter pymol image
     bondfile.write("\n")
@@ -1291,14 +1295,14 @@ def make_dialog():
     '''
     Make the dialog window
     '''
-    
+
     # To create a new UI window
     dialog = QtWidgets.QDialog()
 
     # To populate the Window from our .ui file
     uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
     form = loadUi(uifile, dialog)
-   
+
     # To create buttons in the GUI
 
     def browse_filename():
@@ -1405,7 +1409,7 @@ def make_dialog():
     form.hydrogenBond.clicked.connect(alpha_helix_button)
     form.endToEndDistance.clicked.connect(end_to_end_button)
     form.saveImage.clicked.connect(save_image_button)
-    
-    
+
+
 
     return dialog
