@@ -24,7 +24,6 @@ getOpenFileNames = QFileDialog.getOpenFileNames
 
 # To load the UI file into our dialog
 from pymol.Qt.utils import loadUi
-
 ############################################################
 #####################  Core Functions  #####################
 ############################################################
@@ -282,6 +281,21 @@ def nitrogen_finder(pdblist=list, atom_name="N", new_list=list):
     for line in pdblist:
         if (line[0:4]=="ATOM") and (line[13:16]==atom_name):
             new_list.append(line)
+
+def clean_file_path(string=str):
+    '''
+    This function will remove unneccessary characters in file path string
+
+    **Parameters**
+
+    string: *str*
+        The given string to have removed spaces
+
+    **Returns**
+
+        String containing file path
+    '''
+    return string[3:-20]
 
 ############################################################
 ###################  Output Peptide FASTA  #################
@@ -1183,7 +1197,7 @@ def make_dialog():
         filename = getOpenFileNames(
             dialog, 'Open...')
         if filename:
-            form.lineEdit.setText(str(filename[3:-20]))
+            form.lineEdit.setText(str(clean_file_path(filename)))
             
     def disulfide_finder_button():
         '''
