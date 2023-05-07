@@ -342,7 +342,7 @@ def calc_WC_and_NonWC(filename):
         
     # To write a pml file
     bondfile=open("get_bonds.pml", "w")
-    bondfile.write("load {:}\n".format(only_PDB(filename)))
+    bondfile.write("fetch {:}\n".format(only_PDB(filename)))
     bondfile.write("remove resn hoh\n")
     #bondfile.write("color green")
 
@@ -914,9 +914,9 @@ def make_dialog():
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
         print('User Entered Filename:', pdb_file)
-        (pdb_file)
         calc_WC_and_NonWC(pdb_file)
-
+        cmd.run("get_bonds.pml")
+        
     def alphaHeliceButtonButton():
         '''
         Run the actions in the dialog window

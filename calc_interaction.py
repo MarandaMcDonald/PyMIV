@@ -326,7 +326,7 @@ def calc_WC_and_NonWC(filename):
         
     # To write a pml file
     bondfile=open("get_bonds.pml", "w")
-    bondfile.write("load {:}\n".format(only_PDB(filename)))
+    bondfile.write("fetch {:}\n".format(only_PDB(filename)))
     bondfile.write("remove resn hoh\n")
     #bondfile.write("color green")
 
