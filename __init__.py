@@ -20,11 +20,10 @@ from pymol.Qt.utils import loadUi
 #This is a series of functions for mathematical calculations to read into PDB files and output a .pml text to import into the PyMOL
 
 
-import math
-
 ############################################################
 #####################  Core Functions  #####################
 ############################################################
+import math
 
 def PDB_read(PDBfile):
     '''
@@ -361,10 +360,10 @@ def calc_disulfide(filename):
     for line in trueCysBondlist:
         #print("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
         bondfile.write("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
-        bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16]))
-        bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
-        bondfile.write("color atomic, /{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16]))
-        bondfile.write("color atomic, /{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
+        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26])))
+        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107])))
+        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26])))
+        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107])))
  
 #Additional changes to alter pymol image
     bondfile.write("\nhide labels, disulfide_bond\n")
@@ -894,7 +893,7 @@ def alpha_helice(filename):
     print(*singleaalist[532:572], sep = "")
     print(*Hbondlist[532:572], sep = "")
 
-
+    
 ############################################################
 ###################  Initialize Plugin #####################
 ############################################################
