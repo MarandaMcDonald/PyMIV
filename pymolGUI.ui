@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>10</y>
+     <y>0</y>
      <width>221</width>
      <height>51</height>
     </rect>
@@ -31,29 +31,12 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Maranda McDonald&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="inputFileText">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>80</y>
-     <width>101</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Input PDB File&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="disulfideFinder">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>160</y>
-     <width>141</width>
+     <y>140</y>
+     <width>151</width>
      <height>32</height>
     </rect>
    </property>
@@ -65,8 +48,8 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>230</y>
-     <width>141</width>
+     <y>180</y>
+     <width>151</width>
      <height>32</height>
     </rect>
    </property>
@@ -78,8 +61,8 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>160</y>
-     <width>141</width>
+     <y>140</y>
+     <width>151</width>
      <height>32</height>
     </rect>
    </property>
@@ -91,8 +74,8 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>230</y>
-     <width>141</width>
+     <y>180</y>
+     <width>151</width>
      <height>32</height>
     </rect>
    </property>
@@ -104,10 +87,65 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>142</x>
-     <y>120</y>
+     <y>90</y>
      <width>121</width>
-     <height>21</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>Input PDB File</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="endToEndDistance">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>220</y>
+     <width>151</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>End to End Distance</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="saveImage">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>220</y>
+     <width>151</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Save Image</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="done">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>260</y>
+     <width>91</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Done</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="browse">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>90</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Browse</string>
    </property>
   </widget>
  </widget>
