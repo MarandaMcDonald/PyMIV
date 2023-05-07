@@ -1197,9 +1197,8 @@ def make_dialog():
         filename = getOpenFileNames(
             dialog, 'Open...')
         clean_filename=str(clean_file_path(filename))
-        if filename:
-            form.lineEdit.setText(str(clean_file_path(clean_filename)))
-            print(str(clean_file_path(filename)))
+        form.lineEdit.setText(str(clean_file_path(clean_filename)))
+        print(str(clean_file_path(filename)))
     
     def disulfide_finder_button():
         '''
