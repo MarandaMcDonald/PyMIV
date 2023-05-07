@@ -481,7 +481,8 @@ def calc_disulfide(filename=str):
         bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107])))
         bondfile.write("color atomic, /{}//{}/{}`{}\n".format(extract_pdb_path(filename), line[21:22],line[17:20],remove(line[23:26])))
         bondfile.write("color atomic, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107])))
-
+        bondfile.write("color atomic, disulfide")
+        bondfile.write("show sticks, disulfide")
 #Additional changes to alter pymol image
     bondfile.write("\nhide labels, disulfide_bond\n")
     bondfile.write("set dash_length, 0.2500\n")
@@ -824,6 +825,12 @@ def alpha_helice(filename=str):
             Text of residues with alpha helical structure
             PyMOL Viewer Structure with alpha helices highlighted and bonds drawn
         '''
+    # To write a pml file
+    bondfile=open("helix_bonds.pml", "w", encoding="utf8")
+    # pylint: disable=consider-using-f-string
+    bondfile.write("load {:}\n".format((filename)))
+    bondfile.write("remove resn hoh\n")
+    bondfile.write("color white\n")
 
     aminoacid={}
     aminoacid["ALA"]="A"
@@ -898,13 +905,22 @@ def alpha_helice(filename=str):
             h_bond_list.append("H")
         else:
             h_bond_list.append("-")
+    helix_line_list_n=[]
+    helix_line_list_o=[]
+    for i in range(len(nitro_atom_list)):
+        if 0.5 < (calcdistance(extractxyz(oxy_atom_list[i]), extractxyz(nitro_atom_list[i]))) < 4.7:
+            helix_line_list_n.append(nitro_atom_list[i])
+            helix_line_list_o.append(oxy_atom_list[i])
+
+    print(helix_line_list_n)
+    print("\n\n\n")
+    print(helix_line_list_o)
 
     # To account for the 4 i+4 Hydorgen bonding between carbonyl oxygen and amine
     h_bond_list.append("-")
     h_bond_list.append("-")
     h_bond_list.append("-")
     h_bond_list.append("-")
-
 
     print("\n\n'H' = alpha helical structure")
     print("'-' = non-alpha helical structure")
@@ -913,6 +929,20 @@ def alpha_helice(filename=str):
     #Here is a method to print the fasta sequence and alpha helical structure
     #in an alinged manner, coded up to 531 characters, so this method works for aa < 531, and
     #can be coded for higher MW proteins if necessary
+
+    for line in helix_line_list_n:
+        # pylint: disable=line-too-long
+        #bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107])))
+        bondfile.write("color pink, /{}//{}/{}`{}\n".format(extract_pdb_path(filename), line[21:22],line[17:20],remove(line[23:26])))
+   
+    
+    for line in helix_line_list_o:
+        # pylint: disable=line-too-long
+        #bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107])))
+        bondfile.write("color pink, /{}//{}/{}`{}\n".format(extract_pdb_path(filename), line[21:22],line[17:20],remove(line[23:26])))
+   
+     #Additional changes to alter pymol image
+
     print(*single_aa_list[0:40], sep = "")
     print(*h_bond_list[0:40], sep = "")
 
@@ -1010,6 +1040,7 @@ def end_to_end_dist(filename=str):
 
             # Writing to end_to_end.pml
             #pylint: disable=line-too-long
+            bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),last_line[21:22],last_line[17:20],last_line[23:26]))
             bondfile.write("dist end_to_end, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), first_line[21:22],first_line[17:20],remove(first_line[23:26]),first_line[13:16], extract_pdb_path(filename),last_line[21:22],last_line[17:20],last_line[23:26],last_line[13:15]))
             bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename), first_line[21:22],first_line[17:20],remove(first_line[23:26])))
             bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),last_line[21:22],last_line[17:20],last_line[23:26]))
