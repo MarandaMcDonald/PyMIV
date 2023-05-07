@@ -1246,7 +1246,7 @@ def make_dialog():
             print("Please input a valid .pdb file name")
         else:
             print('User Entered Filename:', pdb_file)
-            calc_disulfide(extract_pdb_path(pdb_file))
+            calc_disulfide(pdb_file)
             cmd.run("disulfide_bonds.pml")
             print('Yellow = Cysteine Sulfur Atoms')
 
