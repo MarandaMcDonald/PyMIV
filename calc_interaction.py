@@ -271,6 +271,22 @@ def clean_file_path(string=str):
     '''
     return string[3:-20]
 
+def extract_pdb_path(string=str):
+    '''
+    This function will extract the pdb name (e.g. ifdl.pdb)
+    from a given file path
+
+    **Parameters**
+
+    string: *str*
+        The given string to have removed spaces
+
+    **Returns**
+
+        String containing PDB file name
+    '''
+    return string[-8:-4]
+
 ############################################################
 ###################  Output Peptide FASTA  #################
 ############################################################
@@ -443,12 +459,12 @@ def calc_disulfide(filename=str):
 
     for line in true_cys_bonds_list:
         # pylint: disable=line-too-long
-        #print("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_pdb_first(only_pdb_last(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
-        bondfile.write("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_pdb_first(only_pdb_last(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
-        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[17:20],remove(line[23:26])))
-        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)),line[102:103],remove(line[98:102]),remove(line[103:107])))
-        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[17:20],remove(line[23:26])))
-        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)),line[102:103],remove(line[98:102]),remove(line[103:107])))
+        #print("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), line[21:22],line[17:20],remove(line[23:26]),line[13:16], extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
+        bondfile.write("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), line[21:22],line[17:20],remove(line[23:26]),line[13:16], extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
+        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename), line[21:22],line[17:20],remove(line[23:26])))
+        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107])))
+        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(extract_pdb_path(filename), line[21:22],line[17:20],remove(line[23:26])))
+        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107])))
 
 #Additional changes to alter pymol image
     bondfile.write("\nhide labels, disulfide_bond\n")
@@ -508,7 +524,7 @@ def calc_wc_nwc(filename=str):
                 distance = calcdistance(dist1, dist2)
                 if distance < 3.2:
                     # pylint: disable=line-too-long
-                    bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[19:20],remove(line[23:26]),line[13:16], only_pdb_first(only_pdb_last(filename)),i[21:22],i[19:20],i[23:26],i[13:15]))
+                    bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), line[21:22],line[19:20],remove(line[23:26]),line[13:16], extract_pdb_path(filename),i[21:22],i[19:20],i[23:26],i[13:15]))
 
     def nwc_dist(list1=list, list2=list):
         '''
@@ -533,7 +549,7 @@ def calc_wc_nwc(filename=str):
                 distance = calcdistance(dist1, dist2)
                 if 2.5 < distance < 3.2:
                     # pylint: disable=line-too-long
-                    bondfile.write("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)),line[21:22],line[19:20],remove(line[23:26]),line[13:16], only_pdb_first(only_pdb_last(filename)),i[21:22],i[19:20],i[23:26],i[13:15]))
+                    bondfile.write("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename),line[21:22],line[19:20],remove(line[23:26]),line[13:16], extract_pdb_path(filename),i[21:22],i[19:20],i[23:26],i[13:15]))
     #lists of WC bonding atoms
 
     #Guanine
@@ -978,13 +994,13 @@ def end_to_end_dist(filename=str):
 
             # Writing to end_to_end.pml
             #pylint: disable=line-too-long
-            bondfile.write("dist end_to_end, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[17:20],remove(first_line[23:26]),first_line[13:16], only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[17:20],last_line[23:26],last_line[13:15]))
-            bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[17:20],remove(first_line[23:26])))
-            bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[17:20],last_line[23:26]))
+            bondfile.write("dist end_to_end, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), first_line[21:22],first_line[17:20],remove(first_line[23:26]),first_line[13:16], extract_pdb_path(filename),last_line[21:22],last_line[17:20],last_line[23:26],last_line[13:15]))
+            bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename), first_line[21:22],first_line[17:20],remove(first_line[23:26])))
+            bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),last_line[21:22],last_line[17:20],last_line[23:26]))
             bondfile.write("set dash_color, pink, end_to_end\n")
             #bondfile.write("hide labels, Non_WC_hbond")
-            #bondfile.write("color atomic, (not elem C), /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[19:20],remove(first_line[23:26]),first_line[13:16]))
-            #bondfile.write("color atomic, (not elem C), /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[19:20],last_line[23:26],last_line[13:15]))
+            #bondfile.write("color atomic, (not elem C), /{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), first_line[21:22],first_line[19:20],remove(first_line[23:26]),first_line[13:16]))
+            #bondfile.write("color atomic, (not elem C), /{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename),last_line[21:22],last_line[19:20],last_line[23:26],last_line[13:15]))
             bondfile.write("set dash_length, 0.2500\n")
             bondfile.write("set dash_gap, 0.4\n")
             bondfile.write("set dash_radius, .15\n")

@@ -3,19 +3,13 @@ import re
 from calc_interaction import *
 
 calc_disulfide("PDB_Files/1fdl.pdb")
-alpha_helice("PDB_Files/1njg.pdb")
+#alpha_helice("PDB_Files/1njg.pdb")
 
-calc_wc_nwc("PDB_Files/1z43.pdb")
+#calc_wc_nwc("PDB_Files/1z43.pdb")
 
-calc_peptide_mw("PDB_Files/1fdl.pdb")
+#calc_peptide_mw("PDB_Files/1fdl.pdb")
 
 fastaSeqList=[]
-output_fasta("PDB_Files/1fdl.pdb", fastaSeqList)
+#output_fasta("PDB_Files/1fdl.pdb", fastaSeqList)
 
-end_to_end_dist("PDB_Files/1fdl.pdb")
-
-test="(['/Users/marandamacpro/Downloads/PyMIV/PDB_Files/1bhm.pdb'], 'All Files (*)')"
-
-print(clean_file_path(test))
-print(test[3:-20])
-print(re.findall('/.*b', test))
+#end_to_end_dist("PDB_Files/1fdl.pdb")

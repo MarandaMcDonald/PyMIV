@@ -25,6 +25,7 @@ getOpenFileNames = QFileDialog.getOpenFileNames
 
 # To load the UI file into our dialog
 from pymol.Qt.utils import loadUi
+
 ############################################################
 #####################  Core Functions  #####################
 ############################################################
@@ -295,6 +296,22 @@ def clean_file_path(string=str):
     **Returns**
 
         String containing file path
+    '''
+    return string[3:-20]
+
+def extract_pdb_path(string=str):
+    '''
+    This function will extract the pdb name (e.g. ifdl.pdb)
+    from a given file path
+
+    **Parameters**
+
+    string: *str*
+        The given string to have removed spaces
+
+    **Returns**
+
+        String containing PDB file name
     '''
     return string[3:-20]
 
@@ -1026,6 +1043,122 @@ def end_to_end_dist(filename=str):
         except TypeError:
             print("Enter a valid PDB File")
             break
+
+############################################################
+###################  Calculate Peptide MW  #################
+############################################################
+
+def calc_peptide_mw(filename):
+    '''
+        This function will calculate the molecular weight of a peptide
+
+        **Parameters**
+
+        filename: *string*
+            A string with the PDB file name (e.g. 1fdl.pdb)
+        **Returns**
+
+            Text of molecular weight of a peptide 
+        '''
+# To read into a PDB file and then outputs the protein sequence in FASTA format
+
+    aminoacid={}
+    aminoacid["ALA"]="A"
+    aminoacid["CYS"]="C"
+    aminoacid["ASP"]="D"
+    aminoacid["GLU"]="E"
+    aminoacid["PHE"]="F"
+    aminoacid["GLY"]="G"
+    aminoacid["HIS"]="H"
+    aminoacid["ILE"]="I"
+    aminoacid["LYS"]="K"
+    aminoacid["LEU"]="L"
+    aminoacid["MET"]="M"
+    aminoacid["MSE"]="M"
+    aminoacid["ASN"]="N"
+    aminoacid["PRO"]="P"
+    aminoacid["GLN"]="Q"
+    aminoacid["ARG"]="R"
+    aminoacid["SER"]="S"
+    aminoacid["THR"]="T"
+    aminoacid["VAL"]="V"
+    aminoacid["TRP"]="W"
+    aminoacid["UNK"]="X"
+    aminoacid["TYR"]="Y"
+
+    # read in a pdb file from command line:
+
+    pdbfileraw=open(filename,"r",  encoding="utf8")
+    pdbfilelist=pdbfileraw.readlines()
+
+    # make a list for storing amino acids
+    aalist=[]
+
+    for line in pdbfilelist:
+        if line[0:4]=="ATOM":
+            # here only look at CA lines
+            if line[13:15]=="CA":
+            #copy residue type into list
+                aalist.append(line[17:20])
+
+    # here output in FASTA format, with first line beginning with ">" and having info about sequence
+    counter=0 # for printing out nicely
+    fasta_seq_list=[]
+    print(">"+filename)
+    for letter in aalist:
+        if letter in aminoacid:
+            fasta_seq_list.append(aminoacid[letter])
+        else:
+            fasta_seq_list.append("X")
+    if (counter+1)%40==0:
+        print()
+    counter+=1
+
+    #Amino Acid Molecular Weight dictionary
+    aa_mw={}
+    aa_mw["A"]=89.09
+    aa_mw["C"]=121.16
+    aa_mw["D"]=133.10
+    aa_mw["E"]=147.13
+    aa_mw["F"]=165.19
+    aa_mw["G"]=75.07
+    aa_mw["H"]=155.16
+    aa_mw["I"]=131.18
+    aa_mw["K"]=146.19
+    aa_mw["L"]=131.18
+    aa_mw["M"]=149.21
+    aa_mw["N"]=132.12
+    aa_mw["P"]=115.13
+    aa_mw["Q"]=146.15
+    aa_mw["R"]=174.20
+    aa_mw["S"]=105.09
+    aa_mw["T"]=119.12
+    aa_mw["V"]=117.15
+    aa_mw["W"]=204.23
+    aa_mw["Y"]=181.19
+    aa_mw["["]=0
+    aa_mw["]"]=0
+    aa_mw["\n"]=0
+    aa_mw[","]=0
+    aa_mw[" "]=0
+    aa_mw["'"]=0
+    aa_mw["_"]=0
+    aa_mw["X"]=0
+
+    #water molecular weight
+    aa_mw["HOH"]=18.02
+
+    # To print the amino acid sequence from fasta file
+
+    total=0
+    for char in fasta_seq_list:
+        letter_to_number = aa_mw[char]
+        total += letter_to_number
+
+    loss_of_water = (int(len(fasta_seq_list))-1) * 18.02
+    peptide_mass=total - loss_of_water
+    # pylint: disable=consider-using-f-string
+    print("Peptide Mass: {:.2f} Daltons".format(peptide_mass))
 
 ############################################################
 ###################  Calculate Peptide MW  #################
