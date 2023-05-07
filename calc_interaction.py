@@ -287,6 +287,22 @@ def extract_pdb_path(string=str):
     '''
     return string[-8:-4]
 
+def extract_pdb_init(string=str):
+    '''
+    This function will extract the pdb name (e.g. ifdl.pdb)
+    from a __init__.py to read
+
+    **Parameters**
+
+    string: *str*
+        The given string to have removed spaces
+
+    **Returns**
+
+        String containing PDB file name
+    '''
+    return string[-4:]
+
 ############################################################
 ###################  Output Peptide FASTA  #################
 ############################################################
