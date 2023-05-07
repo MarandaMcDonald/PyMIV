@@ -541,7 +541,7 @@ def calc_wc_nwc(filename=str):
                 distance = calcdistance(dist1, dist2)
                 if distance < 3.2:
                     # pylint: disable=line-too-long
-                    bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{} ,/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), remove(line[21:22]),remove(line[18:20]),remove(line[23:26]),remove(line[13:16]), extract_pdb_path(filename),i[21:22],remove(i[18:20]),remove(i[23:26]),remove(i[13:15])))
+                    bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{} ,/{}//{}/{}`{}/{} , 3.2 \n".format(extract_pdb_path(filename), remove(line[21:22]),remove(line[18:20]),remove(line[23:26]),remove(line[13:16]), extract_pdb_path(filename),i[21:22],remove(i[18:20]),remove(i[23:26]),remove(i[13:15])))
 
     def nwc_dist(list1=list, list2=list):
         '''

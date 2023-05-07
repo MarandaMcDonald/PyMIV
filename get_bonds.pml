@@ -1,322 +1,322 @@
 load PDB_Files/1kx5.pdb
 remove resn hoh
-dist WC_hbond, /1kx5//I/DG`-59/O6 ,/1kx5//J/DC`59/N4
-dist WC_hbond, /1kx5//I/DG`-56/O6 ,/1kx5//J/DC`56/N4
-dist WC_hbond, /1kx5//I/DG`-43/O6 ,/1kx5//J/DC`43/N4
-dist WC_hbond, /1kx5//I/DG`-35/O6 ,/1kx5//J/DC`35/N4
-dist WC_hbond, /1kx5//I/DG`-34/O6 ,/1kx5//J/DC`34/N4
-dist WC_hbond, /1kx5//I/DG`-28/O6 ,/1kx5//J/DC`28/N4
-dist WC_hbond, /1kx5//I/DG`-16/O6 ,/1kx5//J/DC`15/N4
-dist WC_hbond, /1kx5//I/DG`-16/O6 ,/1kx5//J/DC`16/N4
-dist WC_hbond, /1kx5//I/DG`-11/O6 ,/1kx5//J/DC`11/N4
-dist WC_hbond, /1kx5//I/DG`-6/O6 ,/1kx5//J/DC`6/N4
-dist WC_hbond, /1kx5//I/DG`-3/O6 ,/1kx5//J/DC`3/N4
-dist WC_hbond, /1kx5//I/DG`-2/O6 ,/1kx5//J/DC`2/N4
-dist WC_hbond, /1kx5//I/DG`5/O6 ,/1kx5//J/DC`-5/N4
-dist WC_hbond, /1kx5//I/DG`8/O6 ,/1kx5//J/DC`-8/N4
-dist WC_hbond, /1kx5//I/DG`14/O6 ,/1kx5//J/DC`-14/N4
-dist WC_hbond, /1kx5//I/DG`21/O6 ,/1kx5//J/DC`-21/N4
-dist WC_hbond, /1kx5//I/DG`24/O6 ,/1kx5//J/DC`-24/N4
-dist WC_hbond, /1kx5//I/DG`25/O6 ,/1kx5//J/DC`-25/N4
-dist WC_hbond, /1kx5//I/DG`27/O6 ,/1kx5//J/DC`-27/N4
-dist WC_hbond, /1kx5//I/DG`48/O6 ,/1kx5//J/DC`-48/N4
-dist WC_hbond, /1kx5//I/DG`52/O6 ,/1kx5//J/DC`-52/N4
-dist WC_hbond, /1kx5//I/DG`58/O6 ,/1kx5//J/DC`-58/N4
-dist WC_hbond, /1kx5//I/DG`62/O6 ,/1kx5//J/DC`-62/N4
-dist WC_hbond, /1kx5//I/DG`64/O6 ,/1kx5//J/DC`-64/N4
-dist WC_hbond, /1kx5//I/DG`65/O6 ,/1kx5//J/DC`-65/N4
-dist WC_hbond, /1kx5//I/DG`71/O6 ,/1kx5//J/DC`-71/N4
-dist WC_hbond, /1kx5//J/DG`-59/O6 ,/1kx5//I/DC`59/N4
-dist WC_hbond, /1kx5//J/DG`-56/O6 ,/1kx5//I/DC`56/N4
-dist WC_hbond, /1kx5//J/DG`-41/O6 ,/1kx5//I/DC`41/N4
-dist WC_hbond, /1kx5//J/DG`-35/O6 ,/1kx5//I/DC`35/N4
-dist WC_hbond, /1kx5//J/DG`-34/O6 ,/1kx5//I/DC`34/N4
-dist WC_hbond, /1kx5//J/DG`-28/O6 ,/1kx5//I/DC`28/N4
-dist WC_hbond, /1kx5//J/DG`-16/O6 ,/1kx5//I/DC`15/N4
-dist WC_hbond, /1kx5//J/DG`-16/O6 ,/1kx5//I/DC`16/N4
-dist WC_hbond, /1kx5//J/DG`-15/O6 ,/1kx5//I/DC`15/N4
-dist WC_hbond, /1kx5//J/DG`-11/O6 ,/1kx5//I/DC`11/N4
-dist WC_hbond, /1kx5//J/DG`-6/O6 ,/1kx5//I/DC`6/N4
-dist WC_hbond, /1kx5//J/DG`-3/O6 ,/1kx5//I/DC`3/N4
-dist WC_hbond, /1kx5//J/DG`-2/O6 ,/1kx5//I/DC`2/N4
-dist WC_hbond, /1kx5//J/DG`5/O6 ,/1kx5//I/DC`-5/N4
-dist WC_hbond, /1kx5//J/DG`8/O6 ,/1kx5//I/DC`-8/N4
-dist WC_hbond, /1kx5//J/DG`14/O6 ,/1kx5//I/DC`-14/N4
-dist WC_hbond, /1kx5//J/DG`21/O6 ,/1kx5//I/DC`-21/N4
-dist WC_hbond, /1kx5//J/DG`24/O6 ,/1kx5//I/DC`-24/N4
-dist WC_hbond, /1kx5//J/DG`25/O6 ,/1kx5//I/DC`-25/N4
-dist WC_hbond, /1kx5//J/DG`27/O6 ,/1kx5//I/DC`-27/N4
-dist WC_hbond, /1kx5//J/DG`48/O6 ,/1kx5//I/DC`-48/N4
-dist WC_hbond, /1kx5//J/DG`49/O6 ,/1kx5//I/DC`-49/N4
-dist WC_hbond, /1kx5//J/DG`52/O6 ,/1kx5//I/DC`-52/N4
-dist WC_hbond, /1kx5//J/DG`58/O6 ,/1kx5//I/DC`-58/N4
-dist WC_hbond, /1kx5//J/DG`61/O6 ,/1kx5//I/DC`-61/N4
-dist WC_hbond, /1kx5//J/DG`62/O6 ,/1kx5//I/DC`-62/N4
-dist WC_hbond, /1kx5//J/DG`64/O6 ,/1kx5//I/DC`-64/N4
-dist WC_hbond, /1kx5//J/DG`65/O6 ,/1kx5//I/DC`-65/N4
-dist WC_hbond, /1kx5//J/DG`71/O6 ,/1kx5//I/DC`-71/N4
-dist WC_hbond, /1kx5//I/DG`-59/N1 ,/1kx5//J/DC`59/N3
-dist WC_hbond, /1kx5//I/DG`-56/N1 ,/1kx5//J/DC`56/N3
-dist WC_hbond, /1kx5//I/DG`-43/N1 ,/1kx5//J/DC`43/N3
-dist WC_hbond, /1kx5//I/DG`-35/N1 ,/1kx5//J/DC`35/N3
-dist WC_hbond, /1kx5//I/DG`-34/N1 ,/1kx5//J/DC`34/N3
-dist WC_hbond, /1kx5//I/DG`-28/N1 ,/1kx5//J/DC`28/N3
-dist WC_hbond, /1kx5//I/DG`-16/N1 ,/1kx5//J/DC`16/N3
-dist WC_hbond, /1kx5//I/DG`-11/N1 ,/1kx5//J/DC`11/N3
-dist WC_hbond, /1kx5//I/DG`-6/N1 ,/1kx5//J/DC`6/N3
-dist WC_hbond, /1kx5//I/DG`-3/N1 ,/1kx5//J/DC`3/N3
-dist WC_hbond, /1kx5//I/DG`-2/N1 ,/1kx5//J/DC`2/N3
-dist WC_hbond, /1kx5//I/DG`5/N1 ,/1kx5//J/DC`-5/N3
-dist WC_hbond, /1kx5//I/DG`8/N1 ,/1kx5//J/DC`-8/N3
-dist WC_hbond, /1kx5//I/DG`14/N1 ,/1kx5//J/DC`-14/N3
-dist WC_hbond, /1kx5//I/DG`21/N1 ,/1kx5//J/DC`-21/N3
-dist WC_hbond, /1kx5//I/DG`24/N1 ,/1kx5//J/DC`-24/N3
-dist WC_hbond, /1kx5//I/DG`25/N1 ,/1kx5//J/DC`-25/N3
-dist WC_hbond, /1kx5//I/DG`27/N1 ,/1kx5//J/DC`-27/N3
-dist WC_hbond, /1kx5//I/DG`48/N1 ,/1kx5//J/DC`-48/N3
-dist WC_hbond, /1kx5//I/DG`49/N1 ,/1kx5//J/DC`-49/N3
-dist WC_hbond, /1kx5//I/DG`52/N1 ,/1kx5//J/DC`-52/N3
-dist WC_hbond, /1kx5//I/DG`58/N1 ,/1kx5//J/DC`-58/N3
-dist WC_hbond, /1kx5//I/DG`61/N1 ,/1kx5//J/DC`-61/N3
-dist WC_hbond, /1kx5//I/DG`62/N1 ,/1kx5//J/DC`-62/N3
-dist WC_hbond, /1kx5//I/DG`64/N1 ,/1kx5//J/DC`-64/N3
-dist WC_hbond, /1kx5//I/DG`65/N1 ,/1kx5//J/DC`-65/N3
-dist WC_hbond, /1kx5//I/DG`71/N1 ,/1kx5//J/DC`-71/N3
-dist WC_hbond, /1kx5//J/DG`-59/N1 ,/1kx5//I/DC`59/N3
-dist WC_hbond, /1kx5//J/DG`-56/N1 ,/1kx5//I/DC`56/N3
-dist WC_hbond, /1kx5//J/DG`-41/N1 ,/1kx5//I/DC`41/N3
-dist WC_hbond, /1kx5//J/DG`-35/N1 ,/1kx5//I/DC`35/N3
-dist WC_hbond, /1kx5//J/DG`-34/N1 ,/1kx5//I/DC`34/N3
-dist WC_hbond, /1kx5//J/DG`-28/N1 ,/1kx5//I/DC`28/N3
-dist WC_hbond, /1kx5//J/DG`-16/N1 ,/1kx5//I/DC`16/N3
-dist WC_hbond, /1kx5//J/DG`-15/N1 ,/1kx5//I/DC`15/N3
-dist WC_hbond, /1kx5//J/DG`-11/N1 ,/1kx5//I/DC`11/N3
-dist WC_hbond, /1kx5//J/DG`-6/N1 ,/1kx5//I/DC`6/N3
-dist WC_hbond, /1kx5//J/DG`-3/N1 ,/1kx5//I/DC`3/N3
-dist WC_hbond, /1kx5//J/DG`-2/N1 ,/1kx5//I/DC`2/N3
-dist WC_hbond, /1kx5//J/DG`5/N1 ,/1kx5//I/DC`-5/N3
-dist WC_hbond, /1kx5//J/DG`8/N1 ,/1kx5//I/DC`-8/N3
-dist WC_hbond, /1kx5//J/DG`14/N1 ,/1kx5//I/DC`-14/N3
-dist WC_hbond, /1kx5//J/DG`21/N1 ,/1kx5//I/DC`-21/N3
-dist WC_hbond, /1kx5//J/DG`24/N1 ,/1kx5//I/DC`-24/N3
-dist WC_hbond, /1kx5//J/DG`25/N1 ,/1kx5//I/DC`-25/N3
-dist WC_hbond, /1kx5//J/DG`27/N1 ,/1kx5//I/DC`-27/N3
-dist WC_hbond, /1kx5//J/DG`30/N1 ,/1kx5//I/DC`-30/N3
-dist WC_hbond, /1kx5//J/DG`48/N1 ,/1kx5//I/DC`-48/N3
-dist WC_hbond, /1kx5//J/DG`49/N1 ,/1kx5//I/DC`-49/N3
-dist WC_hbond, /1kx5//J/DG`52/N1 ,/1kx5//I/DC`-52/N3
-dist WC_hbond, /1kx5//J/DG`58/N1 ,/1kx5//I/DC`-58/N3
-dist WC_hbond, /1kx5//J/DG`61/N1 ,/1kx5//I/DC`-61/N3
-dist WC_hbond, /1kx5//J/DG`62/N1 ,/1kx5//I/DC`-62/N3
-dist WC_hbond, /1kx5//J/DG`64/N1 ,/1kx5//I/DC`-64/N3
-dist WC_hbond, /1kx5//J/DG`65/N1 ,/1kx5//I/DC`-65/N3
-dist WC_hbond, /1kx5//J/DG`71/N1 ,/1kx5//I/DC`-71/N3
-dist WC_hbond, /1kx5//I/DG`-59/N2 ,/1kx5//J/DC`59/O2
-dist WC_hbond, /1kx5//I/DG`-43/N2 ,/1kx5//J/DC`43/O2
-dist WC_hbond, /1kx5//I/DG`-41/N2 ,/1kx5//J/DC`41/O2
-dist WC_hbond, /1kx5//I/DG`-35/N2 ,/1kx5//J/DC`35/O2
-dist WC_hbond, /1kx5//I/DG`-34/N2 ,/1kx5//J/DC`34/O2
-dist WC_hbond, /1kx5//I/DG`-28/N2 ,/1kx5//J/DC`28/O2
-dist WC_hbond, /1kx5//I/DG`-16/N2 ,/1kx5//J/DC`16/O2
-dist WC_hbond, /1kx5//I/DG`-11/N2 ,/1kx5//J/DC`11/O2
-dist WC_hbond, /1kx5//I/DG`-6/N2 ,/1kx5//J/DC`6/O2
-dist WC_hbond, /1kx5//I/DG`-3/N2 ,/1kx5//J/DC`3/O2
-dist WC_hbond, /1kx5//I/DG`-2/N2 ,/1kx5//J/DC`2/O2
-dist WC_hbond, /1kx5//I/DG`5/N2 ,/1kx5//J/DC`-5/O2
-dist WC_hbond, /1kx5//I/DG`8/N2 ,/1kx5//J/DC`-8/O2
-dist WC_hbond, /1kx5//I/DG`14/N2 ,/1kx5//J/DC`-14/O2
-dist WC_hbond, /1kx5//I/DG`21/N2 ,/1kx5//J/DC`-21/O2
-dist WC_hbond, /1kx5//I/DG`24/N2 ,/1kx5//J/DC`-24/O2
-dist WC_hbond, /1kx5//I/DG`25/N2 ,/1kx5//J/DC`-25/O2
-dist WC_hbond, /1kx5//I/DG`27/N2 ,/1kx5//J/DC`-27/O2
-dist WC_hbond, /1kx5//I/DG`30/N2 ,/1kx5//J/DC`-30/O2
-dist WC_hbond, /1kx5//I/DG`48/N2 ,/1kx5//J/DC`-48/O2
-dist WC_hbond, /1kx5//I/DG`49/N2 ,/1kx5//J/DC`-49/O2
-dist WC_hbond, /1kx5//I/DG`52/N2 ,/1kx5//J/DC`-52/O2
-dist WC_hbond, /1kx5//I/DG`58/N2 ,/1kx5//J/DC`-58/O2
-dist WC_hbond, /1kx5//I/DG`61/N2 ,/1kx5//J/DC`-61/O2
-dist WC_hbond, /1kx5//I/DG`62/N2 ,/1kx5//J/DC`-62/O2
-dist WC_hbond, /1kx5//I/DG`64/N2 ,/1kx5//J/DC`-64/O2
-dist WC_hbond, /1kx5//I/DG`65/N2 ,/1kx5//J/DC`-65/O2
-dist WC_hbond, /1kx5//I/DG`71/N2 ,/1kx5//J/DC`-71/O2
-dist WC_hbond, /1kx5//J/DG`-59/N2 ,/1kx5//I/DC`59/O2
-dist WC_hbond, /1kx5//J/DG`-56/N2 ,/1kx5//I/DC`56/O2
-dist WC_hbond, /1kx5//J/DG`-43/N2 ,/1kx5//I/DC`43/O2
-dist WC_hbond, /1kx5//J/DG`-41/N2 ,/1kx5//I/DC`41/O2
-dist WC_hbond, /1kx5//J/DG`-35/N2 ,/1kx5//I/DC`35/O2
-dist WC_hbond, /1kx5//J/DG`-34/N2 ,/1kx5//I/DC`34/O2
-dist WC_hbond, /1kx5//J/DG`-28/N2 ,/1kx5//I/DC`28/O2
-dist WC_hbond, /1kx5//J/DG`-16/N2 ,/1kx5//I/DC`16/O2
-dist WC_hbond, /1kx5//J/DG`-15/N2 ,/1kx5//I/DC`15/O2
-dist WC_hbond, /1kx5//J/DG`-11/N2 ,/1kx5//I/DC`11/O2
-dist WC_hbond, /1kx5//J/DG`-6/N2 ,/1kx5//I/DC`6/O2
-dist WC_hbond, /1kx5//J/DG`-3/N2 ,/1kx5//I/DC`3/O2
-dist WC_hbond, /1kx5//J/DG`-2/N2 ,/1kx5//I/DC`2/O2
-dist WC_hbond, /1kx5//J/DG`5/N2 ,/1kx5//I/DC`-5/O2
-dist WC_hbond, /1kx5//J/DG`8/N2 ,/1kx5//I/DC`-8/O2
-dist WC_hbond, /1kx5//J/DG`14/N2 ,/1kx5//I/DC`-14/O2
-dist WC_hbond, /1kx5//J/DG`21/N2 ,/1kx5//I/DC`-21/O2
-dist WC_hbond, /1kx5//J/DG`24/N2 ,/1kx5//I/DC`-24/O2
-dist WC_hbond, /1kx5//J/DG`25/N2 ,/1kx5//I/DC`-25/O2
-dist WC_hbond, /1kx5//J/DG`25/N2 ,/1kx5//I/DC`-24/O2
-dist WC_hbond, /1kx5//J/DG`27/N2 ,/1kx5//I/DC`-27/O2
-dist WC_hbond, /1kx5//J/DG`30/N2 ,/1kx5//I/DC`-30/O2
-dist WC_hbond, /1kx5//J/DG`48/N2 ,/1kx5//I/DC`-48/O2
-dist WC_hbond, /1kx5//J/DG`49/N2 ,/1kx5//I/DC`-49/O2
-dist WC_hbond, /1kx5//J/DG`52/N2 ,/1kx5//I/DC`-52/O2
-dist WC_hbond, /1kx5//J/DG`58/N2 ,/1kx5//I/DC`-58/O2
-dist WC_hbond, /1kx5//J/DG`61/N2 ,/1kx5//I/DC`-61/O2
-dist WC_hbond, /1kx5//J/DG`62/N2 ,/1kx5//I/DC`-62/O2
-dist WC_hbond, /1kx5//J/DG`64/N2 ,/1kx5//I/DC`-64/O2
-dist WC_hbond, /1kx5//J/DG`65/N2 ,/1kx5//I/DC`-65/O2
-dist WC_hbond, /1kx5//J/DG`71/N2 ,/1kx5//I/DC`-71/O2
-dist WC_hbond, /1kx5//I/DA`-73/N6 ,/1kx5//J/DT`73/O4
-dist WC_hbond, /1kx5//I/DA`-70/N6 ,/1kx5//J/DT`70/O4
-dist WC_hbond, /1kx5//I/DA`-69/N6 ,/1kx5//J/DT`69/O4
-dist WC_hbond, /1kx5//I/DA`-67/N6 ,/1kx5//J/DT`67/O4
-dist WC_hbond, /1kx5//I/DA`-63/N6 ,/1kx5//J/DT`63/O4
-dist WC_hbond, /1kx5//I/DA`-55/N6 ,/1kx5//J/DT`55/O4
-dist WC_hbond, /1kx5//I/DA`-53/N6 ,/1kx5//J/DT`53/O4
-dist WC_hbond, /1kx5//I/DA`-50/N6 ,/1kx5//I/DT`-51/O4
-dist WC_hbond, /1kx5//I/DA`-50/N6 ,/1kx5//J/DT`50/O4
-dist WC_hbond, /1kx5//I/DA`-47/N6 ,/1kx5//J/DT`46/O4
-dist WC_hbond, /1kx5//I/DA`-46/N6 ,/1kx5//J/DT`46/O4
-dist WC_hbond, /1kx5//I/DA`-45/N6 ,/1kx5//J/DT`45/O4
-dist WC_hbond, /1kx5//I/DA`-44/N6 ,/1kx5//J/DT`44/O4
-dist WC_hbond, /1kx5//I/DA`-39/N6 ,/1kx5//J/DT`39/O4
-dist WC_hbond, /1kx5//I/DA`-33/N6 ,/1kx5//J/DT`33/O4
-dist WC_hbond, /1kx5//I/DA`-23/N6 ,/1kx5//J/DT`23/O4
-dist WC_hbond, /1kx5//I/DA`-20/N6 ,/1kx5//J/DT`20/O4
-dist WC_hbond, /1kx5//I/DA`-18/N6 ,/1kx5//J/DT`17/O4
-dist WC_hbond, /1kx5//I/DA`-18/N6 ,/1kx5//J/DT`18/O4
-dist WC_hbond, /1kx5//I/DA`-17/N6 ,/1kx5//J/DT`17/O4
-dist WC_hbond, /1kx5//I/DA`-13/N6 ,/1kx5//J/DT`13/O4
-dist WC_hbond, /1kx5//I/DA`-7/N6 ,/1kx5//J/DT`7/O4
-dist WC_hbond, /1kx5//I/DA`-1/N6 ,/1kx5//J/DT`1/O4
-dist WC_hbond, /1kx5//I/DA`0/N6 ,/1kx5//J/DT`0/O4
-dist WC_hbond, /1kx5//I/DA`4/N6 ,/1kx5//J/DT`-4/O4
-dist WC_hbond, /1kx5//I/DA`9/N6 ,/1kx5//J/DT`-9/O4
-dist WC_hbond, /1kx5//I/DA`12/N6 ,/1kx5//J/DT`-12/O4
-dist WC_hbond, /1kx5//I/DA`22/N6 ,/1kx5//J/DT`-22/O4
-dist WC_hbond, /1kx5//I/DA`26/N6 ,/1kx5//J/DT`-26/O4
-dist WC_hbond, /1kx5//I/DA`36/N6 ,/1kx5//J/DT`-37/O4
-dist WC_hbond, /1kx5//I/DA`36/N6 ,/1kx5//J/DT`-36/O4
-dist WC_hbond, /1kx5//I/DA`37/N6 ,/1kx5//J/DT`-37/O4
-dist WC_hbond, /1kx5//I/DA`38/N6 ,/1kx5//J/DT`-38/O4
-dist WC_hbond, /1kx5//I/DA`51/N6 ,/1kx5//I/DT`50/O4
-dist WC_hbond, /1kx5//I/DA`51/N6 ,/1kx5//J/DT`-51/O4
-dist WC_hbond, /1kx5//I/DA`60/N6 ,/1kx5//J/DT`-60/O4
-dist WC_hbond, /1kx5//I/DA`66/N6 ,/1kx5//J/DT`-66/O4
-dist WC_hbond, /1kx5//I/DA`68/N6 ,/1kx5//J/DT`-68/O4
-dist WC_hbond, /1kx5//I/DA`72/N6 ,/1kx5//J/DT`-72/O4
-dist WC_hbond, /1kx5//J/DA`-73/N6 ,/1kx5//I/DT`73/O4
-dist WC_hbond, /1kx5//J/DA`-70/N6 ,/1kx5//I/DT`70/O4
-dist WC_hbond, /1kx5//J/DA`-69/N6 ,/1kx5//I/DT`69/O4
-dist WC_hbond, /1kx5//J/DA`-67/N6 ,/1kx5//I/DT`67/O4
-dist WC_hbond, /1kx5//J/DA`-63/N6 ,/1kx5//I/DT`63/O4
-dist WC_hbond, /1kx5//J/DA`-55/N6 ,/1kx5//I/DT`55/O4
-dist WC_hbond, /1kx5//J/DA`-50/N6 ,/1kx5//J/DT`-51/O4
-dist WC_hbond, /1kx5//J/DA`-47/N6 ,/1kx5//I/DT`47/O4
-dist WC_hbond, /1kx5//J/DA`-46/N6 ,/1kx5//I/DT`46/O4
-dist WC_hbond, /1kx5//J/DA`-31/N6 ,/1kx5//I/DT`31/O4
-dist WC_hbond, /1kx5//J/DA`-23/N6 ,/1kx5//I/DT`23/O4
-dist WC_hbond, /1kx5//J/DA`-20/N6 ,/1kx5//I/DT`20/O4
-dist WC_hbond, /1kx5//J/DA`-18/N6 ,/1kx5//I/DT`18/O4
-dist WC_hbond, /1kx5//J/DA`-17/N6 ,/1kx5//I/DT`17/O4
-dist WC_hbond, /1kx5//J/DA`-13/N6 ,/1kx5//I/DT`13/O4
-dist WC_hbond, /1kx5//J/DA`-7/N6 ,/1kx5//I/DT`7/O4
-dist WC_hbond, /1kx5//J/DA`-1/N6 ,/1kx5//I/DT`1/O4
-dist WC_hbond, /1kx5//J/DA`-1/N6 ,/1kx5//J/DT`0/O4
-dist WC_hbond, /1kx5//J/DA`4/N6 ,/1kx5//I/DT`-4/O4
-dist WC_hbond, /1kx5//J/DA`9/N6 ,/1kx5//I/DT`-9/O4
-dist WC_hbond, /1kx5//J/DA`10/N6 ,/1kx5//I/DT`-10/O4
-dist WC_hbond, /1kx5//J/DA`12/N6 ,/1kx5//I/DT`-12/O4
-dist WC_hbond, /1kx5//J/DA`26/N6 ,/1kx5//I/DT`-26/O4
-dist WC_hbond, /1kx5//J/DA`36/N6 ,/1kx5//I/DT`-36/O4
-dist WC_hbond, /1kx5//J/DA`37/N6 ,/1kx5//I/DT`-37/O4
-dist WC_hbond, /1kx5//J/DA`38/N6 ,/1kx5//I/DT`-38/O4
-dist WC_hbond, /1kx5//J/DA`40/N6 ,/1kx5//I/DT`-40/O4
-dist WC_hbond, /1kx5//J/DA`51/N6 ,/1kx5//J/DT`50/O4
-dist WC_hbond, /1kx5//J/DA`54/N6 ,/1kx5//I/DT`-54/O4
-dist WC_hbond, /1kx5//J/DA`60/N6 ,/1kx5//I/DT`-60/O4
-dist WC_hbond, /1kx5//J/DA`66/N6 ,/1kx5//I/DT`-66/O4
-dist WC_hbond, /1kx5//J/DA`68/N6 ,/1kx5//I/DT`-68/O4
-dist WC_hbond, /1kx5//J/DA`72/N6 ,/1kx5//I/DT`-72/O4
-dist WC_hbond, /1kx5//I/DA`-73/N1 ,/1kx5//J/DT`73/N3
-dist WC_hbond, /1kx5//I/DA`-70/N1 ,/1kx5//J/DT`70/N3
-dist WC_hbond, /1kx5//I/DA`-69/N1 ,/1kx5//J/DT`69/N3
-dist WC_hbond, /1kx5//I/DA`-67/N1 ,/1kx5//J/DT`67/N3
-dist WC_hbond, /1kx5//I/DA`-63/N1 ,/1kx5//J/DT`63/N3
-dist WC_hbond, /1kx5//I/DA`-55/N1 ,/1kx5//J/DT`55/N3
-dist WC_hbond, /1kx5//I/DA`-53/N1 ,/1kx5//J/DT`53/N3
-dist WC_hbond, /1kx5//I/DA`-50/N1 ,/1kx5//J/DT`50/N3
-dist WC_hbond, /1kx5//I/DA`-47/N1 ,/1kx5//J/DT`47/N3
-dist WC_hbond, /1kx5//I/DA`-46/N1 ,/1kx5//J/DT`46/N3
-dist WC_hbond, /1kx5//I/DA`-45/N1 ,/1kx5//J/DT`45/N3
-dist WC_hbond, /1kx5//I/DA`-44/N1 ,/1kx5//J/DT`44/N3
-dist WC_hbond, /1kx5//I/DA`-39/N1 ,/1kx5//J/DT`39/N3
-dist WC_hbond, /1kx5//I/DA`-33/N1 ,/1kx5//J/DT`33/N3
-dist WC_hbond, /1kx5//I/DA`-23/N1 ,/1kx5//J/DT`23/N3
-dist WC_hbond, /1kx5//I/DA`-20/N1 ,/1kx5//J/DT`20/N3
-dist WC_hbond, /1kx5//I/DA`-18/N1 ,/1kx5//J/DT`18/N3
-dist WC_hbond, /1kx5//I/DA`-17/N1 ,/1kx5//J/DT`17/N3
-dist WC_hbond, /1kx5//I/DA`-13/N1 ,/1kx5//J/DT`13/N3
-dist WC_hbond, /1kx5//I/DA`-7/N1 ,/1kx5//J/DT`7/N3
-dist WC_hbond, /1kx5//I/DA`-1/N1 ,/1kx5//J/DT`1/N3
-dist WC_hbond, /1kx5//I/DA`0/N1 ,/1kx5//J/DT`0/N3
-dist WC_hbond, /1kx5//I/DA`4/N1 ,/1kx5//J/DT`-4/N3
-dist WC_hbond, /1kx5//I/DA`9/N1 ,/1kx5//J/DT`-9/N3
-dist WC_hbond, /1kx5//I/DA`10/N1 ,/1kx5//J/DT`-10/N3
-dist WC_hbond, /1kx5//I/DA`12/N1 ,/1kx5//J/DT`-12/N3
-dist WC_hbond, /1kx5//I/DA`22/N1 ,/1kx5//J/DT`-22/N3
-dist WC_hbond, /1kx5//I/DA`26/N1 ,/1kx5//J/DT`-26/N3
-dist WC_hbond, /1kx5//I/DA`29/N1 ,/1kx5//J/DT`-29/N3
-dist WC_hbond, /1kx5//I/DA`36/N1 ,/1kx5//J/DT`-36/N3
-dist WC_hbond, /1kx5//I/DA`37/N1 ,/1kx5//J/DT`-37/N3
-dist WC_hbond, /1kx5//I/DA`38/N1 ,/1kx5//J/DT`-38/N3
-dist WC_hbond, /1kx5//I/DA`51/N1 ,/1kx5//J/DT`-51/N3
-dist WC_hbond, /1kx5//I/DA`54/N1 ,/1kx5//J/DT`-54/N3
-dist WC_hbond, /1kx5//I/DA`60/N1 ,/1kx5//J/DT`-60/N3
-dist WC_hbond, /1kx5//I/DA`66/N1 ,/1kx5//J/DT`-66/N3
-dist WC_hbond, /1kx5//I/DA`68/N1 ,/1kx5//J/DT`-68/N3
-dist WC_hbond, /1kx5//I/DA`72/N1 ,/1kx5//J/DT`-72/N3
-dist WC_hbond, /1kx5//J/DA`-73/N1 ,/1kx5//I/DT`73/N3
-dist WC_hbond, /1kx5//J/DA`-70/N1 ,/1kx5//I/DT`70/N3
-dist WC_hbond, /1kx5//J/DA`-69/N1 ,/1kx5//I/DT`69/N3
-dist WC_hbond, /1kx5//J/DA`-67/N1 ,/1kx5//I/DT`67/N3
-dist WC_hbond, /1kx5//J/DA`-63/N1 ,/1kx5//I/DT`63/N3
-dist WC_hbond, /1kx5//J/DA`-57/N1 ,/1kx5//I/DT`57/N3
-dist WC_hbond, /1kx5//J/DA`-55/N1 ,/1kx5//I/DT`55/N3
-dist WC_hbond, /1kx5//J/DA`-50/N1 ,/1kx5//I/DT`50/N3
-dist WC_hbond, /1kx5//J/DA`-47/N1 ,/1kx5//I/DT`47/N3
-dist WC_hbond, /1kx5//J/DA`-46/N1 ,/1kx5//I/DT`46/N3
-dist WC_hbond, /1kx5//J/DA`-45/N1 ,/1kx5//I/DT`45/N3
-dist WC_hbond, /1kx5//J/DA`-44/N1 ,/1kx5//I/DT`44/N3
-dist WC_hbond, /1kx5//J/DA`-31/N1 ,/1kx5//I/DT`31/N3
-dist WC_hbond, /1kx5//J/DA`-23/N1 ,/1kx5//I/DT`23/N3
-dist WC_hbond, /1kx5//J/DA`-20/N1 ,/1kx5//I/DT`20/N3
-dist WC_hbond, /1kx5//J/DA`-19/N1 ,/1kx5//I/DT`19/N3
-dist WC_hbond, /1kx5//J/DA`-18/N1 ,/1kx5//I/DT`18/N3
-dist WC_hbond, /1kx5//J/DA`-17/N1 ,/1kx5//I/DT`17/N3
-dist WC_hbond, /1kx5//J/DA`-13/N1 ,/1kx5//I/DT`13/N3
-dist WC_hbond, /1kx5//J/DA`-7/N1 ,/1kx5//I/DT`7/N3
-dist WC_hbond, /1kx5//J/DA`-1/N1 ,/1kx5//I/DT`1/N3
-dist WC_hbond, /1kx5//J/DA`4/N1 ,/1kx5//I/DT`-4/N3
-dist WC_hbond, /1kx5//J/DA`9/N1 ,/1kx5//I/DT`-9/N3
-dist WC_hbond, /1kx5//J/DA`10/N1 ,/1kx5//I/DT`-10/N3
-dist WC_hbond, /1kx5//J/DA`12/N1 ,/1kx5//I/DT`-12/N3
-dist WC_hbond, /1kx5//J/DA`26/N1 ,/1kx5//I/DT`-26/N3
-dist WC_hbond, /1kx5//J/DA`29/N1 ,/1kx5//I/DT`-29/N3
-dist WC_hbond, /1kx5//J/DA`36/N1 ,/1kx5//I/DT`-36/N3
-dist WC_hbond, /1kx5//J/DA`37/N1 ,/1kx5//I/DT`-37/N3
-dist WC_hbond, /1kx5//J/DA`38/N1 ,/1kx5//I/DT`-38/N3
-dist WC_hbond, /1kx5//J/DA`40/N1 ,/1kx5//I/DT`-40/N3
-dist WC_hbond, /1kx5//J/DA`51/N1 ,/1kx5//I/DT`-51/N3
-dist WC_hbond, /1kx5//J/DA`54/N1 ,/1kx5//I/DT`-54/N3
-dist WC_hbond, /1kx5//J/DA`60/N1 ,/1kx5//I/DT`-60/N3
-dist WC_hbond, /1kx5//J/DA`66/N1 ,/1kx5//I/DT`-66/N3
-dist WC_hbond, /1kx5//J/DA`68/N1 ,/1kx5//I/DT`-68/N3
-dist WC_hbond, /1kx5//J/DA`72/N1 ,/1kx5//I/DT`-72/N3
+dist WC_hbond, /1kx5//I/DG`-59/O6 ,/1kx5//J/DC`59/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-56/O6 ,/1kx5//J/DC`56/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-43/O6 ,/1kx5//J/DC`43/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-35/O6 ,/1kx5//J/DC`35/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-34/O6 ,/1kx5//J/DC`34/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-28/O6 ,/1kx5//J/DC`28/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-16/O6 ,/1kx5//J/DC`15/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-16/O6 ,/1kx5//J/DC`16/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-11/O6 ,/1kx5//J/DC`11/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-6/O6 ,/1kx5//J/DC`6/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-3/O6 ,/1kx5//J/DC`3/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-2/O6 ,/1kx5//J/DC`2/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`5/O6 ,/1kx5//J/DC`-5/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`8/O6 ,/1kx5//J/DC`-8/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`14/O6 ,/1kx5//J/DC`-14/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`21/O6 ,/1kx5//J/DC`-21/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`24/O6 ,/1kx5//J/DC`-24/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`25/O6 ,/1kx5//J/DC`-25/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`27/O6 ,/1kx5//J/DC`-27/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`48/O6 ,/1kx5//J/DC`-48/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`52/O6 ,/1kx5//J/DC`-52/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`58/O6 ,/1kx5//J/DC`-58/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`62/O6 ,/1kx5//J/DC`-62/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`64/O6 ,/1kx5//J/DC`-64/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`65/O6 ,/1kx5//J/DC`-65/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`71/O6 ,/1kx5//J/DC`-71/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-59/O6 ,/1kx5//I/DC`59/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-56/O6 ,/1kx5//I/DC`56/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-41/O6 ,/1kx5//I/DC`41/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-35/O6 ,/1kx5//I/DC`35/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-34/O6 ,/1kx5//I/DC`34/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-28/O6 ,/1kx5//I/DC`28/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-16/O6 ,/1kx5//I/DC`15/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-16/O6 ,/1kx5//I/DC`16/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-15/O6 ,/1kx5//I/DC`15/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-11/O6 ,/1kx5//I/DC`11/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-6/O6 ,/1kx5//I/DC`6/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-3/O6 ,/1kx5//I/DC`3/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-2/O6 ,/1kx5//I/DC`2/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`5/O6 ,/1kx5//I/DC`-5/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`8/O6 ,/1kx5//I/DC`-8/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`14/O6 ,/1kx5//I/DC`-14/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`21/O6 ,/1kx5//I/DC`-21/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`24/O6 ,/1kx5//I/DC`-24/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`25/O6 ,/1kx5//I/DC`-25/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`27/O6 ,/1kx5//I/DC`-27/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`48/O6 ,/1kx5//I/DC`-48/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`49/O6 ,/1kx5//I/DC`-49/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`52/O6 ,/1kx5//I/DC`-52/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`58/O6 ,/1kx5//I/DC`-58/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`61/O6 ,/1kx5//I/DC`-61/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`62/O6 ,/1kx5//I/DC`-62/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`64/O6 ,/1kx5//I/DC`-64/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`65/O6 ,/1kx5//I/DC`-65/N4 , 3.2 
+dist WC_hbond, /1kx5//J/DG`71/O6 ,/1kx5//I/DC`-71/N4 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-59/N1 ,/1kx5//J/DC`59/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-56/N1 ,/1kx5//J/DC`56/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-43/N1 ,/1kx5//J/DC`43/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-35/N1 ,/1kx5//J/DC`35/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-34/N1 ,/1kx5//J/DC`34/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-28/N1 ,/1kx5//J/DC`28/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-16/N1 ,/1kx5//J/DC`16/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-11/N1 ,/1kx5//J/DC`11/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-6/N1 ,/1kx5//J/DC`6/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-3/N1 ,/1kx5//J/DC`3/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-2/N1 ,/1kx5//J/DC`2/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`5/N1 ,/1kx5//J/DC`-5/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`8/N1 ,/1kx5//J/DC`-8/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`14/N1 ,/1kx5//J/DC`-14/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`21/N1 ,/1kx5//J/DC`-21/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`24/N1 ,/1kx5//J/DC`-24/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`25/N1 ,/1kx5//J/DC`-25/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`27/N1 ,/1kx5//J/DC`-27/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`48/N1 ,/1kx5//J/DC`-48/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`49/N1 ,/1kx5//J/DC`-49/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`52/N1 ,/1kx5//J/DC`-52/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`58/N1 ,/1kx5//J/DC`-58/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`61/N1 ,/1kx5//J/DC`-61/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`62/N1 ,/1kx5//J/DC`-62/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`64/N1 ,/1kx5//J/DC`-64/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`65/N1 ,/1kx5//J/DC`-65/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`71/N1 ,/1kx5//J/DC`-71/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-59/N1 ,/1kx5//I/DC`59/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-56/N1 ,/1kx5//I/DC`56/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-41/N1 ,/1kx5//I/DC`41/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-35/N1 ,/1kx5//I/DC`35/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-34/N1 ,/1kx5//I/DC`34/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-28/N1 ,/1kx5//I/DC`28/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-16/N1 ,/1kx5//I/DC`16/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-15/N1 ,/1kx5//I/DC`15/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-11/N1 ,/1kx5//I/DC`11/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-6/N1 ,/1kx5//I/DC`6/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-3/N1 ,/1kx5//I/DC`3/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-2/N1 ,/1kx5//I/DC`2/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`5/N1 ,/1kx5//I/DC`-5/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`8/N1 ,/1kx5//I/DC`-8/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`14/N1 ,/1kx5//I/DC`-14/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`21/N1 ,/1kx5//I/DC`-21/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`24/N1 ,/1kx5//I/DC`-24/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`25/N1 ,/1kx5//I/DC`-25/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`27/N1 ,/1kx5//I/DC`-27/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`30/N1 ,/1kx5//I/DC`-30/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`48/N1 ,/1kx5//I/DC`-48/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`49/N1 ,/1kx5//I/DC`-49/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`52/N1 ,/1kx5//I/DC`-52/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`58/N1 ,/1kx5//I/DC`-58/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`61/N1 ,/1kx5//I/DC`-61/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`62/N1 ,/1kx5//I/DC`-62/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`64/N1 ,/1kx5//I/DC`-64/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`65/N1 ,/1kx5//I/DC`-65/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DG`71/N1 ,/1kx5//I/DC`-71/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-59/N2 ,/1kx5//J/DC`59/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-43/N2 ,/1kx5//J/DC`43/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-41/N2 ,/1kx5//J/DC`41/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-35/N2 ,/1kx5//J/DC`35/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-34/N2 ,/1kx5//J/DC`34/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-28/N2 ,/1kx5//J/DC`28/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-16/N2 ,/1kx5//J/DC`16/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-11/N2 ,/1kx5//J/DC`11/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-6/N2 ,/1kx5//J/DC`6/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-3/N2 ,/1kx5//J/DC`3/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`-2/N2 ,/1kx5//J/DC`2/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`5/N2 ,/1kx5//J/DC`-5/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`8/N2 ,/1kx5//J/DC`-8/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`14/N2 ,/1kx5//J/DC`-14/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`21/N2 ,/1kx5//J/DC`-21/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`24/N2 ,/1kx5//J/DC`-24/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`25/N2 ,/1kx5//J/DC`-25/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`27/N2 ,/1kx5//J/DC`-27/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`30/N2 ,/1kx5//J/DC`-30/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`48/N2 ,/1kx5//J/DC`-48/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`49/N2 ,/1kx5//J/DC`-49/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`52/N2 ,/1kx5//J/DC`-52/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`58/N2 ,/1kx5//J/DC`-58/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`61/N2 ,/1kx5//J/DC`-61/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`62/N2 ,/1kx5//J/DC`-62/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`64/N2 ,/1kx5//J/DC`-64/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`65/N2 ,/1kx5//J/DC`-65/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DG`71/N2 ,/1kx5//J/DC`-71/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-59/N2 ,/1kx5//I/DC`59/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-56/N2 ,/1kx5//I/DC`56/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-43/N2 ,/1kx5//I/DC`43/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-41/N2 ,/1kx5//I/DC`41/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-35/N2 ,/1kx5//I/DC`35/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-34/N2 ,/1kx5//I/DC`34/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-28/N2 ,/1kx5//I/DC`28/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-16/N2 ,/1kx5//I/DC`16/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-15/N2 ,/1kx5//I/DC`15/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-11/N2 ,/1kx5//I/DC`11/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-6/N2 ,/1kx5//I/DC`6/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-3/N2 ,/1kx5//I/DC`3/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`-2/N2 ,/1kx5//I/DC`2/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`5/N2 ,/1kx5//I/DC`-5/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`8/N2 ,/1kx5//I/DC`-8/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`14/N2 ,/1kx5//I/DC`-14/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`21/N2 ,/1kx5//I/DC`-21/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`24/N2 ,/1kx5//I/DC`-24/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`25/N2 ,/1kx5//I/DC`-25/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`25/N2 ,/1kx5//I/DC`-24/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`27/N2 ,/1kx5//I/DC`-27/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`30/N2 ,/1kx5//I/DC`-30/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`48/N2 ,/1kx5//I/DC`-48/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`49/N2 ,/1kx5//I/DC`-49/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`52/N2 ,/1kx5//I/DC`-52/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`58/N2 ,/1kx5//I/DC`-58/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`61/N2 ,/1kx5//I/DC`-61/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`62/N2 ,/1kx5//I/DC`-62/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`64/N2 ,/1kx5//I/DC`-64/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`65/N2 ,/1kx5//I/DC`-65/O2 , 3.2 
+dist WC_hbond, /1kx5//J/DG`71/N2 ,/1kx5//I/DC`-71/O2 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-73/N6 ,/1kx5//J/DT`73/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-70/N6 ,/1kx5//J/DT`70/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-69/N6 ,/1kx5//J/DT`69/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-67/N6 ,/1kx5//J/DT`67/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-63/N6 ,/1kx5//J/DT`63/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-55/N6 ,/1kx5//J/DT`55/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-53/N6 ,/1kx5//J/DT`53/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-50/N6 ,/1kx5//I/DT`-51/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-50/N6 ,/1kx5//J/DT`50/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-47/N6 ,/1kx5//J/DT`46/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-46/N6 ,/1kx5//J/DT`46/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-45/N6 ,/1kx5//J/DT`45/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-44/N6 ,/1kx5//J/DT`44/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-39/N6 ,/1kx5//J/DT`39/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-33/N6 ,/1kx5//J/DT`33/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-23/N6 ,/1kx5//J/DT`23/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-20/N6 ,/1kx5//J/DT`20/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-18/N6 ,/1kx5//J/DT`17/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-18/N6 ,/1kx5//J/DT`18/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-17/N6 ,/1kx5//J/DT`17/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-13/N6 ,/1kx5//J/DT`13/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-7/N6 ,/1kx5//J/DT`7/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-1/N6 ,/1kx5//J/DT`1/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`0/N6 ,/1kx5//J/DT`0/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`4/N6 ,/1kx5//J/DT`-4/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`9/N6 ,/1kx5//J/DT`-9/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`12/N6 ,/1kx5//J/DT`-12/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`22/N6 ,/1kx5//J/DT`-22/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`26/N6 ,/1kx5//J/DT`-26/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`36/N6 ,/1kx5//J/DT`-37/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`36/N6 ,/1kx5//J/DT`-36/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`37/N6 ,/1kx5//J/DT`-37/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`38/N6 ,/1kx5//J/DT`-38/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`51/N6 ,/1kx5//I/DT`50/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`51/N6 ,/1kx5//J/DT`-51/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`60/N6 ,/1kx5//J/DT`-60/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`66/N6 ,/1kx5//J/DT`-66/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`68/N6 ,/1kx5//J/DT`-68/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`72/N6 ,/1kx5//J/DT`-72/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-73/N6 ,/1kx5//I/DT`73/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-70/N6 ,/1kx5//I/DT`70/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-69/N6 ,/1kx5//I/DT`69/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-67/N6 ,/1kx5//I/DT`67/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-63/N6 ,/1kx5//I/DT`63/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-55/N6 ,/1kx5//I/DT`55/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-50/N6 ,/1kx5//J/DT`-51/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-47/N6 ,/1kx5//I/DT`47/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-46/N6 ,/1kx5//I/DT`46/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-31/N6 ,/1kx5//I/DT`31/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-23/N6 ,/1kx5//I/DT`23/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-20/N6 ,/1kx5//I/DT`20/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-18/N6 ,/1kx5//I/DT`18/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-17/N6 ,/1kx5//I/DT`17/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-13/N6 ,/1kx5//I/DT`13/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-7/N6 ,/1kx5//I/DT`7/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-1/N6 ,/1kx5//I/DT`1/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-1/N6 ,/1kx5//J/DT`0/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`4/N6 ,/1kx5//I/DT`-4/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`9/N6 ,/1kx5//I/DT`-9/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`10/N6 ,/1kx5//I/DT`-10/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`12/N6 ,/1kx5//I/DT`-12/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`26/N6 ,/1kx5//I/DT`-26/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`36/N6 ,/1kx5//I/DT`-36/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`37/N6 ,/1kx5//I/DT`-37/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`38/N6 ,/1kx5//I/DT`-38/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`40/N6 ,/1kx5//I/DT`-40/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`51/N6 ,/1kx5//J/DT`50/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`54/N6 ,/1kx5//I/DT`-54/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`60/N6 ,/1kx5//I/DT`-60/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`66/N6 ,/1kx5//I/DT`-66/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`68/N6 ,/1kx5//I/DT`-68/O4 , 3.2 
+dist WC_hbond, /1kx5//J/DA`72/N6 ,/1kx5//I/DT`-72/O4 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-73/N1 ,/1kx5//J/DT`73/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-70/N1 ,/1kx5//J/DT`70/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-69/N1 ,/1kx5//J/DT`69/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-67/N1 ,/1kx5//J/DT`67/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-63/N1 ,/1kx5//J/DT`63/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-55/N1 ,/1kx5//J/DT`55/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-53/N1 ,/1kx5//J/DT`53/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-50/N1 ,/1kx5//J/DT`50/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-47/N1 ,/1kx5//J/DT`47/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-46/N1 ,/1kx5//J/DT`46/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-45/N1 ,/1kx5//J/DT`45/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-44/N1 ,/1kx5//J/DT`44/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-39/N1 ,/1kx5//J/DT`39/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-33/N1 ,/1kx5//J/DT`33/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-23/N1 ,/1kx5//J/DT`23/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-20/N1 ,/1kx5//J/DT`20/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-18/N1 ,/1kx5//J/DT`18/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-17/N1 ,/1kx5//J/DT`17/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-13/N1 ,/1kx5//J/DT`13/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-7/N1 ,/1kx5//J/DT`7/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`-1/N1 ,/1kx5//J/DT`1/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`0/N1 ,/1kx5//J/DT`0/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`4/N1 ,/1kx5//J/DT`-4/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`9/N1 ,/1kx5//J/DT`-9/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`10/N1 ,/1kx5//J/DT`-10/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`12/N1 ,/1kx5//J/DT`-12/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`22/N1 ,/1kx5//J/DT`-22/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`26/N1 ,/1kx5//J/DT`-26/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`29/N1 ,/1kx5//J/DT`-29/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`36/N1 ,/1kx5//J/DT`-36/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`37/N1 ,/1kx5//J/DT`-37/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`38/N1 ,/1kx5//J/DT`-38/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`51/N1 ,/1kx5//J/DT`-51/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`54/N1 ,/1kx5//J/DT`-54/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`60/N1 ,/1kx5//J/DT`-60/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`66/N1 ,/1kx5//J/DT`-66/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`68/N1 ,/1kx5//J/DT`-68/N3 , 3.2 
+dist WC_hbond, /1kx5//I/DA`72/N1 ,/1kx5//J/DT`-72/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-73/N1 ,/1kx5//I/DT`73/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-70/N1 ,/1kx5//I/DT`70/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-69/N1 ,/1kx5//I/DT`69/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-67/N1 ,/1kx5//I/DT`67/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-63/N1 ,/1kx5//I/DT`63/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-57/N1 ,/1kx5//I/DT`57/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-55/N1 ,/1kx5//I/DT`55/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-50/N1 ,/1kx5//I/DT`50/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-47/N1 ,/1kx5//I/DT`47/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-46/N1 ,/1kx5//I/DT`46/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-45/N1 ,/1kx5//I/DT`45/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-44/N1 ,/1kx5//I/DT`44/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-31/N1 ,/1kx5//I/DT`31/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-23/N1 ,/1kx5//I/DT`23/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-20/N1 ,/1kx5//I/DT`20/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-19/N1 ,/1kx5//I/DT`19/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-18/N1 ,/1kx5//I/DT`18/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-17/N1 ,/1kx5//I/DT`17/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-13/N1 ,/1kx5//I/DT`13/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-7/N1 ,/1kx5//I/DT`7/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`-1/N1 ,/1kx5//I/DT`1/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`4/N1 ,/1kx5//I/DT`-4/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`9/N1 ,/1kx5//I/DT`-9/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`10/N1 ,/1kx5//I/DT`-10/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`12/N1 ,/1kx5//I/DT`-12/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`26/N1 ,/1kx5//I/DT`-26/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`29/N1 ,/1kx5//I/DT`-29/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`36/N1 ,/1kx5//I/DT`-36/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`37/N1 ,/1kx5//I/DT`-37/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`38/N1 ,/1kx5//I/DT`-38/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`40/N1 ,/1kx5//I/DT`-40/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`51/N1 ,/1kx5//I/DT`-51/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`54/N1 ,/1kx5//I/DT`-54/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`60/N1 ,/1kx5//I/DT`-60/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`66/N1 ,/1kx5//I/DT`-66/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`68/N1 ,/1kx5//I/DT`-68/N3 , 3.2 
+dist WC_hbond, /1kx5//J/DA`72/N1 ,/1kx5//I/DT`-72/N3 , 3.2 
 set dash_color, yellow, WC_hbond
 set dash_color, red, Non_WC_hbond
 set cartoon_ring_mode,3
