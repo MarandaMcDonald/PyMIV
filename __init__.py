@@ -947,10 +947,14 @@ def make_dialog():
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
-        print('User Entered Filename:', pdb_file)
-        calc_disulfide(pdb_file)
-        cmd.run("disulfide_bonds.pml")
-        print('Yellow = Cysteine Sulfur Atoms')
+        # Error Code
+        if pdb_file == "":
+            print("Please input a valid .pdb file name")
+        else:
+            print('User Entered Filename:', pdb_file)
+            calc_disulfide(pdb_file)
+            cmd.run("disulfide_bonds.pml")
+            print('Yellow = Cysteine Sulfur Atoms')
         
     def wcAndNonWCButton():
         '''
@@ -958,10 +962,14 @@ def make_dialog():
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
-        print('User Entered Filename:', pdb_file)
-        calc_WC_and_NonWC(pdb_file)
-        cmd.run("get_bonds.pml")
-        print('Yellow = WC\nRed=Non-WC')
+        # Error Code
+        if pdb_file == "":
+            print("Please input a valid .pdb file name")
+        else:
+            print('User Entered Filename:', pdb_file)
+            calc_WC_and_NonWC(pdb_file)
+            cmd.run("get_bonds.pml")
+            print('Yellow = WC\nRed=Non-WC')
 
     def alphaHeliceButtonButton():
         '''
@@ -969,8 +977,11 @@ def make_dialog():
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
-        print('User Entered Filename:', pdb_file)
-        alpha_helice(pdb_file)
+        if pdb_file == "":
+            print("Please input a valid .pdb file name")
+        else:
+            print('User Entered Filename:', pdb_file)
+            alpha_helice(pdb_file)
 
     # To connect clicking buttons to a value, text or command
     form.disulfideFinder.clicked.connect(disulfideFinderButton)

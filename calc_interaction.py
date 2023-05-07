@@ -6,6 +6,7 @@
 ############################################################
 #####################  Core Functions  #####################
 ############################################################
+
 import math
 
 def PDB_read(PDBfile):
@@ -70,7 +71,6 @@ def only_PDB2(string=str):
         String containing no '.pdb'
     '''
     return string.replace(".pdb", "")
-    
     
 def extractxyz(PDBline=str):
     '''
@@ -251,7 +251,81 @@ def nitrogen_finder(pdblist=list, atomName="N", newlist=list):
         if (line[0:4]=="ATOM") and (line[13:16]==atomName):
             newlist.append(line)
 
+############################################################
+###################  Output Peptide FASTA  #################
+############################################################
 
+def output_fasta(filename=str, fastaSeqList=list):
+    '''
+    This function will output a text of FASTA sequence of peptide in single amino acid code
+
+    **Parameters**
+
+    filename: *str*
+        A string of the input PDB file
+
+    fastaSeqList: *list*
+        An empty list to be appended to with the single amino acid code of the peptide
+
+
+
+    **Returns*
+    
+        Appended list an fasta sequecne of given peptide in PDB file
+    '''
+    aminoacid={}
+    aminoacid["ALA"]="A"
+    aminoacid["CYS"]="C"
+    aminoacid["ASP"]="D"
+    aminoacid["GLU"]="E"
+    aminoacid["PHE"]="F"
+    aminoacid["GLY"]="G"
+    aminoacid["HIS"]="H"
+    aminoacid["ILE"]="I"
+    aminoacid["LYS"]="K"
+    aminoacid["LEU"]="L"
+    aminoacid["MET"]="M"
+    aminoacid["MSE"]="M"
+    aminoacid["ASN"]="N"
+    aminoacid["PRO"]="P"
+    aminoacid["GLN"]="Q"
+    aminoacid["ARG"]="R"
+    aminoacid["SER"]="S"
+    aminoacid["THR"]="T"
+    aminoacid["VAL"]="V"
+    aminoacid["TRP"]="W"
+    aminoacid["UNK"]="X"
+    aminoacid["TYR"]="Y"
+
+    # read in a pdb file from command line:
+
+    pdbfileraw=open(filename,"r")
+    pdbfilelist=pdbfileraw.readlines()
+
+    # make a list for storing amino acids
+    aalist=[]
+
+    for line in pdbfilelist:
+        if line[0:4]=="ATOM":
+            # here only look at CA lines
+            if line[13:15]=="CA":
+            #copy residue type into list
+                aalist.append(line[17:20])
+
+    # here output in FASTA format, with first line beginning with ">" and having info about sequence
+    counter=0 # for printing out nicely
+    fastaSeqList=[]
+    print(">"+filename)
+    for letter in aalist:
+        if letter in aminoacid:
+            fastaSeqList.append(aminoacid[letter])
+            print(aminoacid[letter],end="")
+        else:
+            fastaSeqList.append("X")
+            print("X",end="")
+    if (counter+1)%40==0:
+        print()
+    counter+=1
 
 ############################################################
 ###################  Detect Sulfide Bonds  #################
@@ -353,7 +427,6 @@ def calc_disulfide(filename):
     bondfile.write("set dash_length, 0.2500\n")
     bondfile.write("set dash_gap, 0.4\n")
     bondfile.write("set dash_radius, .15\n")                  
-
 
 ############################################################
 #############  WC and Non-WC Nucleic Acid Interactions  ####
@@ -493,7 +566,7 @@ def calc_WC_and_NonWC(filename):
 
 
     atomList=[GO6,GN1,GN2,GN3,GN7,GN9,CN4,CN3,CO2,AN6,AN1,AN7,AN9,AN3,UO4,UN3,]
-    
+
     #WC BONDING ATOMS LIST
     Gwc=[GO6,GN1,GN2]
     Cwc=[CN4,CN3,CO2]
@@ -731,6 +804,7 @@ def calc_WC_and_NonWC(filename):
 ############################################################
 ###################  Detect Alpha Helice  ##################
 ############################################################
+
 def alpha_helice(filename):
     '''
         This function will detect any potential alpha helical seconday structure in polypeptides
@@ -875,3 +949,179 @@ def alpha_helice(filename):
 
     print(*singleaalist[532:572], sep = "")
     print(*Hbondlist[532:572], sep = "")
+
+############################################################
+#####################  End to End Distance  ################
+############################################################
+
+def end_to_end_dist(filename):
+    '''
+        This function will calculate the molecular weight of a peptide
+
+        **Parameters**
+
+        filename: *string*
+            A string with the PDB file name (e.g. 1fdl.pdb)
+        **Returns**
+
+            Text of molecular weight of a peptide 
+        '''
+    while (True): 
+    #will read into file if ".pdb"
+        try:
+            rawfile=open(filename,"r")
+            pdblist=rawfile.readlines()
+            rawfile.close()
+            rawfile=open(filename,"r")
+            pdblist=rawfile.readlines()
+            rawfile.close()
+
+            #Generate a file name to store CA atoms
+            outputfile=("outputMWFile")
+            CAatoms=open(outputfile,"w")
+
+            def stripoutCAatoms(pdb):
+                ### goal of function is to take PDB list and return only CA atoms
+                returnedlist=[]
+                for line in pdb:
+                    if line[0:4]=="ATOM" and line[13:15]=="CA":
+                        CAatoms.write(line)
+                        returnedlist.append(line)
+                return(returnedlist)
+            CAonly=stripoutCAatoms(pdblist)
+            CAatoms.close()
+
+            #extract the first and last atoms from CA atoms file
+            with open(outputfile, "r") as file:
+                first_line = file.readline()
+                for last_line in file:
+                    pass
+
+            CAonly= [first_line, last_line]
+            
+            #time to print!
+            print("First Residue:",first_line[17:20])
+            print("Last Residue:", last_line[17:20])
+            
+            print("Distance between Cα atoms of first and last residue: {:.2f} Å".format((calcdistance(extractxyz(first_line), extractxyz(last_line)))))
+
+            print()
+
+            break
+        except:
+            break
+
+############################################################
+###################  Calculate Peptide MW  #################
+############################################################
+
+def calc_peptide_mw(filename):
+    '''
+        This function will calculate the molecular weight of a peptide
+
+        **Parameters**
+
+        filename: *string*
+            A string with the PDB file name (e.g. 1fdl.pdb)
+        **Returns**
+
+            Text of molecular weight of a peptide 
+        '''
+# To read into a PDB file and then outputs the protein sequence in FASTA format
+
+    aminoacid={}
+    aminoacid["ALA"]="A"
+    aminoacid["CYS"]="C"
+    aminoacid["ASP"]="D"
+    aminoacid["GLU"]="E"
+    aminoacid["PHE"]="F"
+    aminoacid["GLY"]="G"
+    aminoacid["HIS"]="H"
+    aminoacid["ILE"]="I"
+    aminoacid["LYS"]="K"
+    aminoacid["LEU"]="L"
+    aminoacid["MET"]="M"
+    aminoacid["MSE"]="M"
+    aminoacid["ASN"]="N"
+    aminoacid["PRO"]="P"
+    aminoacid["GLN"]="Q"
+    aminoacid["ARG"]="R"
+    aminoacid["SER"]="S"
+    aminoacid["THR"]="T"
+    aminoacid["VAL"]="V"
+    aminoacid["TRP"]="W"
+    aminoacid["UNK"]="X"
+    aminoacid["TYR"]="Y"
+
+    # read in a pdb file from command line:
+
+    pdbfileraw=open(filename,"r")
+    pdbfilelist=pdbfileraw.readlines()
+
+    # make a list for storing amino acids
+    aalist=[]
+
+    for line in pdbfilelist:
+        if line[0:4]=="ATOM":
+            # here only look at CA lines
+            if line[13:15]=="CA":
+            #copy residue type into list
+                aalist.append(line[17:20])
+
+    # here output in FASTA format, with first line beginning with ">" and having info about sequence
+    counter=0 # for printing out nicely
+    fastaSeqList=[]
+    print(">"+filename)
+    for letter in aalist:
+        if letter in aminoacid:
+            fastaSeqList.append(aminoacid[letter])
+        else:
+            fastaSeqList.append("X")
+    if (counter+1)%40==0:
+        print()
+    counter+=1
+
+    #Amino Acid Molecular Weight dictionary
+    aaMW={}
+    aaMW["A"]=89.09
+    aaMW["C"]=121.16
+    aaMW["D"]=133.10
+    aaMW["E"]=147.13
+    aaMW["F"]=165.19
+    aaMW["G"]=75.07
+    aaMW["H"]=155.16
+    aaMW["I"]=131.18
+    aaMW["K"]=146.19
+    aaMW["L"]=131.18
+    aaMW["M"]=149.21
+    aaMW["N"]=132.12
+    aaMW["P"]=115.13
+    aaMW["Q"]=146.15
+    aaMW["R"]=174.20
+    aaMW["S"]=105.09
+    aaMW["T"]=119.12
+    aaMW["V"]=117.15
+    aaMW["W"]=204.23
+    aaMW["Y"]=181.19
+    aaMW["["]=0
+    aaMW["]"]=0
+    aaMW["\n"]=0
+    aaMW[","]=0
+    aaMW[" "]=0
+    aaMW["'"]=0
+    aaMW["_"]=0
+    aaMW["X"]=0
+
+    #water molecular weight
+    aaMW["HOH"]=18.02
+
+    # To print the amino acid sequence from fasta file
+
+    total=0
+    for char in fastaSeqList:
+        letter_to_number = aaMW[char]
+        total += letter_to_number
+
+    loss_of_water = (int(len(fastaSeqList))-1) * 18.02
+    peptide_mass=total - loss_of_water
+    print("Peptide Mass: {:.2f} Daltons".format(peptide_mass))
