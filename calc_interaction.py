@@ -921,6 +921,13 @@ def end_to_end_dist(filename=str):
 
             Text of molecular weight of a peptide 
         '''
+
+    # To write a pml file
+    bondfile=open("end_to_end.pml", "w", encoding="utf8")
+    # pylint: disable=consider-using-f-string
+    bondfile.write("load {:}\n".format((filename)))
+    bondfile.write("remove resn hoh\n")
+
     while True:
     #will read into file if ".pdb"
         try:
@@ -946,7 +953,6 @@ def end_to_end_dist(filename=str):
             # pylint: disable= unused-variable
             ca_only=strip_ca_atoms(pdblist)
             ca_atoms.close()
-
             #extract the first and last atoms from CA atoms file
             with open(outputfile, "r",  encoding="utf8") as file:
                 first_line = file.readline()
@@ -954,12 +960,22 @@ def end_to_end_dist(filename=str):
                     pass
             # pylint: disable=undefined-loop-variable
             ca_only = [first_line, last_line]
-
-            print("First Residue:",first_line[17:20])
+            print("\nFirst Residue:",first_line[17:20])
             print("Last Residue:", last_line[17:20])
             # pylint: disable=consider-using-f-string
             #pylint: disable=line-too-long
             print("Distance between Cα atoms of first and last residue: {:.2f} Å".format((calcdistance(extractxyz(first_line), extractxyz(last_line)))))
+            bondfile.write("dist end_to_end, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[19:20],remove(first_line[23:26]),first_line[13:16], only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[19:20],last_line[23:26],last_line[13:15]))
+            bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[19:20],remove(first_line[23:26]),first_line[13:16]))
+            bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[19:20],last_line[23:26],last_line[13:15]))
+            bondfile.write("set dash_color, magenta, end_to_end")
+            #bondfile.write("hide labels, Non_WC_hbond")
+            bondfile.write("color atomic, (not elem C), /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[19:20],remove(first_line[23:26]),first_line[13:16]))
+            bondfile.write("color atomic, (not elem C), /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[19:20],last_line[23:26],last_line[13:15]))
+            bondfile.write("color atomic, (not elem C)")
+            bondfile.write("set dash_length, 0.2500")
+            bondfile.write("set dash_gap, 0.4")
+            bondfile.write("set dash_radius, .55")
             return None
         except TypeError:
             print("Enter a valid PDB File")
@@ -1080,3 +1096,4 @@ def calc_peptide_mw(filename):
     peptide_mass=total - loss_of_water
     # pylint: disable=consider-using-f-string
     print("Peptide Mass: {:.2f} Daltons".format(peptide_mass))
+    
