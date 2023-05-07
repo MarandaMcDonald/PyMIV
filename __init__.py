@@ -1198,12 +1198,7 @@ def make_dialog():
         filename = getOpenFileNames(
             dialog)
         clean_filename=(clean_file_path(str(filename)))
-        form.lineEdit.setText(str(clean_file_path(clean_filename)))
-
-        print((clean_file_path(str(filename))))
-        print(filename)
-        print(filename[3:-20])
-        print(re.findall('/.*b', filename))
+        form.lineEdit.setText(clean_filename)
 
     
     def disulfide_finder_button():
