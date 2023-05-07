@@ -4,6 +4,7 @@ from __future__ import print_function
 
 # To provide an entry point to PyMOL's API
 import os
+import re
 from pymol import cmd
 from pymol.Qt import QtWidgets
 from pymol.Qt.utils import loadUi
@@ -1195,11 +1196,15 @@ def make_dialog():
         Broswe files
         '''
         filename = getOpenFileNames(
-            dialog, 'Open...')
-        clean_filename=str(clean_file_path(filename))
+            dialog)
+        clean_filename=(clean_file_path(str(filename)))
         form.lineEdit.setText(str(clean_file_path(clean_filename)))
-        print(str(clean_file_path(filename)))
+
+        print((clean_file_path(str(filename))))
         print(filename)
+        print(filename[3:-20])
+        print(re.findall('/.*b', filename))
+
     
     def disulfide_finder_button():
         '''

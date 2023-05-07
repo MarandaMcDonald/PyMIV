@@ -1,5 +1,5 @@
 #Driver code
-
+import re
 from calc_interaction import *
 
 calc_disulfide("PDB_Files/1fdl.pdb")
@@ -18,3 +18,4 @@ test="(['/Users/marandamacpro/Downloads/PyMIV/PDB_Files/1bhm.pdb'], 'All Files (
 
 print(clean_file_path(test))
 print(test[3:-20])
+print(re.findall('/.*b', test))
