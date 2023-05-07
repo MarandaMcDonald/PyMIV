@@ -8,7 +8,18 @@ from pymol import cmd
 from pymol.Qt import QtWidgets
 from pymol.Qt.utils import loadUi
 from pymol.Qt.utils import *
-from pymol.Qt.utils import getSaveFileNameWithExt
+import pymol
+import pymol._gui
+from pymol import colorprinting, save_shortcut
+from pymol.Qt import QtGui, QtCore
+from pymol.Qt.utils import (getSaveFileNameWithExt, UpdateLock, WidgetMenu,
+        MainThreadCaller,
+        PopupOnException,
+        connectFontContextMenu, getMonospaceFont)
+from pmg_qt import properties_dialog, file_dialogs
+Qt = QtCore.Qt
+QFileDialog = QtWidgets.QFileDialog
+getOpenFileNames = QFileDialog.getOpenFileNames
 
 
 # To load the UI file into our dialog
@@ -1158,6 +1169,7 @@ def make_dialog():
     
     # To create a new UI window
     dialog = QtWidgets.QDialog()
+    file_dialog = QtWidgets.QFileDialog()
 
     # To populate the Window from our .ui file
     uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
@@ -1167,7 +1179,7 @@ def make_dialog():
 
     # callback for the "Browse" button
     def browse_filename():
-        filename = QFileDialog.getOpenFileName(
+        filename = getOpenFileNames(
             dialog, 'Open...', filter='PDB File (*.pdb)')
         if filename:
             form.lineEdit.setText(filename)
