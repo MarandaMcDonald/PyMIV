@@ -493,6 +493,7 @@ def calc_WC_and_NonWC(filename):
 
 
     atomList=[GO6,GN1,GN2,GN3,GN7,GN9,CN4,CN3,CO2,AN6,AN1,AN7,AN9,AN3,UO4,UN3,]
+    
     #WC BONDING ATOMS LIST
     Gwc=[GO6,GN1,GN2]
     Cwc=[CN4,CN3,CO2]
@@ -502,8 +503,7 @@ def calc_WC_and_NonWC(filename):
     #HOOGSTEIN/NONWC BONDING ATOMS LIST
     Ghoog=[GN3,GN9,GN7]
     Ahoog=[AN7,AN3,AN9]
-    '''
-    '''
+
     #Series of all the atoms tested for hydrogen bond (these are all non-WC)
     #Manually exmained the pymol structure to elimate which distances are not true hydrogen bonds
 

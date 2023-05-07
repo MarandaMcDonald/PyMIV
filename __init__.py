@@ -893,7 +893,7 @@ def alpha_helice(filename):
     print(*singleaalist[532:572], sep = "")
     print(*Hbondlist[532:572], sep = "")
 
-    
+
 ############################################################
 ###################  Initialize Plugin #####################
 ############################################################
@@ -943,18 +943,18 @@ def make_dialog():
 
     def disulfideFinderButton():
         '''
-        Run the actions in the dialog window
+        Run the actions in the Disulfide Finder button
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
         print('User Entered Filename:', pdb_file)
         calc_disulfide(pdb_file)
-
-        # To debug code
+        cmd.run("disulfide_bonds.pml")
+        print('Yellow = Cysteine Sulfur Atoms')
         
     def wcAndNonWCButton():
         '''
-        Run the actions in the dialog window
+        Run the actions in the WC vs Non-WC button
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
@@ -965,12 +965,11 @@ def make_dialog():
 
     def alphaHeliceButtonButton():
         '''
-        Run the actions in the dialog window
+        Run the actions in the Alpha Helix Button
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
         print('User Entered Filename:', pdb_file)
-        (pdb_file)
         alpha_helice(pdb_file)
 
     # To connect clicking buttons to a value, text or command
