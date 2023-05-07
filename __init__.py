@@ -1423,26 +1423,26 @@ def make_dialog():
             Add an entry to the PyMOL "Plugin" menu
             '''
             from pymol.plugins import addmenuitemqt
-            addmenuitemqt('Demo "Render" Plugin', run_plugin_gui)
+            addmenuitemqt('Render Image', run_plugin_gui)
 
 
-        # global reference to avoid garbage collection of our dialog
-        dialog = None
+        # global reference to avoid garbage collection of our dialog_render
+        dialog_render = None
 
 
         def run_plugin_gui():
             '''
-            Open our custom dialog
+            Open our custom dialog_render
             '''
-            global dialog
+            global dialog_render
 
-            if dialog is None:
-                dialog = make_dialog()
+            if dialog_render is None:
+                dialog_render = make_dialog_render()
 
-            dialog.show()
+            dialog_render.show()
 
 
-        def make_dialog():
+        def make_dialog_render():
             # entry point to PyMOL's API
             from pymol import cmd
 
@@ -1453,11 +1453,11 @@ def make_dialog():
             from pymol.Qt.utils import getSaveFileNameWithExt
 
             # create a new Window
-            dialog = QtWidgets.QDialog()
+            dialog_render = QtWidgets.Qdialog()
 
             # populate the Window from our *.ui file which was created with the Qt Designer
-            uifile = os.path.join(os.path.dirname(__file__), 'demowidget.ui')
-            form = loadUi(uifile, dialog)
+            uifile = os.path.join(os.path.dirname(__file__), 'render.ui')
+            form = loadUi(uifile, dialog_render)
 
             # callback for the "Ray" button
             def run():
@@ -1488,16 +1488,17 @@ def make_dialog():
             # callback for the "Browse" button
             def browse_filename():
                 filename = getSaveFileNameWithExt(
-                    dialog, 'Save As...', filter='PNG File (*.png)')
+                    dialog_render, 'Save As...', filter='PNG File (*.png)')
                 if filename:
                     form.input_filename.setText(filename)
 
             # hook up button callbacks
             form.button_ray.clicked.connect(run)
             form.button_browse.clicked.connect(browse_filename)
-            form.button_close.clicked.connect(dialog.close)
+            form.button_close.clicked.connect(dialog_render.close)
 
-            return dialog
+            return dialog_render
+
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
     form.done.clicked.connect(dialog.close)
