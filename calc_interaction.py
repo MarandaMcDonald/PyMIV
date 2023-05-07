@@ -996,7 +996,7 @@ def end_to_end_dist(filename=str):
                         ca_atoms.write(line)
                         returnedlist.append(line)
                 return returnedlist
-            # pylint disable=unused-variable
+            # pylint: disable= unused-variable
             ca_only=strip_ca_atoms(pdblist)
             ca_atoms.close()
 
@@ -1005,20 +1005,17 @@ def end_to_end_dist(filename=str):
                 first_line = file.readline()
                 for last_line in file:
                     pass
-
+            # pylint: disable=undefined-loop-variable
             ca_only = [first_line, last_line]
 
-            #time to print!
             print("First Residue:",first_line[17:20])
             print("Last Residue:", last_line[17:20])
             # pylint: disable=consider-using-f-string
             #pylint: disable=line-too-long
             print("Distance between Cα atoms of first and last residue: {:.2f} Å".format((calcdistance(extractxyz(first_line), extractxyz(last_line)))))
-
-            print()
-
-            break
-        except:
+            return None
+        except TypeError:
+            print("Enter a valid PDB File")
             break
 
 ############################################################
