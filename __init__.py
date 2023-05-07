@@ -1183,7 +1183,7 @@ def make_dialog():
         filename = getOpenFileNames(
             dialog, 'Open...')
         if filename:
-            form.lineEdit.setText(filename)
+            form.lineEdit.setText(str(filename))
             
     def disulfide_finder_button():
         '''
