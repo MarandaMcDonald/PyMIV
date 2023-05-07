@@ -1,15 +1,10 @@
-#This is a series of functions for mathematical calculations to read into PDB files and output a .pml text to import into the PyMOL
-
-
-
-
 ############################################################
 #####################  Core Functions  #####################
 ############################################################
 
 import math
 
-def PDB_read(PDBfile):
+def pdb_read(pdbfile):
     '''
         This function will read into a PDB file format using the readlines command
 
@@ -21,11 +16,11 @@ def PDB_read(PDBfile):
 
             Sorted list by acsending resiue number position
         '''
-    PDBfile=input("Enter a PDB file\n")
-    rawfile=open(PDBfile,"r")
+    pdbfile=input("Enter a PDB file\n")
+    rawfile=open(pdbfile,"r",  encoding="utf8")
     pdblist=rawfile.readlines()
     rawfile.close()
-    return None
+    return pdblist
 
 def remove(string=str):
     '''
@@ -42,7 +37,7 @@ def remove(string=str):
     '''
     return string.replace(" ", "")
 
-def only_PDB1(string=str):
+def only_pdb_first(string=str):
     '''
     This function will remove 'PDB_Files' from the 'filename' variable
 
@@ -57,7 +52,7 @@ def only_PDB1(string=str):
     '''
     return string.replace("PDB_Files/", "")
 
-def only_PDB2(string=str):
+def only_pdb_last(string=str):
     '''
     This function will remove '.pdb' from the 'filename' variable
 
@@ -71,21 +66,21 @@ def only_PDB2(string=str):
         String containing no '.pdb'
     '''
     return string.replace(".pdb", "")
-    
-def extractxyz(PDBline=str):
+
+def extractxyz(pdbline=str):
     '''
     This function will extract the x, y and z coordinates of an atom from the line of a PDB file
 
     **Parameters**
 
-    PDBline: *str*
+    pdbline: *str*
         
 
     **Returns**
 
         x, y and z coordinates as a list of floats
     '''
-    return([float(PDBline[29:38]),float(PDBline[38:46]),float(PDBline[46:54])])
+    return([float(pdbline[29:38]),float(pdbline[38:46]),float(pdbline[46:54])])
 
 def calcdistance(list1=list,list2=list):
     '''
@@ -116,11 +111,13 @@ def atom_finder(pdblist=list,base=str, atom=str, mylist=list):
         The nucleotide base that is to be parsed (e.g. A = adenine, G = guanine, C = cytosine, T = thymine)
     
     atom: *str*
-        The atom position in the nucleotide base, where the first characte is a letter for the elements (e.g. C=carbon, N=nitrogen, O=oxygen),
-        and the second charcter is the carbon atom position in the base (e.g. N7 =  the nitrogen atom on carbon 7)
+        The atom position in the nucleotide base, where the first character 
+        is a letter for the elements (e.g. C=carbon, N=nitrogen, O=oxygen),
+        and the second charcter is the carbon atom position in the base 
+        (e.g. N7 =  the nitrogen atom on carbon 7)
     
     mylist: *list*
-        Any given list to be appended with the PDBline of the atom found
+        Any given list to be appended with the pdbline of the atom found
 
     **Returns**
 
@@ -132,13 +129,14 @@ def atom_finder(pdblist=list,base=str, atom=str, mylist=list):
                 if (line[13:16]==atom):
                     mylist.append(line)
 
-def residue_finder(pdblist=list, resn="CYS", mylist="CYSlistUnsorted"):
+def residue_finder(pdblist=list, resn="CYS", mylist="cys_list_unsorted"):
     '''
-    This function will read PDB file and search for a given amino acid resiue, and the atomic element specified. This atom will be appended to a list given
+    This function will read PDB file and search for a given amino acid resiue, 
+    and the atomic element specified. This atom will be appended to a list given
 
     **Parameters**
 
-    PDBfile: *list*
+    pdbfile: *list*
         A list of strings in PDB file format
     **Returns**
 
@@ -185,7 +183,7 @@ def bond_distance(mylist=list, lower=1.95, upper=2.00):
         if upper >i > lower:
             print("{}, {}".format(i[17:29],i))
 
-def atom_to_atom(mylist=list, newList=list):
+def atom_to_atom(mylist=list, new_list=list):
     '''
     This function will go through a PDB lists of lines and calculatr all the potential Cysteine residue pairs
 
@@ -194,18 +192,19 @@ def atom_to_atom(mylist=list, newList=list):
     mylist: *list*
         A list of of any amount of PDB lines. Can be specific for just one amino acid residue type, or all amino acids.
 
-    newList: *list*
+    new_list: *list*
         The provided new list that PDB lines will be appended to upon the fucntion
 
     **Returns*
     
         Sorted list by acsending resiue number position
     '''
+    # pylint: disable=consider-using-enumerate
     for i in range(len(mylist)):
         for z in range(i):
-            newList.append((mylist[i]) + (mylist[z]))
+            new_list.append((mylist[i]) + (mylist[z]))
 
-def oxygen_finder(pdblist=list, atomName="O", newlist=list):
+def oxygen_finder(pdblist=list, atom_name="O", new_list=list):
     '''
     This function will find oxygen atoms in a PDB list and append them to a new list
 
@@ -214,10 +213,10 @@ def oxygen_finder(pdblist=list, atomName="O", newlist=list):
     pdblist: *list*
         A list of readlines of a PDB file
 
-    atomName: *str*
+    atom_name: *str*
         The given oxygen atom to be searched (e.g. 'O')
 
-    newList: *list*
+    new_list: *list*
         The provided new list that PDB lines will be appended to upon the fucntion
 
     **Returns*
@@ -225,10 +224,10 @@ def oxygen_finder(pdblist=list, atomName="O", newlist=list):
        Appended list containing all the backbone carbonyl oxygen atoms of the polypeptide
     '''
     for line in pdblist:
-        if (line[0:4]=="ATOM") and (line[13:16]==atomName):
-            newlist.append(line)
+        if (line[0:4]=="ATOM") and (line[13:16]==atom_name):
+            new_list.append(line)
 
-def nitrogen_finder(pdblist=list, atomName="N", newlist=list):
+def nitrogen_finder(pdblist=list, atom_name="N", new_list=list):
     '''
     This function will find oxygen atoms in a PDB list and append them to a new list
 
@@ -237,10 +236,10 @@ def nitrogen_finder(pdblist=list, atomName="N", newlist=list):
     pdblist: *list*
         A list of readlines of a PDB file
 
-    atomName: *str*
+    atom_name: *str*
         The given Nitrogen atom to be searched (e.g. 'N')
 
-    newList: *list*
+    new_list: *list*
         The provided new list that PDB lines will be appended to upon the fucntion
 
     **Returns*
@@ -248,14 +247,14 @@ def nitrogen_finder(pdblist=list, atomName="N", newlist=list):
         Appended list containing all the backbone nitrogen atoms of the polypeptide
     '''
     for line in pdblist:
-        if (line[0:4]=="ATOM") and (line[13:16]==atomName):
-            newlist.append(line)
+        if (line[0:4]=="ATOM") and (line[13:16]==atom_name):
+            new_list.append(line)
 
 ############################################################
 ###################  Output Peptide FASTA  #################
 ############################################################
 
-def output_fasta(filename=str, fastaSeqList=list):
+def output_fasta(filename=str, fasta_seq_list=list):
     '''
     This function will output a text of FASTA sequence of peptide in single amino acid code
 
@@ -264,7 +263,7 @@ def output_fasta(filename=str, fastaSeqList=list):
     filename: *str*
         A string of the input PDB file
 
-    fastaSeqList: *list*
+    fasta_seq_list: *list*
         An empty list to be appended to with the single amino acid code of the peptide
 
 
@@ -299,7 +298,7 @@ def output_fasta(filename=str, fastaSeqList=list):
 
     # read in a pdb file from command line:
 
-    pdbfileraw=open(filename,"r")
+    pdbfileraw=open(filename,"r", encoding="utf8")
     pdbfilelist=pdbfileraw.readlines()
 
     # make a list for storing amino acids
@@ -314,14 +313,14 @@ def output_fasta(filename=str, fastaSeqList=list):
 
     # here output in FASTA format, with first line beginning with ">" and having info about sequence
     counter=0 # for printing out nicely
-    fastaSeqList=[]
+    fasta_seq_list=[]
     print(">"+filename)
     for letter in aalist:
         if letter in aminoacid:
-            fastaSeqList.append(aminoacid[letter])
+            fasta_seq_list.append(aminoacid[letter])
             print(aminoacid[letter],end="")
         else:
-            fastaSeqList.append("X")
+            fasta_seq_list.append("X")
             print("X",end="")
     if (counter+1)%40==0:
         print()
@@ -331,7 +330,7 @@ def output_fasta(filename=str, fastaSeqList=list):
 ###################  Detect Sulfide Bonds  #################
 ############################################################
 
-def calc_disulfide(filename):
+def calc_disulfide(filename=str):
     '''
         This function will calculate any disulfide bonds in a PDB file and display in PyMOL 
 
@@ -347,44 +346,45 @@ def calc_disulfide(filename):
     # Initialize reading into PDB file and converting into a list of lines as strings
     
     # To write a pml file
-    bondfile=open("disulfide_bonds.pml", "w")
+    bondfile=open("disulfide_bonds.pml", "w",  encoding="utf8")
+    # pylint: disable=consider-using-f-string
     bondfile.write("load {:}\n".format((filename)))
     bondfile.write("remove resn hoh\n")
     #bondfile.write("color green")
 
-    #PDBfile=input("Enter a PDB file\n")
-    rawfile=open(filename,"r")
+    #pdbfile=input("Enter a PDB file\n")
+    rawfile=open(filename,"r",  encoding="utf8")
     pdblist=rawfile.readlines()
     rawfile.close()
-    CYSlistUnsorted=[]
+    cys_list_unsorted=[]
     
     # To find all the Cysteine residues in the PDB structure
-    residue_finder(pdblist,"CYS", CYSlistUnsorted)
+    residue_finder(pdblist,"CYS", cys_list_unsorted)
 
     # To sort all the Cysteine residues in acsending order
-    CYSlist=sorted_pdb(CYSlistUnsorted)
+    cys_llist_sorted=sorted_pdb(cys_list_unsorted)
 
     # To print out the total number of Cysteine residues in the PDB structure
-    print("\nThere are",len(CYSlist), "CYS residues")
+    print("\nThere are",len(cys_llist_sorted), "CYS residues")
 
     # A dictionary where the keys are the Cys to Cys residue pairs and the values are the bond distances
-    CYSdistanceslist=[]
+    cys_distances_list=[]
     cyskeys= []
     cysvalues = []
     cysdict={}
 
     # To loop through the sorted Cysteine list of residues, and if residues are sequential, then calculate the potential bond distances and
-    # store in a new list, CYSdistanceslist
-    for i in range(len(CYSlist)):
+    # store in a new list, cys_distances_list
+    for i in range(len(cys_llist_sorted)):
         for z in range(i):
-            CYSdistanceslist.append(calcdistance(extractxyz(CYSlist[i]), extractxyz(CYSlist[z])))
+            cys_distances_list.append(calcdistance(extractxyz(cys_llist_sorted[i]), extractxyz(cys_llist_sorted[z])))
 
     # To provide the the potential S-S bond interactions")
     StoSlist=[]
-    atom_to_atom(CYSlist, StoSlist)
+    atom_to_atom(cys_llist_sorted, StoSlist)
 
     # To make list of Cysteine-Cysteine distances
-    for i in CYSdistanceslist:
+    for i in cys_distances_list:
         cysvalues.append(i)
 
     # To make list of Cysteine-Cysteine combinations
@@ -405,22 +405,22 @@ def calc_disulfide(filename):
 
     
     # To print out the Cysteine RESN to Cysteine RESN combinations
-    joinedList = "\n".join("{} {}".format(x, y) for x, y in zip(trueCysBondlist, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"))
+    # joined_list = "\n".join("{} {}".format(x, y) for x, y in zip(trueCysBondlist, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"))
     print("There are", len(trueDistancelist), "disulfide bonds\n")
     print("DISULFDE BONDS ( 2 ± 0.05 Å )")
 
-    # To print the joinedList
+    # To print the joined_list
     for i in trueCysBondlist:
         print(i[17:27], "---", i[97:107],)
     print("\nThanks for using me!")
     
     for line in trueCysBondlist:
-        #print("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
-        bondfile.write("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
-        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26])))
-        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107])))
-        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[17:20],remove(line[23:26])))
-        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(only_PDB1(only_PDB2(filename)),line[102:103],remove(line[98:102]),remove(line[103:107])))
+        #print("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_pdb_first(only_pdb_last(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
+        bondfile.write("dist disulfide_bond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[17:20],remove(line[23:26]),line[13:16], only_pdb_first(only_pdb_last(filename)),line[102:103],remove(line[98:102]),remove(line[103:107]),line[94:96]))
+        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[17:20],remove(line[23:26])))
+        bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)),line[102:103],remove(line[98:102]),remove(line[103:107])))
+        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[17:20],remove(line[23:26])))
+        bondfile.write("color atomic, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)),line[102:103],remove(line[98:102]),remove(line[103:107])))
  
 #Additional changes to alter pymol image
     bondfile.write("\nhide labels, disulfide_bond\n")
@@ -431,8 +431,20 @@ def calc_disulfide(filename):
 ############################################################
 #############  WC and Non-WC Nucleic Acid Interactions  ####
 ############################################################
-def calc_WC_and_NonWC(filename):
-        
+
+def calc_wc_nwc(filename=str):
+    '''
+    This function calculate all potential Watson-Crick and Non Watson-Crick noncovlaent bonds in a nucleic acid PDB file
+
+    **Parameters**
+
+    filename: *str*
+        A string of the input PDB file
+
+    **Returns*
+    
+        Appended list an fasta sequecne of given peptide in PDB file
+    '''
     # To write a pml file
     bondfile=open("get_bonds.pml", "w")
     bondfile.write("load {:}\n".format((filename)))
@@ -452,7 +464,7 @@ def calc_WC_and_NonWC(filename):
         mylist: *list*
             A list of of any amount of PDB lines. Can be specific for just one amino acid residue type, or all amino acids.
 
-        newList: *list*
+        new_list: *list*
             The provided new list that PDB lines will be appended to upon the fucntion
 
         **Returns*
@@ -465,7 +477,7 @@ def calc_WC_and_NonWC(filename):
                 dist2=extractxyz(i)
                 distance = (calcdistance(dist1, dist2))
                 if distance < 3.2:
-                            bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)), line[21:22],line[19:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),i[21:22],i[19:20],i[23:26],i[13:15]))
+                            bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), line[21:22],line[19:20],remove(line[23:26]),line[13:16], only_pdb_first(only_pdb_last(filename)),i[21:22],i[19:20],i[23:26],i[13:15]))
                             # OPTIONAL 'show sticks' in PyMOL structure
                             #bondfile.write("show sticks, /1Z43//{}/{}`{}\n".format(line[21:22],line[19:20],remove(line[23:26]),line[13:16]))
                             #bondfile.write("show sticks, /1Z43//{}/{}`{}\n".format(i[21:22],i[19:20],i[23:26],i[13:15]))
@@ -477,8 +489,8 @@ def calc_WC_and_NonWC(filename):
                 dist2=extractxyz(i)
                 distance = (calcdistance(dist1, dist2))
                 if 2.5 < distance < 3.2:
-                            bondfile.write("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)),line[21:22],line[19:20],remove(line[23:26]),line[13:16], only_PDB1(only_PDB2(filename)),i[21:22],i[19:20],i[23:26],i[13:15]))
-                            #print(("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_PDB1(only_PDB2(filename)),line[21:22],line[19:20],remove(line[23:26]),line[13:16],only_PDB1(only_PDB2(filename)),i[21:22],i[19:20],i[23:26],i[13:15])))
+                            bondfile.write("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)),line[21:22],line[19:20],remove(line[23:26]),line[13:16], only_pdb_first(only_pdb_last(filename)),i[21:22],i[19:20],i[23:26],i[13:15]))
+                            #print(("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)),line[21:22],line[19:20],remove(line[23:26]),line[13:16],only_pdb_first(only_pdb_last(filename)),i[21:22],i[19:20],i[23:26],i[13:15])))
                             # OPTIONAL 'show sticks' in PyMOL structure
                             #bondfile.write("show sticks, /1Z43//{}/{}`{}\n".format(line[21:22],line[19:20],remove(line[23:26]),line[13:16]))
                             #bondfile.write("show sticks, /1Z43//{}/{}`{}\n".format(i[21:22],i[19:20],i[23:26],i[13:15]))
@@ -805,7 +817,7 @@ def calc_WC_and_NonWC(filename):
 ###################  Detect Alpha Helice  ##################
 ############################################################
 
-def alpha_helice(filename):
+def alpha_helice(filename=str):
     '''
         This function will detect any potential alpha helical seconday structure in polypeptides
 
@@ -849,7 +861,7 @@ def alpha_helice(filename):
 
     # To read into PDB file
     print("Alpha-helical structure detector\n")
-    rawfile=open(filename,"r")
+    rawfile=open(filename,"r", encoding="utf8")
     pdblist=rawfile.readlines()
     rawfile.close()
 
@@ -875,7 +887,6 @@ def alpha_helice(filename):
         aalist.append(line[17:20])
 
     # Top output the protein in FASTA format, with first line beginning with ">" and having info about sequence
-    counter=0
     singleaalist=[]
 
     #Make a list of the single letter amino acid FASTA sequence
@@ -884,10 +895,6 @@ def alpha_helice(filename):
             singleaalist.append(aminoacid[letter])
         else:
             singleaalist.append("x")
-
-    counter=0
-    counter3=0
-    counter4=0
 
     #Make a list of the "-" and "H" for the single amino acid FASTA seqeuence
     Hbondlist=[]
@@ -954,7 +961,7 @@ def alpha_helice(filename):
 #####################  End to End Distance  ################
 ############################################################
 
-def end_to_end_dist(filename):
+def end_to_end_dist(filename=str):
     '''
         This function will calculate the molecular weight of a peptide
 
@@ -969,16 +976,16 @@ def end_to_end_dist(filename):
     while (True): 
     #will read into file if ".pdb"
         try:
-            rawfile=open(filename,"r")
+            rawfile=open(filename,"r", encoding="utf8")
             pdblist=rawfile.readlines()
             rawfile.close()
-            rawfile=open(filename,"r")
+            rawfile=open(filename,"r", encoding="utf8")
             pdblist=rawfile.readlines()
             rawfile.close()
 
             #Generate a file name to store CA atoms
             outputfile=("outputMWFile")
-            CAatoms=open(outputfile,"w")
+            CAatoms=open(outputfile,"w", encoding="utf8")
 
             def stripoutCAatoms(pdb):
                 ### goal of function is to take PDB list and return only CA atoms
@@ -992,7 +999,7 @@ def end_to_end_dist(filename):
             CAatoms.close()
 
             #extract the first and last atoms from CA atoms file
-            with open(outputfile, "r") as file:
+            with open(outputfile, "r",  encoding="utf8") as file:
                 first_line = file.readline()
                 for last_line in file:
                     pass
@@ -1055,7 +1062,7 @@ def calc_peptide_mw(filename):
 
     # read in a pdb file from command line:
 
-    pdbfileraw=open(filename,"r")
+    pdbfileraw=open(filename,"r",  encoding="utf8")
     pdbfilelist=pdbfileraw.readlines()
 
     # make a list for storing amino acids
@@ -1070,13 +1077,13 @@ def calc_peptide_mw(filename):
 
     # here output in FASTA format, with first line beginning with ">" and having info about sequence
     counter=0 # for printing out nicely
-    fastaSeqList=[]
+    fasta_seq_list=[]
     print(">"+filename)
     for letter in aalist:
         if letter in aminoacid:
-            fastaSeqList.append(aminoacid[letter])
+            fasta_seq_list.append(aminoacid[letter])
         else:
-            fastaSeqList.append("X")
+            fasta_seq_list.append("X")
     if (counter+1)%40==0:
         print()
     counter+=1
@@ -1118,10 +1125,10 @@ def calc_peptide_mw(filename):
     # To print the amino acid sequence from fasta file
 
     total=0
-    for char in fastaSeqList:
+    for char in fasta_seq_list:
         letter_to_number = aaMW[char]
         total += letter_to_number
 
-    loss_of_water = (int(len(fastaSeqList))-1) * 18.02
+    loss_of_water = (int(len(fasta_seq_list))-1) * 18.02
     peptide_mass=total - loss_of_water
     print("Peptide Mass: {:.2f} Daltons".format(peptide_mass))
