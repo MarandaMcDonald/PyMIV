@@ -1,4 +1,4 @@
-load 1z43.pdb
+load PDB_Files/1z43.pdb
 remove resn hoh
 dist WC_hbond, /1Z43//A/G`142/O6 ,/1Z43//A/C`236/N4
 dist WC_hbond, /1Z43//A/G`143/O6 ,/1Z43//A/C`144/N4
