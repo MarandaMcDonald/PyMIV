@@ -256,6 +256,35 @@ def nitrogen_finder(pdblist=list, atom_name="N", new_list=list):
         if (line[0:4]=="ATOM") and (line[13:16]==atom_name):
             new_list.append(line)
 
+def clean_file_path_one(string=str):
+    '''
+    This function will remove first characters in file path string
+
+    **Parameters**
+
+    string: *str*
+        The given string to have removed spaces
+
+    **Returns**
+
+        String containing no first characters
+    '''
+    return string.replace("(['", "")
+
+def clean_file_path_two(string=str):
+    '''
+    This function will remove last characters in file path string
+
+    **Parameters**
+
+    string: *str*
+        The given string to have removed spaces
+
+    **Returns**
+
+        String containing no final characters
+    '''
+    return string.replace("'], 'All Files (*)')", "")
 ############################################################
 ###################  Output Peptide FASTA  #################
 ############################################################
