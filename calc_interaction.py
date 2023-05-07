@@ -934,14 +934,13 @@ def alpha_helice(filename=str):
         # pylint: disable=line-too-long
         #bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107])))
         bondfile.write("color pink, /{}//{}/{}`{}\n".format(extract_pdb_path(filename), line[21:22],line[17:20],remove(line[23:26])))
-   
-    
+
+
     for line in helix_line_list_o:
         # pylint: disable=line-too-long
         #bondfile.write("show sticks, /{}//{}/{}`{}\n".format(extract_pdb_path(filename),line[102:103],remove(line[98:102]),remove(line[103:107])))
         bondfile.write("color pink, /{}//{}/{}`{}\n".format(extract_pdb_path(filename), line[21:22],line[17:20],remove(line[23:26])))
-   
-     #Additional changes to alter pymol image
+#Additional changes to alter pymol image
 
     print(*single_aa_list[0:40], sep = "")
     print(*h_bond_list[0:40], sep = "")
