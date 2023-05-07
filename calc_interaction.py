@@ -966,15 +966,15 @@ def end_to_end_dist(filename=str):
             #pylint: disable=line-too-long
             print("Distance between Cα atoms of first and last residue: {:.2f} Å".format((calcdistance(extractxyz(first_line), extractxyz(last_line)))))
             bondfile.write("dist end_to_end, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[19:20],remove(first_line[23:26]),first_line[13:16], only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[19:20],last_line[23:26],last_line[13:15]))
-            #bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[19:20],remove(first_line[23:26]),first_line[13:16]))
-            #bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[19:20],last_line[23:26],last_line[13:15]))
-            #bondfile.write("set dash_color, yellow, end_to_end\n")
+            bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[19:20],remove(first_line[23:26]),first_line[13:16]))
+            bondfile.write("show sticks, /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[19:20],last_line[23:26],last_line[13:15]))
+            bondfile.write("set dash_color, yellow, end_to_end\n")
             #bondfile.write("hide labels, Non_WC_hbond")
             #bondfile.write("color atomic, (not elem C), /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[19:20],remove(first_line[23:26]),first_line[13:16]))
             #bondfile.write("color atomic, (not elem C), /{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[19:20],last_line[23:26],last_line[13:15]))
-            #bondfile.write("set dash_length, 0.2500\n")
-            #bondfile.write("set dash_gap, 0.4\n")
-            #bondfile.write("set dash_radius, .55\n")
+            bondfile.write("set dash_length, 0.2500\n")
+            bondfile.write("set dash_gap, 0.4\n")
+            bondfile.write("set dash_radius, .15\n")
             return None
         except TypeError:
             print("Enter a valid PDB File")
