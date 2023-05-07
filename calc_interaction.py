@@ -541,7 +541,7 @@ def calc_wc_nwc(filename=str):
                 distance = calcdistance(dist1, dist2)
                 if distance < 3.2:
                     # pylint: disable=line-too-long
-                    bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), line[21:22],line[19:20],remove(line[23:26]),line[13:16], extract_pdb_path(filename),i[21:22],i[19:20],i[23:26],i[13:15]))
+                    bondfile.write("dist WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename), line[21:22],remove(line[18:20]),remove(line[23:26]),line[13:16], extract_pdb_path(filename),i[21:22],i[19:20],i[23:26],i[13:15]))
 
     def nwc_dist(list1=list, list2=list):
         '''
@@ -567,7 +567,7 @@ def calc_wc_nwc(filename=str):
                 if 2.5 < distance < 3.2:
                     # pylint: disable=line-too-long
                     bondfile.write("dist Non_WC_hbond, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(extract_pdb_path(filename),line[21:22],line[19:20],remove(line[23:26]),line[13:16], extract_pdb_path(filename),i[21:22],i[19:20],i[23:26],i[13:15]))
-    #lists of WC bonding atoms
+    #lists of WC RNA bonding atoms
 
     #Guanine
     #pylint: disable=invalid-name
@@ -588,6 +588,27 @@ def calc_wc_nwc(filename=str):
     UO4=[]
     UN3=[]
 
+    #lists of WC DNA bonding atoms
+
+    #Guanine
+    #pylint: disable=invalid-name
+    dGO6=[]
+    dGN1=[]
+    dGN2=[]
+
+    #Cytosine
+    dCN4=[]
+    dCN3=[]
+    dCO2=[]
+
+    #Adenine
+    dAN6=[]
+    dAN1=[]
+
+    #Uracil
+    dTO4=[]
+    dTN3=[]
+
     #lists of Non-WC bonding atoms
 
     #Guanine
@@ -603,7 +624,7 @@ def calc_wc_nwc(filename=str):
     #Uracil
     UO2=[]
 
-    #WC atoms
+    #WC RNA atoms
     (atom_finder(pdblist,"G","O6 ",GO6))
     (atom_finder(pdblist,"G","N1 ",GN1))
     (atom_finder(pdblist,"G","N2 ",GN2))
@@ -618,7 +639,22 @@ def calc_wc_nwc(filename=str):
     (atom_finder(pdblist,"U","O4 ",UO4))
     (atom_finder(pdblist,"U","N3 ",UN3))
 
-    #Non-WC atoms
+    #WC DNA atoms
+    (atom_finder(pdblist,"DG","O6 ",dGO6))
+    (atom_finder(pdblist,"DG","N1 ",dGN1))
+    (atom_finder(pdblist,"DG","N2 ",dGN2))
+
+    (atom_finder(pdblist,"DC","N4 ",dCN4))
+    (atom_finder(pdblist,"DC","N3 ",dCN3))
+    (atom_finder(pdblist,"DC","O2 ",dCO2))
+
+    (atom_finder(pdblist,"DA","N6 ",dAN6))
+    (atom_finder(pdblist,"DA","N1 ",dAN1))
+
+    (atom_finder(pdblist,"DT","O4 ",dTO4))
+    (atom_finder(pdblist,"DT","N3 ",dTN3))
+
+    #Non-WC RNA atoms
     (atom_finder(pdblist,"G","N3 ",GN3))
     (atom_finder(pdblist,"G","N9 ",GN9))
     (atom_finder(pdblist,"G","N7 ",GN7))
@@ -630,7 +666,7 @@ def calc_wc_nwc(filename=str):
 
     (atom_finder(pdblist,"U","O2 ",UO2))
 
-    # WC write .pml
+    # WC RNA write .pml
     wc_dist(GO6, CN4)
     wc_dist(GN1, CN3)
     wc_dist(GN2, CO2)
@@ -638,6 +674,13 @@ def calc_wc_nwc(filename=str):
     wc_dist(AN6, UO4)
     wc_dist(AN1, UN3)
 
+    # WC DNA write .pml
+    wc_dist(dGO6, CN4)
+    wc_dist(dGN1, CN3)
+    wc_dist(dGN2, CO2)
+
+    wc_dist(dAN6, UO4)
+    wc_dist(dAN1, UN3)
     bondfile.write("set dash_color, yellow, WC_hbond")
 
     #Non-WC distances
@@ -874,10 +917,13 @@ def alpha_helice(filename=str):
     #print(nitro_atom_list)
 
     # To remove the extraneous last 4 nitrogens that cannot participate in alpha helix
-    nitro_atom_list.pop(0)
-    nitro_atom_list.pop(0)
-    nitro_atom_list.pop(0)
-    nitro_atom_list.pop(0)
+    try:
+        nitro_atom_list.pop(0)
+        nitro_atom_list.pop(0)
+        nitro_atom_list.pop(0)
+        nitro_atom_list.pop(0)
+    except IndexError:
+        print("Please enter a valid protein PDB file")
 
 
     dist_list=[]
@@ -1028,6 +1074,7 @@ def end_to_end_dist(filename=str):
                 return returnedlist
             # pylint: disable= unused-variable
             ca_only=strip_ca_atoms(pdblist)
+
             ca_atoms.close()
             #extract the first and last atoms from CA atoms file
             with open(outputfile, "r",  encoding="utf8") as file:
