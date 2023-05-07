@@ -1276,6 +1276,7 @@ def make_dialog():
         else:
             print('User Entered Filename:', pdb_file)
             alpha_helice(pdb_file)
+            cmd.run("helix_bonds.pml")
 
     def calc_mw_button():
         '''
