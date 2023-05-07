@@ -960,11 +960,9 @@ def end_to_end_dist(filename=str):
                     pass
             # pylint: disable=undefined-loop-variable
             ca_only = [first_line, last_line]
-            print("\nFirst Residue:",first_line[17:20])
-            print("Last Residue:", last_line[17:20])
-            # pylint: disable=consider-using-f-string
+
+            # Writing to end_to_end.pml
             #pylint: disable=line-too-long
-            print("Distance between Cα atoms of first and last residue: {:.2f} Å".format((calcdistance(extractxyz(first_line), extractxyz(last_line)))))
             bondfile.write("dist end_to_end, /{}//{}/{}`{}/{},/{}//{}/{}`{}/{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[17:20],remove(first_line[23:26]),first_line[13:16], only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[17:20],last_line[23:26],last_line[13:15]))
             bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)), first_line[21:22],first_line[17:20],remove(first_line[23:26])))
             bondfile.write("show sticks, /{}//{}/{}`{}\n".format(only_pdb_first(only_pdb_last(filename)),last_line[21:22],last_line[17:20],last_line[23:26]))
@@ -975,6 +973,13 @@ def end_to_end_dist(filename=str):
             bondfile.write("set dash_length, 0.2500\n")
             bondfile.write("set dash_gap, 0.4\n")
             bondfile.write("set dash_radius, .15\n")
+
+            # Print Statments
+            print("\nFirst Residue:",first_line[17:20])
+            print("Last Residue:", last_line[17:20])
+            # pylint: disable=consider-using-f-string
+            #pylint: disable=line-too-long
+            print("Distance between Cα atoms of first and last residue: {:.2f} Å".format((calcdistance(extractxyz(first_line), extractxyz(last_line)))))
             return None
         except TypeError:
             print("Enter a valid PDB File")
