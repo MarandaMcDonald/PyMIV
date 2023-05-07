@@ -1169,7 +1169,6 @@ def make_dialog():
     
     # To create a new UI window
     dialog = QtWidgets.QDialog()
-    file_dialog = QtWidgets.QFileDialog()
 
     # To populate the Window from our .ui file
     uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
@@ -1177,10 +1176,12 @@ def make_dialog():
    
     # To create buttons in the GUI
 
-    # callback for the "Browse" button
     def browse_filename():
+        '''
+        Broswe files
+        '''
         filename = getOpenFileNames(
-            dialog, 'Open...', filter='PDB File (*.pdb)')
+            dialog, 'Open...')
         if filename:
             form.lineEdit.setText(filename)
             
@@ -1269,13 +1270,15 @@ def make_dialog():
             cmd.run("end_to_end.pml")
 
     # To connect clicking buttons to a value, text or command
+    form.browse.clicked.connect(browse_filename)
+    form.done.clicked.connect(dialog.close)
     form.disulfideFinder.clicked.connect(disulfide_finder_button)
     form.calculateMW.clicked.connect(calc_mw_button)
     form.wcAndNonWC.clicked.connect(wc_nwc_button)
     form.hydrogenBond.clicked.connect(alpha_helix_button)
     form.endToEndDistance.clicked.connect(end_to_end_button)
     form.saveImage.clicked.connect(save_image_button)
-    form.browse.clicked.connect(browse_filename)
-    form.done.clicked.connect(dialog.close)
+    
+    
 
     return dialog
