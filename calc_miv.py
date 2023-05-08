@@ -4,8 +4,6 @@ import math
 #####################  Core Functions  #####################
 ############################################################
 
-
-
 def pdb_read(pdbfile):
     '''
         This function will read into a PDB file format using the readlines command
@@ -431,7 +429,7 @@ def calc_disulfide(filename=str):
     # Initialize reading into PDB file and converting into a list of lines as strings
 
     # To write a pml file
-    bondfile=open("PML_Files/disulfide_bonds.pml", "w",  encoding="utf8")
+    bondfile=open("disulfide_bonds.pml", "w",  encoding="utf8")
     # pylint: disable=consider-using-f-string
     bondfile.write("load {:}\n".format((filename)))
     bondfile.write("remove resn hoh\n")
