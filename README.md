@@ -48,6 +48,18 @@ structures in PDB format at RCSB Protein Data Bank (https://www.rcsb.org/)
 
 * The sixth tab `Calculate MW` calculates the molecular weight of the given molecule. This works for peptides
 
+## Files
+
+* `PDB_Files` contains test PDB format files 
+
+* `PML_Files` contains test PML format files to be run by PyMOL
+
+* `PyMIV_GUI` python code for PyQt graphical user interface
+
+* `__init__.py` python code to initialize PyMIV plugin into PyMOL
+
+* `calc_miv.py` python code to calculate PDB data
+
 
 ## Author Notice
 
