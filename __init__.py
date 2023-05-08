@@ -5,11 +5,14 @@ from __future__ import print_function
 # To provide an entry point to PyMOL's API
 import os
 import math
-from .calc_interaction import *
+#must do .module import
+from .calc_miv import *
+# pylint: disable=wrong-import-order
 from pymol import cmd
 from pymol.Qt import QtWidgets
 from pymol.Qt.utils import loadUi
 from pymol.Qt.utils import *
+from pymol.plugins import addmenuitemqt
 import pymol._gui
 Qt = QtCore.Qt
 QFileDialog = QtWidgets.QFileDialog
@@ -20,18 +23,18 @@ getOpenFileNames = QFileDialog.getOpenFileNames
 ############################################################
 
 
-def __init_plugin__(app=None):
+def __init_plugin__():
     '''
     Add an entry to the PyMOL "Plugin" menu
     '''
-    from pymol.plugins import addmenuitemqt
     addmenuitemqt('PyMIV', run_plugin_gui)
 
 # To create global reference of the dialog variables
+# pylint: disable=invalid-name
 dialog = None
 
 # to give filename of the UI file
-uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
+uifile = os.path.join(os.path.dirname(__file__), 'PyMIV_GUI.ui')
 
 # To load the UI dialog
 form = loadUi(uifile, dialog)
@@ -41,10 +44,11 @@ def run_plugin_gui():
     '''
     Open the custom dialog
     '''
+    # pylint: disable=global-statement
     global dialog
 
     if dialog is None:
-       dialog = make_dialog()
+        dialog = make_dialog()
 
     dialog.show()
 
@@ -54,6 +58,7 @@ def make_dialog():
     '''
 
     # To create a new UI window
+    # pylint: disable= redefined-outer-name
     dialog = QtWidgets.QDialog()
 
     # To populate the Window from our .ui file
@@ -84,7 +89,7 @@ def make_dialog():
         else:
             print('User Entered Filename:', pdb_file)
             calc_disulfide(pdb_file)
-            cmd.run("disulfide_bonds.pml")
+            cmd.run("PML_Files/disulfide_bonds.pml")
             print('Yellow = Cysteine Sulfur Atoms')
 
     def wc_nwc_button():
@@ -99,7 +104,7 @@ def make_dialog():
         else:
             print('User Entered Filename:', pdb_file)
             calc_wc_nwc(pdb_file)
-            cmd.run("get_bonds.pml")
+            cmd.run("PML_Files/get_bonds.pml")
             print('Yellow = WC\nRed=Non-WC')
 
     def alpha_helix_button():
@@ -113,7 +118,7 @@ def make_dialog():
         else:
             print('User Entered Filename:', pdb_file)
             alpha_helice(pdb_file)
-            cmd.run("helix_bonds.pml")
+            cmd.run("PML_Files/helix_bonds.pml")
 
     def calc_mw_button():
         '''
@@ -141,7 +146,7 @@ def make_dialog():
         else:
             print('User Entered Filename:', pdb_file)
             end_to_end_dist(pdb_file)
-            cmd.run("end_to_end.pml")
+            cmd.run("PML_Files/end_to_end.pml")
 
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
