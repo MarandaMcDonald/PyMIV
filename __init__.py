@@ -11,8 +11,6 @@ from pymol.Qt.utils import loadUi
 from pymol.Qt.utils import *
 import pymol
 import pymol._gui
-from pymol import colorprinting, save_shortcut
-from pymol.Qt import QtGui, QtCore
 from pymol.Qt.utils import (getSaveFileNameWithExt, UpdateLock, WidgetMenu,
         MainThreadCaller,
         PopupOnException,
@@ -1424,6 +1422,7 @@ def make_dialog():
         uifile = os.path.join(os.path.dirname(__file__), 'render.ui')
         form = loadUi(uifile, dialog)
         def make_dialog_render():
+            from pymol.Qt import QtWidgets
 
             # create a new Window
             dialog = QtWidgets.Qdialog()
