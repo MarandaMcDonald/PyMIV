@@ -16,41 +16,31 @@ OR
 
 ### Adding PyMIV to PyMOL
 
-In PyMOL window, go to `Plugin` -> `Plugin manager` -> `Install new plugin`, choose `PyMIV` zipped file and click `OK` on the next step. You will then see a pop-up message `Plugin "PyMIV" has been installed`.
+In PyMOL window, go to `Plugin` -> `Plugin manager` -> `Install new plugin`, choose `PyMIV.zip` and click `OK` on the next step. You will then see a pop-up message `Plugin "PyMIV" has been installed`.
 
 
 ### Using PyMIV
 
-
 #### Open PyMOL
-
-
-#### Load Object
-Load the object to be analyzed in PyMOL, e.g. `1fdl.pdb` provided in `PDB_Files/` folder, by typing `load PDB_Files/1fdl.pdb` in pymol command line or dragging the file into PyMOL window.
-
-Be sure to use PyMOL Command Terminal to cd into the directory containing the PDB files of interest
-
 
 #### Run PyMIV
 Run PyMIV through `Plugin` -> `PyMIV`
 
-
-#### Analysis in PyMIV
-- Change the `PyMOL selection/ object` entry to the name of your target object, e.g. `1fdl.pdb`
-
-
-
 ### PyMIV Tabs
 
-Pyshifts has four tabs and one `Exit` button. 
+PyMIV has six tabs and one `Done` button. 
 
-* The first tab `Disulfide Finder` includes the command for finding disulfide bodns in a polypeptide structure 
+* The first tab `Browse` is to select a valid PDB format file anywhere on the user's computer
 
-* The second tab `WC/Non-Wc` performs measurements to find nucleotide interactions in nucleic acids that abide watson-cick(e.g. A-T and G-C) interactions and non-watson-crick interactions(e.g.g G-G and U-C), displays the results in the PyMOL Viewer
+* The second tab `Disulfide Finder` includes the command for finding disulfide bodns in a polypeptide structure. This works for peptides
 
-* The third tab `Calculate MW` calculates the molecular weight of the given molecule
+* The third tab `End to End Distance` will calculate the end to end distance of peptide and load the structure into the viewer. A measurement distance between the C-alpha carbon of the first and last amino acid will be displayed. This works for peptides
 
-* The fourth tab `Hydrogen Bond` can display hydrogen bonding in protein structure
+* The fourth tab `WC vs Non-WC` performs measurements to find nucleotide interactions in nucleic acids that abide watson-cick(e.g. A-T and G-C) interactions and non-watson-crick interactions(e.g.g G-G and U-C), displays the results in the PyMOL Viewer. This works for both DNA and RNA
+
+* The fifth tab `Alpha Helix` will generate a FASTA sequence of a peptide and display with an `H` under amino acid resiues that are in a alpha helix secondary structure. The PDB structure will be loaded into the viewer and the alpha helices will be displayed in pink
+
+* The sixth tab `Calculate MW` calculates the molecular weight of the given molecule. This works for peptides
 
 
 ## Author Notice
