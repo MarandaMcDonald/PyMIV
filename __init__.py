@@ -1473,10 +1473,9 @@ def make_dialog():
             form.button_close.clicked.connect(dialog.close)
 
             return dialog
-
+        dialog = None
         if dialog is None:
             dialog = make_dialog()
-
         dialog.show()
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
