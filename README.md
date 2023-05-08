@@ -2,7 +2,7 @@
 # PyMIV
 PyMIV: A Pymol Plugin as a Molecular Interactions Viewer (MIV) of disulfide bonds, WC/Non-WC bonds, protein secondary structure etc.
 
-## Prerequisite
+## Prerequisites
 * [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/)
 OR
 * [homebrew] (https://brew.sh/)
@@ -14,6 +14,8 @@ OR
 * [wxPython] (https://formulae.brew.sh/formula/wxpython)
 
 
+
+
 ### Adding PyMIV to PyMOL
 
 In PyMOL window, go to `Plugin` -> `Plugin manager` -> `Install new plugin`, choose `PyMIV.zip` and click `OK` on the next step. You will then see a pop-up message `Plugin "PyMIV" has been installed`.
@@ -21,16 +23,20 @@ In PyMOL window, go to `Plugin` -> `Plugin manager` -> `Install new plugin`, cho
 
 ### Using PyMIV
 
+
 #### Open PyMOL
+
 
 #### Run PyMIV
 Run PyMIV through `Plugin` -> `PyMIV`
+
 
 ### PyMIV Tabs
 
 PyMIV has six tabs and one `Done` button. 
 
-* The first tab `Browse` is to select a valid PDB format file anywhere on the user's computer
+* The first tab `Browse` is to select a valid PDB format file anywhere on the user's computer. Access peptide and nucleic acid 
+structures in PDB format at RCSB Protein Data Bank (https://www.rcsb.org/)
 
 * The second tab `Disulfide Finder` includes the command for finding disulfide bodns in a polypeptide structure. This works for peptides
 
