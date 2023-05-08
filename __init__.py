@@ -1419,7 +1419,6 @@ def make_dialog():
         '''
         Run the actions in the end to end distance button
         '''
-        dialog_render.show()
 
         def make_dialog_render():
             # entry point to PyMOL's API
@@ -1477,7 +1476,11 @@ def make_dialog():
             form.button_close.clicked.connect(dialog_render.close)
 
             return dialog_render
-        make_dialog_render()
+        global dialog_render
+
+        if dialog_render is None:
+            dialog_render = make_dialog_render()
+
         dialog_render.show()
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
