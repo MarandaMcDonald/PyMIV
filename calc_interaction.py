@@ -1,8 +1,10 @@
+import math
+
 ############################################################
 #####################  Core Functions  #####################
 ############################################################
 
-import math
+
 
 def pdb_read(pdbfile):
     '''
@@ -429,7 +431,7 @@ def calc_disulfide(filename=str):
     # Initialize reading into PDB file and converting into a list of lines as strings
 
     # To write a pml file
-    bondfile=open("disulfide_bonds.pml", "w",  encoding="utf8")
+    bondfile=open("PML_Files/disulfide_bonds.pml", "w",  encoding="utf8")
     # pylint: disable=consider-using-f-string
     bondfile.write("load {:}\n".format((filename)))
     bondfile.write("remove resn hoh\n")
@@ -538,7 +540,7 @@ def calc_wc_nwc(filename=str):
         Appended list an fasta sequecne of given peptide in PDB file
     '''
     # To write a pml file
-    bondfile=open("get_bonds.pml", "w", encoding="utf8")
+    bondfile=open("PML_Files/get_bonds.pml", "w", encoding="utf8")
     # pylint: disable=consider-using-f-string
     bondfile.write("load {:}\n".format((filename)))
     bondfile.write("remove resn hoh\n")
@@ -901,7 +903,7 @@ def alpha_helice(filename=str):
             PyMOL Viewer Structure with alpha helices highlighted and bonds drawn
         '''
     # To write a pml file
-    bondfile=open("helix_bonds.pml", "w", encoding="utf8")
+    bondfile=open("PML_Files/helix_bonds.pml", "w", encoding="utf8")
     # pylint: disable=consider-using-f-string
     bondfile.write("load {:}\n".format((filename)))
     bondfile.write("remove resn hoh\n")
@@ -1077,7 +1079,7 @@ def end_to_end_dist(filename=str):
         '''
 
     # To write a pml file
-    bondfile=open("end_to_end.pml", "w", encoding="utf8")
+    bondfile=open("PML_Files/end_to_end.pml", "w", encoding="utf8")
     # pylint: disable=consider-using-f-string
     bondfile.write("load {:}\n".format((filename)))
     bondfile.write("remove resn hoh\n")
