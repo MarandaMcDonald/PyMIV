@@ -1419,7 +1419,6 @@ def make_dialog():
         '''
         Run the actions in the end to end distance button
         '''
-        make_dialog_render()
         dialog_render.show()
 
         def make_dialog_render():
