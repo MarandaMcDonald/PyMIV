@@ -1425,7 +1425,7 @@ def make_dialog():
 
             # pymol.Qt provides the PyQt5 interface, but may support PyQt4
             # and/or PySide as well
-            from pymol.Qt import QtWidgets, QFileDialog
+            from pymol.Qt import QtWidgets
 
             # create a new Window
             dialog = QtWidgets.Qdialog()
