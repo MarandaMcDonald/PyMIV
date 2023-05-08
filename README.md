@@ -26,6 +26,8 @@ In PyMOL window, go to `Plugin` -> `Plugin manager` -> `Install new plugin`, cho
 
 #### Open PyMOL
 
+Launch PyMOL (https://pymolwiki.org/index.php/Launching_PyMOL)
+
 Run PyMIV through `Plugin` -> `PyMIV`
 
 
