@@ -1299,6 +1299,7 @@ def __init_plugin__(app=None):
 
 # To create global reference of the dialog variables
 dialog = None
+dialog_render = None
 
 # to give filename of the UI file
 uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
@@ -1418,29 +1419,8 @@ def make_dialog():
         '''
         Run the actions in the end to end distance button
         '''
-        def __init_plugin__(app=None):
-            '''
-            Add an entry to the PyMOL "Plugin" menu
-            '''
-            from pymol.plugins import addmenuitemqt
-            addmenuitemqt('Render Image', run_plugin_gui)
-
-
-        # global reference to avoid garbage collection of our dialog_render
-        dialog_render = None
-
-
-        def run_plugin_gui():
-            '''
-            Open our custom dialog_render
-            '''
-            global dialog_render
-
-            if dialog_render is None:
-                dialog_render = make_dialog_render()
-
-            dialog_render.show()
-
+        make_dialog_render()
+        dialog_render.show()
 
         def make_dialog_render():
             # entry point to PyMOL's API
@@ -1498,7 +1478,8 @@ def make_dialog():
             form.button_close.clicked.connect(dialog_render.close)
 
             return dialog_render
-
+        make_dialog_render()
+        dialog_render.show()
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
     form.done.clicked.connect(dialog.close)
