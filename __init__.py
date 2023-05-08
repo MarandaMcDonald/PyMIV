@@ -1480,7 +1480,7 @@ def make_dialog():
     form.wcAndNonWC.clicked.connect(wc_nwc_button)
     form.hydrogenBond.clicked.connect(alpha_helix_button)
     form.endToEndDistance.clicked.connect(end_to_end_button)
-    form.saveImage.clicked.connect(save_image_button, run_plugin_gui)
+    form.saveImage.clicked.connect(save_image_button)
 
 
 
