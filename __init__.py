@@ -1418,6 +1418,17 @@ def make_dialog():
         '''
         Run the actions in the end to end distance button
         '''
+        def run_render_gui():
+            '''
+            Open our custom dialog
+            '''
+            global dialog
+
+            if dialog is None:
+                dialog = make_dialog()
+
+            dialog.show()
+
 
         def make_dialog():
             # entry point to PyMOL's API
@@ -1426,12 +1437,14 @@ def make_dialog():
             # pymol.Qt provides the PyQt5 interface, but may support PyQt4
             # and/or PySide as well
             from pymol.Qt import QtWidgets
+            from pymol.Qt.utils import loadUi
+            from pymol.Qt.utils import getSaveFileNameWithExt
 
             # create a new Window
             dialog = QtWidgets.Qdialog()
 
             # populate the Window from our *.ui file which was created with the Qt Designer
-            uifile = os.path.join(os.path.dirname(__file__), 'render.ui')
+            uifile = os.path.join(os.path.dirname(__file__), 'demowidget.ui')
             form = loadUi(uifile, dialog)
 
             # callback for the "Ray" button
@@ -1473,10 +1486,8 @@ def make_dialog():
             form.button_close.clicked.connect(dialog.close)
 
             return dialog
-        dialog = None
-        if dialog is None:
-            dialog = make_dialog()
-        dialog.show()
+
+
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
     form.done.clicked.connect(dialog.close)
@@ -1485,7 +1496,7 @@ def make_dialog():
     form.wcAndNonWC.clicked.connect(wc_nwc_button)
     form.hydrogenBond.clicked.connect(alpha_helix_button)
     form.endToEndDistance.clicked.connect(end_to_end_button)
-    form.saveImage.clicked.connect(save_image_button)
+    form.saveImage.clicked.connect(save_image_button, run_plugin_gui)
 
 
 
