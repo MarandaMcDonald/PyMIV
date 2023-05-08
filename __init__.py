@@ -1299,7 +1299,6 @@ def __init_plugin__(app=None):
 
 # To create global reference of the dialog variables
 dialog = None
-dialog = None
 
 # to give filename of the UI file
 uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
@@ -1418,14 +1417,19 @@ def make_dialog():
         '''
         Run the actions in the end to end distance button
         '''
+        # To create a new UI window
+        dialog = QtWidgets.QDialog()
 
-        def make_dialog():
+        # To populate the Window from our .ui file
+        uifile = os.path.join(os.path.dirname(__file__), 'render.ui')
+        form = loadUi(uifile, dialog)
+        def make_dialog_render():
 
             # create a new Window
             dialog = QtWidgets.Qdialog()
 
             # populate the Window from our *.ui file which was created with the Qt Designer
-            uifile = os.path.join(os.path.dirname(__file__), 'demowidget.ui')
+            uifile = os.path.join(os.path.dirname(__file__), 'render.ui')
             form = loadUi(uifile, dialog)
 
             # callback for the "Ray" button
@@ -1469,7 +1473,7 @@ def make_dialog():
             return dialog
         dialog = None
         if dialog is None:
-            dialog = make_dialog()
+            dialog = make_dialog_render()
 
         dialog.show()
 
