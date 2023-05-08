@@ -104,7 +104,7 @@ def make_dialog():
         else:
             print('User Entered Filename:', pdb_file)
             calc_wc_nwc(pdb_file)
-            cmd.run("PML_Files/get_bonds.pml")
+            cmd.run("get_bonds.pml")
             print('Yellow = WC\nRed=Non-WC')
 
     def alpha_helix_button():
@@ -118,7 +118,7 @@ def make_dialog():
         else:
             print('User Entered Filename:', pdb_file)
             alpha_helice(pdb_file)
-            cmd.run("PML_Files/helix_bonds.pml")
+            cmd.run("helix_bonds.pml")
 
     def calc_mw_button():
         '''
@@ -146,7 +146,7 @@ def make_dialog():
         else:
             print('User Entered Filename:', pdb_file)
             end_to_end_dist(pdb_file)
-            cmd.run("PML_Files/end_to_end.pml")
+            cmd.run("end_to_end.pml")
 
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
