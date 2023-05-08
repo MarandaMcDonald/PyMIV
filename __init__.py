@@ -22,8 +22,8 @@ getOpenFileNames = QFileDialog.getOpenFileNames
 ###################  Initialize Plugin #####################
 ############################################################
 
-
-def __init_plugin__():
+# pylint: disable=unused-argument
+def __init_plugin__(app=None):
     '''
     Add an entry to the PyMOL "Plugin" menu
     '''
