@@ -5,7 +5,7 @@ from __future__ import print_function
 # To provide an entry point to PyMOL's API
 import os
 import math
-from calc_interaction import *
+from .calc_interaction import *
 from pymol import cmd
 from pymol.Qt import QtWidgets
 from pymol.Qt.utils import loadUi
