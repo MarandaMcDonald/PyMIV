@@ -21,13 +21,11 @@ OR
 In PyMOL window, go to `Plugin` -> `Plugin manager` -> `Install new plugin`, choose `PyMIV.zip` and click `OK` on the next step. You will then see a pop-up message `Plugin "PyMIV" has been installed`.
 
 
-### Using PyMIV
+## Using PyMIV
 
 
 #### Open PyMOL
 
-
-#### Run PyMIV
 Run PyMIV through `Plugin` -> `PyMIV`
 
 
