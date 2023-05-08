@@ -62,7 +62,7 @@ def make_dialog():
     dialog = QtWidgets.QDialog()
 
     # To populate the Window from our .ui file
-    uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
+    uifile = os.path.join(os.path.dirname(__file__), 'PyMIV_GUI.ui')
     form = loadUi(uifile, dialog)
 
     # To create buttons in the GUI
