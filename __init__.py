@@ -1467,6 +1467,7 @@ def make_dialog():
             form.button_close.clicked.connect(dialog.close)
 
             return dialog
+        dialog = None
         if dialog is None:
             dialog = make_dialog()
 
