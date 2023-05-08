@@ -89,7 +89,7 @@ def make_dialog():
         else:
             print('User Entered Filename:', pdb_file)
             calc_disulfide(pdb_file)
-            cmd.run("PML_Files/disulfide_bonds.pml")
+            cmd.run("disulfide_bonds.pml")
             print('Yellow = Cysteine Sulfur Atoms')
 
     def wc_nwc_button():
