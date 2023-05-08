@@ -25,7 +25,16 @@ getOpenFileNames = QFileDialog.getOpenFileNames
 # pylint: disable=unused-argument
 def __init_plugin__(app=None):
     '''
-    Add an entry to the PyMOL "Plugin" menu
+    This function will add an entry into the PyMOL architecture
+
+    **Parameters**
+
+    app: *filet*
+        The application to be loaded for plugin initialization
+        
+    **Returns**
+
+        Menu item `PyMIV` under the `Plugins` menu item bar
     '''
     addmenuitemqt('PyMIV', run_plugin_gui)
 
@@ -42,7 +51,15 @@ form = loadUi(uifile, dialog)
 
 def run_plugin_gui():
     '''
-    Open the custom dialog
+    This function will open the custom dialog window
+
+    **Parameters**
+
+    None
+        
+    **Returns**
+
+        Dialog window `PyMIV`
     '''
     # pylint: disable=global-statement
     global dialog
@@ -54,7 +71,15 @@ def run_plugin_gui():
 
 def make_dialog():
     '''
-    Make the dialog window
+    This function will make the dialog window if there is no window open
+
+    **Parameters**
+
+    None
+        
+    **Returns**
+
+        Dialog window tasks `PyMIV`
     '''
 
     # To create a new UI window
@@ -69,7 +94,15 @@ def make_dialog():
 
     def browse_filename():
         '''
-        Broswe files
+        This function will allow selection of a valid PDB file when `Broswe` is clicked
+
+        **Parameters**
+
+        None
+            
+        **Returns**
+
+            None
         '''
         filename = getOpenFileNames(
             dialog)
@@ -79,7 +112,16 @@ def make_dialog():
 
     def disulfide_finder_button():
         '''
-        Run the actions in the Disulfide Finder button
+        This function will run the disulfide_finder function and 
+        load `disulfide_bonds.pml when `Disulfide Finder` is clicked
+
+        **Parameters**
+
+        None
+            
+        **Returns**
+
+            None
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
@@ -94,9 +136,17 @@ def make_dialog():
 
     def wc_nwc_button():
         '''
-        Run the actions in the WC vs Non-WC button
+        This function will run the calc_wc_nwc function and 
+        load `get_bonds.pml when `WC vs Non-WC` is clicked
+
+        **Parameters**
+
+        None
+            
+        **Returns**
+
+            None
         '''
-        # retreive PDB file data
         pdb_file = form.lineEdit.text()
         # Error Code
         if pdb_file == "":
@@ -109,7 +159,16 @@ def make_dialog():
 
     def alpha_helix_button():
         '''
-        Run the actions in the Alpha Helix Button
+        This function will run alpha_helice function and 
+        load `helix_bonds.pml when `Alpha Helix` is clicked
+
+        **Parameters**
+
+        None
+            
+        **Returns**
+
+            None
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
@@ -122,7 +181,16 @@ def make_dialog():
 
     def calc_mw_button():
         '''
-        Run the actions in the calculate peptide mw button
+        This function will run calc_peptide_mw function and 
+        when `Alpha Helix` is clicked
+
+        **Parameters**
+
+        None
+            
+        **Returns**
+
+            None
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
@@ -136,7 +204,16 @@ def make_dialog():
 
     def end_to_end_button():
         '''
-        Run the actions in the end to end distance button
+        This function will run end_to_end_dist function and 
+        load `end_to_end.pml when `End to End Distance` is clicked
+
+        **Parameters**
+
+        None
+            
+        **Returns**
+
+            None
         '''
         # retreive PDB file data
         pdb_file = form.lineEdit.text()
@@ -148,6 +225,28 @@ def make_dialog():
             end_to_end_dist(pdb_file)
             cmd.run("end_to_end.pml")
 
+    def output_fasta_button():
+        '''
+        This function will run end_to_end_dist function and 
+        load `end_to_end.pml when `End to End Distance` is clicked
+
+        **Parameters**
+
+        None
+            
+        **Returns**
+
+            None
+        '''
+        # retreive PDB file data
+        pdb_file = form.lineEdit.text()
+        # Error Code
+        if pdb_file == "":
+            print("Please input a valid .pdb file name")
+        else:
+            print('User Entered Filename:', pdb_file)
+            output_fasta(pdb_file)
+
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
     form.done.clicked.connect(dialog.close)
@@ -156,5 +255,6 @@ def make_dialog():
     form.wcAndNonWC.clicked.connect(wc_nwc_button)
     form.hydrogenBond.clicked.connect(alpha_helix_button)
     form.endToEndDistance.clicked.connect(end_to_end_button)
+    form.fasta.clicked.connect(output_fasta_button)
 
     return dialog

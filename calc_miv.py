@@ -6,15 +6,15 @@ import math
 
 def pdb_read(pdbfile):
     '''
-        This function will read into a PDB file format using the readlines command
+    This function will read into a PDB file format using the readlines command
 
-        **Parameters**
+    **Parameters**
 
-        PDBlist: *list*
-            A list of strings in PDB file format
-        **Returns**
+    PDBlist: *list*
+        A list of strings in PDB file format
+    **Returns**
 
-            Sorted list by acsending resiue number position
+        Sorted list by acsending resiue number position
         '''
     pdbfile=input("Enter a PDB file\n")
     rawfile=open(pdbfile,"r",  encoding="utf8")
@@ -36,36 +36,6 @@ def remove(string=str):
         String containing no space characters
     '''
     return string.replace(" ", "")
-
-def only_pdb_first(string=str):
-    '''
-    This function will remove 'PDB_Files' from the 'filename' variable
-
-    **Parameters**
-
-    string: *str*
-        The given string to have removed characters
-
-    **Returns**
-
-        String containing no 'PDB_Files'
-    '''
-    return string.replace("PDB_Files/", "")
-
-def only_pdb_last(string=str):
-    '''
-    This function will remove '.pdb' from the 'filename' variable
-
-    **Parameters**
-
-    string: *str*
-        The given string to have removed characters
-
-    **Returns**
-
-        String containing no '.pdb'
-    '''
-    return string.replace(".pdb", "")
 
 def extractxyz(pdbline=str):
     '''
@@ -316,22 +286,6 @@ def extract_pdb_path(string=str):
         String containing PDB file name
     '''
     return string[-8:-4]
-
-def extract_pdb_init(string=str):
-    '''
-    This function will extract the pdb name (e.g. ifdl.pdb)
-    from a __init__.py to read
-
-    **Parameters**
-
-    string: *str*
-        The given string to have removed spaces
-
-    **Returns**
-
-        String containing PDB file name
-    '''
-    return string[-4:]
 
 ############################################################
 ###################  Output Peptide FASTA  #################
