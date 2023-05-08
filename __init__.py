@@ -1299,7 +1299,7 @@ def __init_plugin__(app=None):
 
 # To create global reference of the dialog variables
 dialog = None
-dialog_render = None
+dialog = None
 
 # to give filename of the UI file
 uifile = os.path.join(os.path.dirname(__file__), 'pymolGUI.ui')
@@ -1318,7 +1318,6 @@ def run_plugin_gui():
        dialog = make_dialog()
 
     dialog.show()
-
 
 def make_dialog():
     '''
@@ -1420,22 +1419,20 @@ def make_dialog():
         Run the actions in the end to end distance button
         '''
 
-        def make_dialog_render():
+        def make_dialog():
             # entry point to PyMOL's API
             from pymol import cmd
 
             # pymol.Qt provides the PyQt5 interface, but may support PyQt4
             # and/or PySide as well
-            from pymol.Qt import QtWidgets
-            from pymol.Qt.utils import loadUi
-            from pymol.Qt.utils import getSaveFileNameWithExt
+            from pymol.Qt import QtWidgets, QFileDialog
 
             # create a new Window
-            dialog_render = QtWidgets.Qdialog()
+            dialog = QtWidgets.Qdialog()
 
             # populate the Window from our *.ui file which was created with the Qt Designer
             uifile = os.path.join(os.path.dirname(__file__), 'render.ui')
-            form = loadUi(uifile, dialog_render)
+            form = loadUi(uifile, dialog)
 
             # callback for the "Ray" button
             def run():
@@ -1466,22 +1463,21 @@ def make_dialog():
             # callback for the "Browse" button
             def browse_filename():
                 filename = getSaveFileNameWithExt(
-                    dialog_render, 'Save As...', filter='PNG File (*.png)')
+                    dialog, 'Save As...', filter='PNG File (*.png)')
                 if filename:
                     form.input_filename.setText(filename)
 
             # hook up button callbacks
             form.button_ray.clicked.connect(run)
             form.button_browse.clicked.connect(browse_filename)
-            form.button_close.clicked.connect(dialog_render.close)
+            form.button_close.clicked.connect(dialog.close)
 
-            return dialog_render
-        global dialog_render
+            return dialog
 
-        if dialog_render is None:
-            dialog_render = make_dialog_render()
+        if dialog is None:
+            dialog = make_dialog()
 
-        dialog_render.show()
+        dialog.show()
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
     form.done.clicked.connect(dialog.close)
