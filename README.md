@@ -47,4 +47,6 @@ PyMIV has six tabs and one `Done` button.
 
 * Created by Maranda McDonald and published on May 7 2023
 
+* Insipitation taken from `speleo3 ` `pymol2-demo-plugin` from the PyMOLWiki (https://pymolwiki.org/index.php/Plugins_Tutorial) 
+
 
