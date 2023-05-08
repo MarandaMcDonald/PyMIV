@@ -287,6 +287,25 @@ def extract_pdb_path(string=str):
     '''
     return string[-8:-4]
 
+def strip_ca_atoms(pdb, ca_atoms):
+    '''
+    This function will read a PDB file and return only C-alpha lines
+
+    **Parameters**
+
+    pdb: *list*
+        A list of lines from a PDB file
+    **Returns**
+
+        Same list with only C-alpha lines remaining
+    '''
+    returnedlist=[]
+    for line in pdb:
+        if line[0:4]=="ATOM" and line[13:15]=="CA":
+            ca_atoms.write(line)
+            returnedlist.append(line)
+    return returnedlist
+
 ############################################################
 ###################  Output Peptide FASTA  #################
 ############################################################
@@ -1050,16 +1069,9 @@ def end_to_end_dist(filename=str):
             outputfile= "outputMWFile"
             ca_atoms=open(outputfile,"w", encoding="utf8")
 
-            def strip_ca_atoms(pdb):
-                ### goal of function is to take PDB list and return only CA atoms
-                returnedlist=[]
-                for line in pdb:
-                    if line[0:4]=="ATOM" and line[13:15]=="CA":
-                        ca_atoms.write(line)
-                        returnedlist.append(line)
-                return returnedlist
+
             # pylint: disable= unused-variable
-            ca_only=strip_ca_atoms(pdblist)
+            ca_only=strip_ca_atoms(pdblist, ca_atoms)
 
             ca_atoms.close()
             #extract the first and last atoms from CA atoms file
