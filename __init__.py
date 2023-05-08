@@ -1418,27 +1418,8 @@ def make_dialog():
         '''
         Run the actions in the end to end distance button
         '''
-        def run_render_gui():
-            '''
-            Open our custom dialog
-            '''
-            global dialog
-
-            if dialog is None:
-                dialog = make_dialog()
-
-            dialog.show()
-
 
         def make_dialog():
-            # entry point to PyMOL's API
-            from pymol import cmd
-
-            # pymol.Qt provides the PyQt5 interface, but may support PyQt4
-            # and/or PySide as well
-            from pymol.Qt import QtWidgets
-            from pymol.Qt.utils import loadUi
-            from pymol.Qt.utils import getSaveFileNameWithExt
 
             # create a new Window
             dialog = QtWidgets.Qdialog()
@@ -1486,7 +1467,10 @@ def make_dialog():
             form.button_close.clicked.connect(dialog.close)
 
             return dialog
+        if dialog is None:
+            dialog = make_dialog()
 
+        dialog.show()
 
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
