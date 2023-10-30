@@ -12,13 +12,13 @@ def get_uniprot (query='',query_type='PDB_ID'):
     **Parameters**
 
     query: *string*
-        The input 4-letter PDB file name
+        The input PDB file name. query_type must be: "PDB_ID" or "ACC"
     **Returns**
 
         The Uniprot accession ID that corresponds to the input 4-letter PDB file name
         '''
     #code found at <a href="https://chem-workflows.com/articles/2019/10/29/retrieve-uniprot-data-using-python/">https://chem-workflows.com/articles/2019/10/29/retrieve-uniprot-data-using-python/</a>
-    #query_type must be: "PDB_ID" or "ACC"
+    
     url = 'https://www.uniprot.org/uploadlists/' #This is the webser to retrieve the Uniprot data
     params = {
     'from':query_type,
@@ -69,10 +69,11 @@ def download_af_pdb(alphafold_id):
 
     alphafold_id: *list*
         The string of the AlphaFold ID
+
     **Returns**
 
         Download of AlphaFold PDB file
-        '''
+    '''
     #print("Please enter an AlphaFold ID")
     #alphafold_id = input()
     database_version = 'v4'
@@ -82,20 +83,29 @@ def download_af_pdb(alphafold_id):
     os.system(f'curl {model_url} -o {alphafold_id}.pdb')
     os.system(f'curl {error_url} -o {alphafold_id}.json')
 
-def proteomic_site():
+def map_site(site_file, filename=str):
     '''
-    This function will read into an csv file and convert the columns of protein.Start and protein.End of a site into lists
+    This function will read into an csv file and convert the columns of protein. 
+    Protein ID, residue start and end site number are extracted from site_file
+    This function will map proteomic PSM sites in a PDB file and display in PyMOL 
+
 
     **Parameters**
 
-    alphafold_id: *list*
-        The string of the AlphaFold ID
+    site_file: *string*
+        The string of the filename for the csv file containing the proteomic site PSMs
+
+    filename: *string*
+        The string of the filename for pdb file to load into PyMOL
+
     **Returns**
 
-        Download of AlphaFold PDB file
+        Text of residues with site of PSM
+        PyMOL Viewer Structure with site PSM highlighted
     '''
     # reading CSV file
-    data = read_csv("231017_PAR15map_nuclear_PSMs.csv")
+    site_file = "231017_PAR15map_nuclear_PSMs.csv"
+    data = read_csv(site_file)
 
     # converting column data to list
     site_start = data['Protein.Start'].tolist()
@@ -105,24 +115,11 @@ def proteomic_site():
     # create a matrix of the lists
     matrix = [protein_id, site_start, site_end]
 
-    # acess the 0 position of each of the three lists
+    # access the 0 position of each of the three lists
     print("Protein ID:", matrix[0][0])
     print("Site Start:",matrix[1][0])
     print("Site End:",matrix[2][0])
 
-def map_site(filename=str):
-    '''
-        This function will map proteomic PSM sites in a PDB file and display in PyMOL 
-
-        **Parameters**
-
-        filename: *string*
-            A string with the PDB file name (e.g. 1fdl.pdb)
-        **Returns**
-
-            Text of residues with site of PSM
-            PyMOL Viewer Structure with site PSM highlighted
-        '''
     # Initialize reading into PDB file and converting into a list of lines as strings
 
     # To write a pml file
@@ -136,10 +133,14 @@ def map_site(filename=str):
     rawfile=open(filename,"r",  encoding="utf8")
     pdblist=rawfile.readlines()
     rawfile.close()
-    cys_list_unsorted=[]
+
+    bondfile.write("color pink, resi {}-{}\n".format((matrix[1][0]), (matrix[2][0])))
 
 
-#To test the get_uniprot fucntion by inputting PDB file of Solution structure of 
+### TESTING ####
+
+
+#To test the get_uniprot fucntion by inputting PDB file of Solution structure of
 #RRM domain in Heterogeneous nuclear ribonucleaoproteins A2/B1
 
 #pdb_code = '1X4B'
@@ -147,9 +148,9 @@ def map_site(filename=str):
 #accession_number = query_output[1].strip().split(' ')[-1].strip(';')
 
 
-#To test the download_af_pdb function by inputting an AlphaFold ID of 
+#To test the download_af_pdb function by inputting an AlphaFold ID of
 #Heterogeneous nuclear ribonucleoproteins A2/B1
 
 #download_af_pdb('AF-P22626-F1')
 
-proteomic_site()
+map_site("231017_PAR15map_nuclear_PSMs.csv" , "AF-P22626-F1.pdb")

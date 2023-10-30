@@ -247,6 +247,29 @@ def make_dialog():
             print('User Entered Filename:', pdb_file)
             output_fasta(pdb_file)
 
+    def map_site_button():
+        '''
+        This function will run map_site function and 
+        load `mapped_site.pml when `PARmap` is clicked
+
+        **Parameters**
+
+        None
+            
+        **Returns**
+
+            None
+        '''
+        # retreive PDB file data
+        pdb_file = form.lineEdit.text()
+        # Error Code
+        if pdb_file == "":
+            print("Please input a valid .pdb file name")
+        else:
+            print('User Entered Filename:', pdb_file)
+            end_to_end_dist(pdb_file)
+            cmd.run("mapped_site.pml")
+
     # To connect clicking buttons to a value, text or command
     form.browse.clicked.connect(browse_filename)
     form.done.clicked.connect(dialog.close)
@@ -256,5 +279,6 @@ def make_dialog():
     form.hydrogenBond.clicked.connect(alpha_helix_button)
     form.endToEndDistance.clicked.connect(end_to_end_button)
     form.fasta.clicked.connect(output_fasta_button)
+    form.PARmap.clicked.connect(map_site_button)
 
     return dialog
