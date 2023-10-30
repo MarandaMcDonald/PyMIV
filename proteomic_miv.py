@@ -3,6 +3,7 @@ import urllib
 import urllib.parse
 import urllib.request
 from bs4 import BeautifulSoup
+from pandas import *
 
 def get_uniprot (query='',query_type='PDB_ID'):
     '''
@@ -81,11 +82,47 @@ def download_af_pdb(alphafold_id):
     os.system(f'curl {model_url} -o {alphafold_id}.pdb')
     os.system(f'curl {error_url} -o {alphafold_id}.json')
 
-#To test the get_uniprot fucntion
-'''
-pdb_code = '4FXF'
-query_output=get_uniprot(query=pdb_code,query_type='PDB_ID')
-accession_number = query_output[1].strip().split(' ')[-1].strip(';')
-'''
+def proteomic_site():
+    '''
+    This function will read into an csv file and convert the columns of protein.Start and protein.End of a site into lists
 
-download_af_pdb('AF-P22626-F1')
+    **Parameters**
+
+    alphafold_id: *list*
+        The string of the AlphaFold ID
+    **Returns**
+
+        Download of AlphaFold PDB file
+    '''
+    # reading CSV file
+    data = read_csv("231017_PAR15map_nuclear_PSMs.csv")
+
+    # converting column data to list
+    site_start = data['Protein.Start'].tolist()
+    site_end = data['Protein.End'].tolist()
+    protein_id = data['Protein.ID'].tolist()
+
+    # create a matrix of the lists
+    matrix = [protein_id, site_start, site_end]
+
+    # acess the 0 position of each of the three lists
+    print("Protein ID:", matrix[0][0])
+    print("Site Start:",matrix[1][0])
+    print("Site End:",matrix[2][0])
+
+
+
+#To test the get_uniprot fucntion by inputting PDB file of Solution structure of 
+#RRM domain in Heterogeneous nuclear ribonucleaoproteins A2/B1
+
+#pdb_code = '1X4B'
+#query_output=get_uniprot(query=pdb_code,query_type='PDB_ID')
+#accession_number = query_output[1].strip().split(' ')[-1].strip(';')
+
+
+#To test the download_af_pdb function by inputting an AlphaFold ID of 
+#Heterogeneous nuclear ribonucleoproteins A2/B1
+
+#download_af_pdb('AF-P22626-F1')
+
+proteomic_site()
