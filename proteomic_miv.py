@@ -110,6 +110,33 @@ def proteomic_site():
     print("Site Start:",matrix[1][0])
     print("Site End:",matrix[2][0])
 
+def map_site(filename=str):
+    '''
+        This function will map proteomic PSM sites in a PDB file and display in PyMOL 
+
+        **Parameters**
+
+        filename: *string*
+            A string with the PDB file name (e.g. 1fdl.pdb)
+        **Returns**
+
+            Text of residues with site of PSM
+            PyMOL Viewer Structure with site PSM highlighted
+        '''
+    # Initialize reading into PDB file and converting into a list of lines as strings
+
+    # To write a pml file
+    bondfile=open("mapped_site.pml", "w",  encoding="utf8")
+    # pylint: disable=consider-using-f-string
+    bondfile.write("load {:}\n".format((filename)))
+    bondfile.write("remove resn hoh\n")
+    #bondfile.write("color green")
+
+    #pdbfile=input("Enter a PDB file\n")
+    rawfile=open(filename,"r",  encoding="utf8")
+    pdblist=rawfile.readlines()
+    rawfile.close()
+    cys_list_unsorted=[]
 
 
 #To test the get_uniprot fucntion by inputting PDB file of Solution structure of 
